@@ -1,0 +1,173 @@
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+E:\Beska solution\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+E:\Beska solution\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+E:\Beska solution\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+E:\Beska solution\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\bin\Debug\LinqKit.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.API\obj\Debug\Bska.Client.API.pdb

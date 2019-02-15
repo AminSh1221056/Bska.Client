@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Bska.Client.UI" GeneratedClassName="APPSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MStuffPrice" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">3300000</Value>
+    </Setting>
+    <Setting Name="BookType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1001</Value>
+    </Setting>
+    <Setting Name="AccidentProccedingConfirm" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2001</Value>
+    </Setting>
+    <Setting Name="AccessExportFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Transdata.mdb</Value>
+    </Setting>
+    <Setting Name="OldSystemFloorType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">701</Value>
+    </Setting>
+    <Setting Name="ConfigUserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Config</Value>
+    </Setting>
+    <Setting Name="ConfigPass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EAAAAFR85a1TAcE+C8fOcFSFH3MQ8OVBYu9fFdq95xcHQrpc</Value>
+    </Setting>
+    <Setting Name="EnabledNBookStore" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="EnabledStuffDeprication" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BackupFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LogPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="employeeCer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IsCompletedAssets" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DbServers" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CostForOrderMonaghese" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">220000000</Value>
+    </Setting>
+    <Setting Name="ModirConfirmForDisplacementPersonOrder" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SearchDateMonth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="CurrentTheme" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="OrderNotify" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IsClosedMenu" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

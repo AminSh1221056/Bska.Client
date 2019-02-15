@@ -1,0 +1,75 @@
+﻿<Window x:Class="Bska.Client.UI.Views.StuffHonestView.DisplacementIndentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="سفارش اموال اعلام مازاد"  Height="400" Width="600"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="indentWindow" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
+        xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC"
+        MouseLeftButtonDown="indentWindow_MouseLeftButtonDown">
+    <Window.Resources>
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.095"/>
+                <SplineDoubleKeyFrame KeySpline="1,0,0.512,1" KeyTime="00:00:00.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="نام مال:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="2" Text="سفارش:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="4" Text="باقیمانده:"/>
+                
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Text="{Binding CurrentOrderDetails.StuffName}"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Text="{Binding IndentNum}"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="5" Text="{Binding Remain}"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <UCO:DisplacementOrderDetailsUC/>
+        </Grid>
+        <Border Grid.Row="2" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,1,0,0" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="تعداد انتخاب شده:"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Text="{Binding CurrentNum}"/>
+                <Button Command="{Binding ConfirmCommand}" CommandParameter="{Binding ElementName=indentWindow}" Grid.Row="1" Grid.Column="2" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyleTit}" IsDefault="False"
+                    HorizontalAlignment="Right" Width="80" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FontSize="10" Height="26" FontWeight="Normal" Content="تایید" Margin="15,0,15,0" VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

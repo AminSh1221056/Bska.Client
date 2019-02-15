@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.StoreDraftUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:conv="clr-namespace:Bska.Client.UI.Converters"
+             xmlns:local="clr-namespace:Bska.Client.UI">
+    <UserControl.Resources>
+        <conv:DateConverter x:Key="PersianDateConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="130"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Margin="5,0,5,0" Text="تاریخ حواله انبار:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0" Text="شماره حواله انبار:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBox x:Name="txtDraftDate" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5,5,0,7" Width="120"  Text="{Binding DocumentDate,Converter={StaticResource PersianDateConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Grid.Row="0"/>
+        <TextBox x:Name="txtDraftNo"  HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1" Margin="5,0,0,0" Width="120"  Text="{Binding Desc1,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.MunitionUC.ReturnSupplierIndentListUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" x:Name="returnSupplierIndentlst"
+             xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:conv="clr-namespace:Bska.Client.UI.Converters">
+    <UserControl.Resources>
+        <conv:IndexConverter x:Key="IndexConverter"/>
+
+        <DataTemplate x:Key="CheckBoxColumnTemplate">
+            <CheckBox ToolTip="انتخاب این سفارش"
+                      Tag="{Binding}" Style="{StaticResource CompletedCheckBox}" HorizontalAlignment="Left" 
+                      VerticalAlignment="Center" Margin="5,0,0,0"  
+                      Command="{Binding ElementName=returnSupplierIndentlst,Path=DataContext.SelectCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                      IsChecked="{Binding IsSelected}"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="130" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=returnSupplierIndentlst,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EditColumnTemplate">
+            <Button ToolTip="جزئیات" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=returnSupplierIndentlst,Path=DataContext.IndentDetailsCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AnalizTemplate">
+            <Button ToolTip="آنالیز آماری" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=returnSupplierIndentlst,Path=DataContext.AnalizCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-stock}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <C:SortableListView x:Name="orderDetailsGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding SelectedIndent}" ItemsSource="{Binding SupplierIndentFilteredView}"
+                           Style="{DynamicResource BeskaEditListViewStyle}"
+                            IsEnabled="True" FontSize="11" ItemContainerStyle="{StaticResource BeskaListViewItemStyleSmall}">
+            <C:SortableListView.View>
+                <GridView AllowsColumnReorder="False" >
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                    <GridViewColumn CellTemplate="{StaticResource CheckBoxColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="40" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=StuffName}" SortProperty="StuffName" Width="180" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding Path=StuffType,Converter={StaticResource StuffTypeConverter}}" SortProperty="StuffType" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Path=Num}" SortProperty="Num" Width="75" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="باقیمانده" DisplayMemberBinding="{Binding Path=Remain}" SortProperty="Remain" Width="75" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="140" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource AnalizTemplate}" Width="45" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource EditColumnTemplate}" Header="" Width="55" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                </GridView>
+            </C:SortableListView.View>
+        </C:SortableListView>
+    </Grid>
+</UserControl>

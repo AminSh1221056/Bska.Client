@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.OrderUC.RecivedTrenderListUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Name="recivedTrenderlst"
+             mc:Ignorable="d"  xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters">
+    <UserControl.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:StuffTypeConverter x:Key="StuffTypeConverter"/>
+        <Conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
+        <DataTemplate x:Key="ConfirmColumnTemplate">
+            <Button ToolTip="تایید" Width="32" x:Name="btnconfirm"
+                    Style="{DynamicResource CustomTitButton}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                    Command="{Binding ElementName=recivedTrenderlst,Path=DataContext.ConfirmCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-check}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Confirm">
+                    <Setter TargetName="btnconfirm" Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Reject">
+                    <Setter TargetName="btnconfirm" Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="RejectColumnTemplate">
+            <Button ToolTip="رد" Width="32" x:Name="btnReject"
+                    Style="{DynamicResource CustomTitButton}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" 
+                    Command="{Binding ElementName=recivedTrenderlst,Path=DataContext.RejectCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-close}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Confirm">
+                    <Setter TargetName="btnReject" Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Reject">
+                    <Setter TargetName="btnReject" Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="OrderDetailsColumnTemplate">
+            <Button ToolTip="جزئیات درخواست" Width="35" x:Name="btnDetails"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="35" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" 
+                    Command="{Binding ElementName=recivedTrenderlst,Path=DataContext.OrderDetailsCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="120" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=recivedTrenderlst,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ProFormaColumnTemplate">
+            <Button ToolTip="پیش فاکتور" Width="32" x:Name="btnconfirm"
+                    Style="{DynamicResource CustomTitButton}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                    Command="{Binding ElementName=recivedTrenderlst,Path=DataContext.ProFormaCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-stockOrder}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <C:SortableListView  Grid.Column="1" Grid.Row="1" x:Name="recivedOrderGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding RecivedeIndentFilteredView}" SelectedItem="{Binding Selected}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+            <C:SortableListView.View >
+                <GridView AllowsColumnReorder="False" >
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                    <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="کد" DisplayMemberBinding="{Binding Path=SubOrderId}" SortProperty="OrderId" Width="100" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=StuffName}" SortProperty="StuffName" Width="170" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding StuffType,Converter={StaticResource StuffTypeConverter}}" SortProperty="StuffType" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Num}" SortProperty="Num" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="باقیمانده" DisplayMemberBinding="{Binding Remain}" SortProperty="Remain" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="135" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="تاریخ درخواست" DisplayMemberBinding="{Binding OrderDate,Converter={StaticResource PersianDateConverter}}" SortProperty="InsertDate" Width="105" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource OrderDetailsColumnTemplate}" Width="55" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource ConfirmColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource RejectColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+
+                    <GridViewColumn CellTemplate="{StaticResource ProFormaColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                </GridView>
+            </C:SortableListView.View>
+        </C:SortableListView>
+    </Grid>
+</UserControl>

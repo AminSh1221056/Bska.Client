@@ -1,0 +1,112 @@
+﻿<Window x:Class="Bska.Client.UI.Views.AssetDetailsView.StoreBillMAssetEdtiWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bska.Client.UI.Views.AssetDetailsView" Background="{DynamicResource MaterialDesignPaper}"
+        mc:Ignorable="d" x:Name="sbEditWindow" Title="ویرایش اموال قبض انبار" Height="600" Width="880"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" MouseLeftButtonDown="sbEditWindow_MouseLeftButtonDown" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+        xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:ribbon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <Window.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:CommandValuesConverter x:Key="CommandValuesConverter"/>
+        <Conv:MovableAssetTypeConverter x:Key="MovableAssetTypeConverter"/>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="115" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=sbEditWindow,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EditColumnTemplate">
+            <Button ToolTip="ویرایش" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="36" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=sbEditWindow,Path=DataContext.DetailsCommand}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource appbar_edit}"/>
+                    </StackPanel>
+                </Button.Content>
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource CommandValuesConverter}">
+                        <Binding/>
+                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+        </DataTemplate>
+        
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="490" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-50" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+    </Window.InputBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0"
+                BorderThickness="0,0,0,1" CornerRadius="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Description}"/>
+                <ribbon:GlobalToolbar Grid.Column="1" x:Name="globalToolPane"/>
+                <ribbon:HelpToolbar Grid.Column="2"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <C:SortableListView  Grid.Column="1" Grid.Row="1" x:Name="PropertyGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Assets}" SelectedItem="{Binding Selected}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                <C:SortableListView.View >
+                    <GridView AllowsColumnReorder="False" >
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="کد کالا" DisplayMemberBinding="{Binding Path=KalaNo}" SortProperty="KalaNo" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=Name}" SortProperty="Name" Width="160" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding Converter={StaticResource MovableAssetTypeConverter}}" SortProperty="MAssetType" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="برچسب" DisplayMemberBinding="{Binding Label,TargetNullValue=[خالی]}" SortProperty="Label" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Num}" SortProperty="Num" Width="60" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تاریخ ثبت" DisplayMemberBinding="{Binding InsertDate,Converter={StaticResource PersianDateConverter}}" SortProperty="InsertDate" Width="100" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource EditColumnTemplate}" Header="" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                    </GridView>
+                </C:SortableListView.View>
+            </C:SortableListView>
+        </Grid>
+    </Grid>
+</Window>

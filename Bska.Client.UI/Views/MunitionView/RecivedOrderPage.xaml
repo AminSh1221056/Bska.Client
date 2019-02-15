@@ -1,0 +1,87 @@
+﻿<Page x:Class="Bska.Client.UI.Views.MunitionView.RecivedOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+	  x:Name="mRecivedOrderPage"
+	  FontFamily="{StaticResource PrimaryFontFamily}"
+	  Title="سفارش های ارسالی" FlowDirection="RightToLeft" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+      xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+      xmlns:UCMU="clr-namespace:Bska.Client.UI.UserControlls.MunitionUC">
+    <Page.InputBindings>
+        <KeyBinding Key="F6" Command="{Binding SearchCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+    </Page.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Background="{DynamicResource PrimaryHueMidBrush}" RenderTransformOrigin="0.5,0.5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="190"/>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع مال:"/>
+                <UC:MultiSelectComboBox Grid.Column="1" Width="180" Height="22" Margin="5,0,5,0"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                 ItemsSource="{Binding StuffTypes}" SelectedItems="{Binding SelectedStuffType}"/>
+
+                <Border MouseEnter="borderFilterDetails_MouseEnter"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="5,0,5,0" VerticalAlignment="Center" Width="150" Height="35" BorderBrush="#6EFBFB96" BorderThickness="1.5,0,1.5,0" CornerRadius="0,20,0,20" x:Name="borderFilterDetails" Background="#00000000">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="بیشتر..."/>
+                </Border>
+                
+                <riboon:GlobalToolbar x:Name="globalToolPane" Grid.Column="3"/>
+                <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="4"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="208"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox x:Name="chgroping" IsChecked="{Binding IsAllIndent}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" 
+                      Content="نمایش کل سفارش های ارسالی" Style="{StaticResource CompletedCheckBox}" />
+            <CheckBox IsChecked="{Binding RbGroupView}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" 
+                      Content="نمایش گروهی بر اساس نام و واحد مال" Style="{StaticResource CompletedCheckBox}" />
+            <Button Content="{Binding RecivedOrdersCount}" HorizontalAlignment="Right" Grid.Column="4" Margin="0,0,4,0" 
+                            x:Name="btnRefresh" Style="{DynamicResource RefreshButtonStyle}" ToolTip="Refresh" Width="26" 
+                            VerticalAlignment="Center" Height="26" Command="{Binding RefreshCommand}"/>
+        </Grid>
+        <Border Grid.Row="2" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" 
+                CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+            <UCMU:RecivedIndentListUC/>
+        </Border>
+
+        <Popup MouseLeave="PopUpSelectFilter_MouseLeave"  Width="210" Height="155" x:Name="PopUpSelectFilter" PlacementTarget="{Binding ElementName=borderFilterDetails}" OpacityMask="{x:Null}" PopupAnimation="Slide" AllowsTransparency="True" Placement="Bottom" Margin="80,0,0,0" VerticalOffset="-33"  HorizontalOffset="-50">
+            <Border Width="200" Height="155" Margin="0,0,0,0" CornerRadius="8,8,8,8" BorderThickness="1,1,1,1" BorderBrush="#9EB5B5B5" Background="#E5202020">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="66"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" IsEnabled="{Binding ElementName=chgroping,Path=IsChecked}" CornerRadius="2,2,2,2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1,1,1,1" Margin="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="5"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="از تاریخ:"/>
+                            <UC:PersianDatePicker  x:Name="pDate1" DateButtonClick="pDate1_DateButtonClick" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="47,0,0,0" Width="110"  SelectedDate="{Binding FromDate,Mode=TwoWay}"/>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="تا تاریخ:"/>
+                            <UC:PersianDatePicker x:Name="pDate2" DateButtonClick="pDate2_DateButtonClick" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="47,0,0,0" Width="110"  SelectedDate="{Binding ToDate,Mode=TwoWay}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</Page>

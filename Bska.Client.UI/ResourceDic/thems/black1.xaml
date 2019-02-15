@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <LinearGradientBrush x:Key="PanelGradientBrush" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FF045F08" Offset="0" />
+        <GradientStop Color="#FF022C03" Offset="1" />
+    </LinearGradientBrush>
+
+
+    <SolidColorBrush x:Key="MainGradientFlatButtonBrush" Color="#FF00A443" />
+    <SolidColorBrush x:Key="MainGradientBrush" Color="#FF053207" />
+    <SolidColorBrush x:Key="MainForegroundSoliBrush" Color="#FFFFFFFF" />
+
+    <LinearGradientBrush x:Key="MainBackgroundBrush" EndPoint="0.439,0.967" StartPoint="0.561,0.033">
+        <GradientStop Color="#FF045516" Offset="0" />
+        <GradientStop Color="#FF032B0B" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="MainForegroundBrush" EndPoint="0.439,0.967" StartPoint="0.561,0.033">
+        <GradientStop Color="#FFFFFFFF" Offset="0" />
+        <GradientStop Color="#FFFFFFFF" Offset="1" />
+    </LinearGradientBrush>
+    
+</ResourceDictionary>

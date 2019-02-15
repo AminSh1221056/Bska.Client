@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.ProceedingsUC.TransferUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="175"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Text="نام اداره گیرنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Text="نام نماینده اداره گیرنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Text="نام امین اموال اداره گیرنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="3" Text="نام ذی حساب اداره گیرنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="4" Text="نام مدیریت اداره گیرنده:"/>
+
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="2" Text="نام اداره تحویل دهنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="2" Text="نام مدیریت اداره تحویل دهنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="2"  Text="نام امین اموال اداره تحویل دهنده:"/>
+
+        <TextBox IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Desc1,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Desc2,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Desc3,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Desc4,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=False}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Desc5,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=False}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="3" Text="{Binding DeliveryOffice,TargetNullValue=[خالی]}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="3" Text="{Binding ManageDelivieryOffice,TargetNullValue=[خالی]}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="3" Text="{Binding StuffHonestDeliveryOffice,TargetNullValue=[خالی]}"/>
+    </Grid>
+</UserControl>

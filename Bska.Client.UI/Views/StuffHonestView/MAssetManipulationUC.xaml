@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Bska.Client.UI.Views.StuffHonestView.MAssetManipulationUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 FontFamily="{StaticResource PrimaryFontFamily}" xmlns:local="clr-namespace:Bska.Client.UI.Views.StuffHonestView"
+             mc:Ignorable="d" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <UC:FolderView Foreground="{DynamicResource PrimaryHueMidBrush}" Tag="{DynamicResource PrimaryHueMidForegroundBrush}" VerticalAlignment="Top" Margin="0,0,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" x:Name="FoldersShow" ComboColorOrganizChanged="FoldersShow_ComboColorOrganizChanged"/>
+        <Border Tag="{DynamicResource PrimaryHueLightForegroundBrush}" BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 0 1" Grid.Row="1"/>
+        <local:OrganMovableAssetHistoryPage Grid.Row="2" x:Name="organAssetPane"/>
+        <local:MAssetViewPage Grid.Row="2" x:Name="MAssetPane"/>
+        <local:StuffInformationPage Grid.Row="2" x:Name="stuffInformationPane"/>
+    </Grid>
+</UserControl>

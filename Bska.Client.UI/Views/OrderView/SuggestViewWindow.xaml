@@ -1,0 +1,156 @@
+﻿<Window x:Class="Bska.Client.UI.Views.OrderView.SuggestViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Background="{x:Null}"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="suggetsWindow"
+        Title="جزئیات سفارش" Width="850" Height="650"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" WindowStyle="None" FlowDirection="RightToLeft" AllowsTransparency="True"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" FontFamily="{StaticResource PrimaryFontFamily}"  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls"
+        xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters">
+    <Window.Resources>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:StuffTypeConverter x:Key="StuffTypeConverter"/>
+        <Conv:OrderDetailsStateConverter x:Key="OrderDetailsStateConverter"/>
+        <Conv:SubOrderToVisibilityConverter x:Key="SubOrderToVisibilityConverter"/>
+        <Conv:CommandValuesConverter x:Key="CommandValuesConverter"/>
+        <Conv:SubOrderTypeConverter x:Key="SubOrderTypeConverter"/>
+        <Conv:SubOrderStateConverter x:Key="SubOrderStateConverter"/>
+        
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.095"/>
+                <SplineDoubleKeyFrame KeySpline="1,0,0.512,1" KeyTime="00:00:00.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="102" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=suggetsWindow,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DetailsColumnTemplate">
+            <Button ToolTip="جزئیات سفارش" Width="25" x:Name="btnDetails"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="25" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=suggetsWindow,Path=DataContext.SuggestCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ShowDetailsColumnTemplate">
+            <Button Visibility="{Binding Type,Converter={StaticResource SubOrderToVisibilityConverter}}" Width="90" Style="{DynamicResource BlueButtonStyle}" FontSize="12" Height="26" Content="جزئیات مال" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="btnShowDetails" FontFamily="Tahoma"  Command="{Binding ElementName=suggetsWindow,Path=DataContext.DetailsCommand}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource CommandValuesConverter}">
+                        <Binding/>
+                        <Binding ElementName="OrderDetailsWin"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid x:Name="LayoutRoot">
+        <Rectangle Fill="{DynamicResource PrimaryHueMidBrush}" Margin="0,0,0,0" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" RadiusX="400" RadiusY="100" Stroke="#E5B0B0B0" StrokeThickness="1.5" x:Name="rectOuter">
+        
+        </Rectangle>
+        <Rectangle Margin="3,3,3,3" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" RadiusX="400" RadiusY="100" Stroke="{DynamicResource PrimaryHueMidForegroundBrush}" StrokeThickness="1.5" x:Name="rectInner"/>
+        <Path HorizontalAlignment="Left" Margin="196.905,21,0,0" VerticalAlignment="Top" Width="226.9" Height="31.75" Fill="{x:Null}" Stretch="Fill" Stroke="{DynamicResource PrimaryHueMidForegroundBrush}" StrokeThickness="1.5" Data="M381,33 C381,33 383.25,54.25 322.25,41.25 261.25,28.25 269.25034,63.249858 269.25034,63.249858" d:LayoutOverrides="HorizontalAlignment"/>
+        <Path Margin="423.905,21,201.095,0" VerticalAlignment="Top" Height="31.75" Fill="{x:Null}" Stretch="Fill" Stroke="{DynamicResource PrimaryHueMidForegroundBrush}" StrokeThickness="1.5" Data="M381,33 C381,33 383.25,54.25 322.25,41.25 261.25,28.25 269.25034,63.249858 269.25034,63.249858" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1" ScaleY="1"/>
+                    <SkewTransform AngleX="0" AngleY="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+        <TextBlock Height="Auto" VerticalAlignment="Top" Text="تاریخ درخواست" Margin="0,48,167.97,0" HorizontalAlignment="Right" Width="Auto" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" d:LayoutOverrides="Width" />
+        <TextBlock Height="Auto" VerticalAlignment="Top" Text="کد درخواست" Margin="173,48,0,0" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Width="Auto" HorizontalAlignment="Left" />
+        <TextBlock Height="Auto" VerticalAlignment="Top" Text="جزئیات سفارش" HorizontalAlignment="Center" Margin="0,6,0,0" Width="Auto" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FontSize="14" />
+        <Border Margin="123,60,0,0" VerticalAlignment="Top" Height="35" BorderBrush="{DynamicResource PrimaryHueMidForegroundBrush}" BorderThickness="1.5,0,1.5,0" CornerRadius="0,20,0,20" Width="150" HorizontalAlignment="Left" x:Name="borderOrderNo"  Background="#00000000">
+            <TextBlock Height="21" x:Name="txbrequesName" Text="{Binding Path=CurrentOrder.OrderId}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
+        </Border>
+        <Border HorizontalAlignment="Right" Margin="0,60,136,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{DynamicResource PrimaryHueMidForegroundBrush}" BorderThickness="1.5,0,1.5,0" CornerRadius="0,20,0,20" x:Name="borderTableNo"  Background="#00000000">
+            <TextBlock Height="21" x:Name="txbNumRequest" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto"  FontSize="16"
+                       Text="{Binding CurrentOrder.OrderDate,Converter={StaticResource PersianDateConverter}}" />
+        </Border>
+        <Grid Margin="10,97,10,95" x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Style="{StaticResource BorderStyle}" Grid.Row="0" Margin="0" CornerRadius="0" BorderThickness="0,0,0,1">
+                <C:SortableListView x:Name="orderDetailsGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Collection}" SelectedItem="{Binding Selected}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                    <C:SortableListView.View>
+                        <GridView AllowsColumnReorder="False" >
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                            <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=StuffName}" SortProperty="StuffName" Width="180" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding Path=StuffType,Converter={StaticResource StuffTypeConverter}}" SortProperty="StuffType" Width="100" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="وضعیت" DisplayMemberBinding="{Binding Path=State,Converter={StaticResource OrderDetailsStateConverter}}" SortProperty="State" Width="85" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Path=Num}" SortProperty="Num" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn CellTemplate="{StaticResource DetailsColumnTemplate}" Width="45" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                        </GridView>
+                    </C:SortableListView.View>
+                </C:SortableListView>
+            </Border>
+            <Grid Grid.Row="1">
+                <C:SortableListView  Grid.Column="1" Grid.Row="1" x:Name="subOrderGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding SubOrders}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                    <C:SortableListView.View >
+                        <GridView AllowsColumnReorder="False">
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                            <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نوع سفارش" DisplayMemberBinding="{Binding Path=Type,Converter={StaticResource SubOrderTypeConverter}}" SortProperty="SubStatus" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Path=Num}" SortProperty="Num" Width="80" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="باقیمانده" DisplayMemberBinding="{Binding Path=Remain}" SortProperty="Remain" Width="80" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="وضعیت" DisplayMemberBinding="{Binding Path=State,Converter={StaticResource SubOrderStateConverter}}" SortProperty="State" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn CellTemplate="{StaticResource ShowDetailsColumnTemplate}" Width="120" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                        </GridView>
+                    </C:SortableListView.View>
+                </C:SortableListView>
+            </Grid>
+        </Grid>
+        <Button Style="{StaticResource ButtonByOrderStateColorStyle}"  Width="90" Background="#D409242A"
+                    Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="btnExit" Margin="105,0,0,36"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="btnExit_Click">
+            <Button.Content>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="خروج" Margin="0,-5,0,0"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+        <Button Style="{StaticResource ButtonByOrderStateColorStyle}"  Width="90" Background="#D409242A"
+                    Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="btnReport" Margin="-105,0,0,36"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button.Content>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="چاپ" Margin="0,-5,0,0"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+﻿<Page x:Class="Bska.Client.UI.Views.StoreView.StoreDesignPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bska.Client.UI.Views.StoreView"
+      mc:Ignorable="d" x:Name="storeDesignpage" FontFamily="{StaticResource PrimaryFontFamily}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+	Title="طراحی انبار" FlowDirection="RightToLeft">
+
+    <Grid>
+        <UC:StoreDesignUserControl/>
+    </Grid>
+</Page>

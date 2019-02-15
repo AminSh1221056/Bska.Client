@@ -1,0 +1,102 @@
+﻿<Page x:Class="Bska.Client.UI.Views.OrderView.RecivedOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FlowDirection="RightToLeft" FontFamily="{StaticResource PrimaryFontFamily}" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC"
+	Title="درخواست های ارسال شده" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+      xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" x:Name="recivedOrderPage" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
+      Loaded="recivedOrderPage_Loaded">
+    <Page.Resources>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:OrderTypeConverter x:Key="OrderTypeConverter"/>
+        <Conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <Conv:ReverseBooleanToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter"/>
+    </Page.Resources>
+    <Page.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+        <KeyBinding Key="F5" Command="{Binding PersonDetailsCommand}"/>
+        <KeyBinding Key="F2" Command="{Binding StoreDetailsCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding RejectCommand}"/>
+        <KeyBinding Key="F3" Command="{Binding ConfirmCommand}"/>
+    </Page.InputBindings>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="360"/>
+        </Grid.ColumnDefinitions>
+        <Border Style="{StaticResource BorderStyle}" CornerRadius="0" Grid.Column="0" Margin="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0" Background="{DynamicResource PrimaryHueMidBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="وضعیت:"/>
+                        <UC:MultiSelectComboBox Grid.Row="0" Grid.Column="1" Width="170" Height="22" Margin="5,0,5,0"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                 ItemsSource="{Binding RecivedTypes}" SelectedItems="{Binding SelectedRecivedType}"
+                                                SelectionChanged="MultiSelectComboBox_SelectionChanged"/>
+
+                        <Border Grid.ColumnSpan="2" Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}"
+                               Margin="0" CornerRadius="0" BorderThickness="0,1,0,0" Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="جستجو:"/>
+                                <UC:FilterTextUserControl  Grid.Column="1" Width="155" Height="22" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <Button Content="{Binding RecivedOrdersCount}" HorizontalAlignment="Right" Grid.Column="4" Margin="0,0,4,0" 
+                            x:Name="btnRefresh" Style="{DynamicResource RefreshButtonStyle}" ToolTip="Refresh" Width="26" 
+                            VerticalAlignment="Center" Height="26" Command="{Binding RefreshCommand}"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+                <ListBox Style="{StaticResource OrderListBox}" Grid.Row="1" Margin="2" ItemsSource="{Binding OrderFilteredView}"
+                         SelectedItem="{Binding OMSelected}"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0" Background="{DynamicResource PrimaryHueMidBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <riboon:OrderToolbar x:Name="orderToolPane"/>
+                    <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="1" HorizontalAlignment="Left"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <UCO:InternalOrderMAssetListUC Margin="5,5,5,0" Visibility="{Binding InternalVisible,Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <UCO:DisplacementOrderDetailsUC Margin="5,5,5,0" Grid.Row="1" Visibility="{Binding DisplacementVisible,Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </Grid>
+        </Grid>
+        <Border Style="{StaticResource BorderStyle}" Grid.Column="2" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0" BorderThickness="1,0,0,0">
+            <Grid>
+                <ListBox Style="{StaticResource DescriptionListBox}" Margin="2" ItemsSource="{Binding OrderUserHistories}"
+                         Visibility="{Binding OrderHistoryVisible,Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <ListBox Style="{StaticResource AnalizListBox}" Margin="2" ItemsSource="{Binding Analizes}"
+                         Visibility="{Binding OrderHistoryVisible,Converter={StaticResource ReverseBooleanToVisibilityConverter}}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

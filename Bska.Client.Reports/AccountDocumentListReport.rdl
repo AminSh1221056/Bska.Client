@@ -1,0 +1,1475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="AccountDocumentDataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>="Data Source="+Parameters!serverName.Value+";Initial Catalog="+Parameters!databaseName.Value+";User ID="+Parameters!userName.Value+";Password="+Parameters!passWord.Value</ConnectString>
+      </ConnectionProperties>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>ba77b7ef-59dc-409b-978d-7d0efc43a970</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>AccountDocumentDataSource</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@AccountType">
+            <Value>=Parameters!AccountType.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@AccountTypes">
+            <Value>=Parameters!AccountTypes.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>IF @AccountType=16000
+SELECT
+  EmployeeResources.Location.LocationId
+  ,EmployeeResources.Location.AccountDocumentType
+  ,EmployeeResources.Location.InsertDate
+  ,EmployeeResources.MovableAsset.Label
+  ,EmployeeResources.MovableAsset.Name
+  ,EmployeeResources.MovableAsset.Cost
+  ,EmployeeResources.MovableAsset.Type
+FROM
+  EmployeeResources.MovableAsset
+  INNER JOIN EmployeeResources.Location
+    ON EmployeeResources.MovableAsset.AssetId = EmployeeResources.Location.AssetId
+Where EmployeeResources.MovableAsset.Type=11002 OR EmployeeResources.MovableAsset.Type=11004
+OR EmployeeResources.MovableAsset.Type=11005
+ELSE
+SELECT
+EmployeeResources.Location.LocationId
+  ,EmployeeResources.Location.AccountDocumentType
+  ,EmployeeResources.Location.InsertDate
+  ,EmployeeResources.MovableAsset.Label
+  ,EmployeeResources.MovableAsset.Name
+  ,EmployeeResources.MovableAsset.Cost
+  ,EmployeeResources.MovableAsset.Type
+FROM
+  EmployeeResources.MovableAsset
+  INNER JOIN EmployeeResources.Location
+    ON EmployeeResources.MovableAsset.AssetId = EmployeeResources.Location.AssetId
+Where (EmployeeResources.MovableAsset.Type=11002 OR EmployeeResources.MovableAsset.Type=11004
+OR EmployeeResources.MovableAsset.Type=11005) AND EmployeeResources.Location.AccountDocumentType IN(@AccountTypes)
+And EmployeeResources.MovableAsset.Type=11002</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <SelectedColumns>
+              <ColumnExpression Schema="Production" ColumnOwner="Location" ColumnName="LocationId" />
+              <ColumnExpression Schema="Production" ColumnOwner="Location" ColumnName="AccountDocumentType" />
+              <ColumnExpression Schema="Production" ColumnOwner="Location" ColumnName="InsertDate" />
+              <ColumnExpression Schema="EmployeeResources" ColumnOwner="MovableAsset" ColumnName="Label" />
+              <ColumnExpression Schema="EmployeeResources" ColumnOwner="MovableAsset" ColumnName="Name" />
+              <ColumnExpression Schema="EmployeeResources" ColumnOwner="MovableAsset" ColumnName="Cost" />
+              <ColumnExpression Schema="EmployeeResources" ColumnOwner="MovableAsset" ColumnName="Type" />
+            </SelectedColumns>
+            <Joins>
+              <Join Type="CROSS JOIN" ColumnOwner="MovableAsset" Schema="EmployeeResources" />
+              <Join Type="INNER JOIN" ColumnOwner="Location" Schema="Production">
+                <On>
+                  <From ColumnOwner="MovableAsset" Schema="EmployeeResources" ColumnName="AssetId" />
+                  <To ColumnOwner="Location" Schema="Production" ColumnName="AssetId" />
+                </On>
+              </Join>
+            </Joins>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="LocationId">
+          <DataField>LocationId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="AccountDocumentType">
+          <DataField>AccountDocumentType</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="InsertDate">
+          <DataField>InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Label">
+          <DataField>Label</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cost">
+          <DataField>Cost</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>AccountDocumentDataSource</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@AccountType">
+            <Value>=Parameters!AccountType.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>IF @AccountType=16001
+Select 81001AS ColumnsName UNION
+Select 81002 AS ColumnsName
+ELSE IF @AccountType=16002
+Select 81002 AS ColumnsName UNION
+Select 81003 AS ColumnsName UNION
+Select 81004 AS ColumnsName UNION
+Select 81051 AS ColumnsName UNION
+Select 81061 AS ColumnsName UNION
+Select 81091 AS ColumnsName UNION
+Select 81101 AS ColumnsName UNION
+Select 81401 AS ColumnsName 
+ELSE IF @AccountType=16003
+Select 81003 AS ColumnsName UNION
+Select 81004 AS ColumnsName UNION
+Select 81062 AS ColumnsName UNION
+Select 81092 AS ColumnsName UNION
+Select 81102 AS ColumnsName UNION
+Select 81501 AS ColumnsName
+ELSE IF @AccountType=16004
+Select 81051 AS ColumnsName UNION
+Select 81052 AS ColumnsName
+ELSE IF @AccountType=16005
+Select 81061 AS ColumnsName UNION
+Select 81062 AS ColumnsName
+ELSE IF @AccountType=16006
+Select 81007 AS ColumnsName UNION
+Select 81008 AS ColumnsName
+ELSE IF @AccountType=16007
+Select 81091 AS ColumnsName UNION
+Select 81092 AS ColumnsName UNION
+Select 81201 AS ColumnsName
+ELSE IF @AccountType=16008
+Select 81101 AS ColumnsName UNION
+Select 81102 AS ColumnsName UNION
+Select 81202 AS ColumnsName
+ELSE IF @AccountType=16009
+Select 81301 AS ColumnsName UNION
+Select 81201 AS ColumnsName UNION
+Select 81401 AS ColumnsName UNION
+Select 81202 AS ColumnsName
+ELSE IF @AccountType=16010
+Select 81001 AS ColumnsName UNION
+Select 81301 AS ColumnsName
+ELSE 
+Select 81001 AS ColumnsName UNION
+Select 81002 AS ColumnsName UNION
+Select 81003 AS ColumnsName UNION
+Select 81004 AS ColumnsName UNION
+Select 81051 AS ColumnsName UNION
+Select 81052 AS ColumnsName UNION
+Select 81061 AS ColumnsName UNION
+Select 81062 AS ColumnsName UNION
+Select 81007 AS ColumnsName UNION
+Select 81008 AS ColumnsName UNION
+Select 81091 AS ColumnsName UNION
+Select 81092 AS ColumnsName UNION
+Select 81101 AS ColumnsName UNION
+Select 81102 AS ColumnsName UNION
+Select 81401 AS ColumnsName UNION
+Select 81301 AS ColumnsName UNION
+Select 81201 AS ColumnsName UNION
+Select 81501 AS ColumnsName UNION
+Select 81202 AS ColumnsName</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ColumnsName">
+          <DataField>ColumnsName</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!AccountType.Label</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>2.98896cm</Top>
+            <Left>9.06387cm</Left>
+            <Height>0.70611cm</Height>
+            <Width>7.49179cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>:نوع حساب کل</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>2.98896cm</Top>
+            <Left>16.63504cm</Left>
+            <Height>0.70611cm</Height>
+            <Width>2.29843cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>5.68751cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.34923cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.15497cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.28614cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.19385cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.93777cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.50174cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.73229cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox25">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>شرح سند</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox25</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox21">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>بستانکار</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox21</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox19">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>بدهکار</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>نام مال</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox17">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>برچسب</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox17</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>تاریخ</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>شماره</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.73229cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Cost">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Switch(Fields!AccountDocumentType.Value=81001,"حساب اموال رسيده",Fields!AccountDocumentType.Value=81002,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81003,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81004,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81051,"حساب اموال اماني",Fields!AccountDocumentType.Value=81052,"حساب اموال اماني",Fields!AccountDocumentType.Value=81061,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81062,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81007,"حساب اموال اماني",Fields!AccountDocumentType.Value=81008,"طرف حساب اموال اماني",Fields!AccountDocumentType.Value=81091,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81092,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81101,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81102,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81201,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81202,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81301,"حساب اموال دستگاه اجرايي",Fields!AccountDocumentType.Value=81401,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81501,"حساب اموال تحويلي به واحدها")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Cost</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="AccountDocumentType1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>0</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>AccountDocumentType1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Cost1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Cost.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Cost1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Name">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Name.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Name</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Label">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(isNothing(Fields!Label.Value), "خالی" ,Fields!Label.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Label</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="InsertDate1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Bska.Client.Common.DateTimeExtensions.PersianDateString(Fields!InsertDate.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>InsertDate1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LocationId">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Switch(Fields!AccountDocumentType.Value=81001,"16001",Fields!AccountDocumentType.Value=81002,"16002",Fields!AccountDocumentType.Value=81003,"16003",Fields!AccountDocumentType.Value=81004,"16002",Fields!AccountDocumentType.Value=81051,"16004",Fields!AccountDocumentType.Value=81052,"16004",Fields!AccountDocumentType.Value=81061,"16002",Fields!AccountDocumentType.Value=81062,"16003",Fields!AccountDocumentType.Value=81007,"16004",Fields!AccountDocumentType.Value=81008,"16006",Fields!AccountDocumentType.Value=81091,"16007",Fields!AccountDocumentType.Value=81092,"16007",Fields!AccountDocumentType.Value=81101,"16008",Fields!AccountDocumentType.Value=81102,"16008",Fields!AccountDocumentType.Value=81201,"16009",Fields!AccountDocumentType.Value=81202,"16009",Fields!AccountDocumentType.Value=81301,"16010",Fields!AccountDocumentType.Value=81401,"16009",Fields!AccountDocumentType.Value=81501,"16003")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>LocationId</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Switch(Fields!AccountDocumentType.Value=81001,"حساب اموال دستگاه اجرايي",Fields!AccountDocumentType.Value=81002,"حساب اموال رسيده",Fields!AccountDocumentType.Value=81003,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81004,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81051,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81052,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81061,"حساب اموال اماني",Fields!AccountDocumentType.Value=81062,"حساب اموال اماني",Fields!AccountDocumentType.Value=81007,"طرف حساب اموال اماني",Fields!AccountDocumentType.Value=81008,"حساب اموال اماني",Fields!AccountDocumentType.Value=81091,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81092,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81101,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81102,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81201,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81202,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81301,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81401,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81501,"حساب اموال تحويلي به واحدها")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Cost2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Cost.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Cost2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox14">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>0</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox14</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Name1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Name.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Name1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox16">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(isNothing(Fields!Label.Value), "خالی" ,Fields!Label.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox16</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox18">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Bska.Client.Common.DateTimeExtensions.PersianDateString(Fields!InsertDate.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox18</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox20">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Switch(Fields!AccountDocumentType.Value=81001,"16010",Fields!AccountDocumentType.Value=81002,"16001",Fields!AccountDocumentType.Value=81003,"16002",Fields!AccountDocumentType.Value=81004,"16003",Fields!AccountDocumentType.Value=81051,"16002",Fields!AccountDocumentType.Value=81052,"16003",Fields!AccountDocumentType.Value=81061,"16004",Fields!AccountDocumentType.Value=81062,"16004",Fields!AccountDocumentType.Value=81007,"16005",Fields!AccountDocumentType.Value=81008,"16004",Fields!AccountDocumentType.Value=81091,"16002",Fields!AccountDocumentType.Value=81092,"16003",Fields!AccountDocumentType.Value=81101,"16002",Fields!AccountDocumentType.Value=81102,"16003",Fields!AccountDocumentType.Value=81201,"16007",Fields!AccountDocumentType.Value=81202,"16008",Fields!AccountDocumentType.Value=81301,"16009",Fields!AccountDocumentType.Value=81401,"16002",Fields!AccountDocumentType.Value=81501,"16003")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember>
+                  <Group Name="Group1">
+                    <GroupExpressions>
+                      <GroupExpression>=Switch(Fields!AccountDocumentType.Value=81001,"حساب اموال رسيده",Fields!AccountDocumentType.Value=81002,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81003,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81004,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81051,"حساب اموال اماني",Fields!AccountDocumentType.Value=81052,"حساب اموال اماني",Fields!AccountDocumentType.Value=81061,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81062,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81007,"حساب اموال اماني",Fields!AccountDocumentType.Value=81008,"طرف حساب اموال اماني",Fields!AccountDocumentType.Value=81091,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81092,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81101,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81102,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81201,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81202,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81301,"حساب اموال دستگاه اجرايي",Fields!AccountDocumentType.Value=81401,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81501,"حساب اموال تحويلي به واحدها")</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Switch(Fields!AccountDocumentType.Value=81001,"حساب اموال رسيده",Fields!AccountDocumentType.Value=81002,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81003,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81004,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81051,"حساب اموال اماني",Fields!AccountDocumentType.Value=81052,"حساب اموال اماني",Fields!AccountDocumentType.Value=81061,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81062,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81007,"حساب اموال اماني",Fields!AccountDocumentType.Value=81008,"طرف حساب اموال اماني",Fields!AccountDocumentType.Value=81091,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81092,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81101,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81102,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81201,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81202,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81301,"حساب اموال دستگاه اجرايي",Fields!AccountDocumentType.Value=81401,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81501,"حساب اموال تحويلي به واحدها")</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Group2">
+                        <GroupExpressions>
+                          <GroupExpression>=Switch(Fields!AccountDocumentType.Value=81001,"حساب اموال رسيده",Fields!AccountDocumentType.Value=81002,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81003,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81004,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81051,"حساب اموال اماني",Fields!AccountDocumentType.Value=81052,"حساب اموال اماني",Fields!AccountDocumentType.Value=81061,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81062,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81007,"حساب اموال اماني",Fields!AccountDocumentType.Value=81008,"طرف حساب اموال اماني",Fields!AccountDocumentType.Value=81091,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81092,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81101,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81102,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81201,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81202,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81301,"حساب اموال دستگاه اجرايي",Fields!AccountDocumentType.Value=81401,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81501,"حساب اموال تحويلي به واحدها")</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Switch(Fields!AccountDocumentType.Value=81001,"حساب اموال رسيده",Fields!AccountDocumentType.Value=81002,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81003,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81004,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81051,"حساب اموال اماني",Fields!AccountDocumentType.Value=81052,"حساب اموال اماني",Fields!AccountDocumentType.Value=81061,"حساب اموال موجود در انبار",Fields!AccountDocumentType.Value=81062,"حساب اموال تحويلي به واحدها",Fields!AccountDocumentType.Value=81007,"حساب اموال اماني",Fields!AccountDocumentType.Value=81008,"طرف حساب اموال اماني",Fields!AccountDocumentType.Value=81091,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81092,"حساب اموال اسقاط",Fields!AccountDocumentType.Value=81101,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81102,"حساب اموال حادثه ديده",Fields!AccountDocumentType.Value=81201,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81202,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81301,"حساب اموال دستگاه اجرايي",Fields!AccountDocumentType.Value=81401,"حساب اموال فرستاده",Fields!AccountDocumentType.Value=81501,"حساب اموال تحويلي به واحدها")</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <Group Name="Details" />
+                          <TablixMembers>
+                            <TablixMember />
+                            <TablixMember />
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <DataSetName>DataSet1</DataSetName>
+            <Top>3.95028cm</Top>
+            <Left>0.29852cm</Left>
+            <Height>2.06458cm</Height>
+            <Width>19.11121cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Textbox Name="employeeName2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>اسناد حسابداری</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <Color>LightSteelBlue</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>employeeName</rd:DefaultName>
+            <Top>1.41705cm</Top>
+            <Left>4.50114cm</Left>
+            <Height>0.70267cm</Height>
+            <Width>13.50628cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="employeeName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!employeeName.Value</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <Color>LightSteelBlue</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>employeeName</rd:DefaultName>
+            <Top>0.71437cm</Top>
+            <Left>4.52759cm</Left>
+            <Height>0.70267cm</Height>
+            <Width>13.50628cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="parentName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!parentName.Value</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <Color>LightSteelBlue</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>parentName</rd:DefaultName>
+            <Top>0.00001cm</Top>
+            <Left>4.52759cm</Left>
+            <Height>0.71436cm</Height>
+            <Width>13.50628cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ExecutionTime">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Bska.Client.Common.DateTimeExtensions.PersianDateString(Globals!ExecutionTime)</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ExecutionTime</rd:DefaultName>
+            <Top>0.03125in</Top>
+            <Left>0.01042in</Left>
+            <Height>0.25in</Height>
+            <Width>1.63542in</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>6.08542cm</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>19.86432cm</Width>
+      <Page>
+        <PageFooter>
+          <Height>0.75558cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="PageNumber">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>PageNumber</rd:DefaultName>
+              <Top>0.10583cm</Top>
+              <Left>0.29852cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.89688cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>27.94cm</PageHeight>
+        <PageWidth>21.59cm</PageWidth>
+        <LeftMargin>0.54cm</LeftMargin>
+        <RightMargin>0.54cm</RightMargin>
+        <TopMargin>1.27cm</TopMargin>
+        <BottomMargin>1.27cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="serverName">
+      <DataType>String</DataType>
+      <Prompt>serverName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="databaseName">
+      <DataType>String</DataType>
+      <Prompt>databaseName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="userName">
+      <DataType>String</DataType>
+      <Prompt>userName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="passWord">
+      <DataType>String</DataType>
+      <Prompt>passWord</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="parentName">
+      <DataType>String</DataType>
+      <Prompt>parentName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="employeeName">
+      <DataType>String</DataType>
+      <Prompt>employeeName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="AccountType">
+      <DataType>String</DataType>
+      <Prompt>نوع حساب کل</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>16000</Value>
+            <Label>کل اسناد</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16001</Value>
+            <Label>حساب اموال رسیده</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16002</Value>
+            <Label>حساب اموال موجود در انبار</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16003</Value>
+            <Label>حساب اموال تحویلی به واحد ها</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16004</Value>
+            <Label>حساب اموال امانی</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16005</Value>
+            <Label>حساب اموال امانی رسیده</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16006</Value>
+            <Label>طرف حساب اموال امانی رسیده</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16007</Value>
+            <Label>حساب اموال اسقاط</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16008</Value>
+            <Label>حساب اموال حادثه دیده</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16009</Value>
+            <Label>حساب اموال فرستاده</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>16010</Value>
+            <Label>حساب اموال دستگاه اجرایی</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="AccountTypes">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>DataSet2</DataSetName>
+          <ValueField>ColumnsName</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>AccountTypes</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DataSet2</DataSetName>
+          <ValueField>ColumnsName</ValueField>
+          <LabelField>ColumnsName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>4</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>serverName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>databaseName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>userName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>passWord</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>parentName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>employeeName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>AccountType</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>AccountTypes</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <CodeModules>
+    <CodeModule>Bska.Client.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</CodeModule>
+  </CodeModules>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://dc01/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>99cb59bc-70ef-48a5-8672-b12668324470</rd:ReportID>
+</Report>

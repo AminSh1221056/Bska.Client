@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Bska.Client.Domain.Entity.BuidldingDesign" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAQAAAAAAAAAAAQABAAAAAAAAAAAIAEQAAA=</HashCode>
+      <FileName>Entity\BuidldingDesign.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.StrategyDesign" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\BuidldingDesign.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.OrganizationDesign" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\BuidldingDesign.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Building" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAYAIAAAAAIAMIBAAABQACAAgKAAACIITCgGCgAA=</HashCode>
+      <FileName>Entity\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.CarCorporation" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAgAAAAA=</HashCode>
+      <FileName>Entity\CarCorporation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.CarDetails" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAgAAAAgAQA=</HashCode>
+      <FileName>Entity\CarDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.City" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Company" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAIAAAAAQAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Country" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Entity\Country.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Employee" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAARAAgCEAAAAEAAAAAARAAAAAAgAACAABAQESAAA=</HashCode>
+      <FileName>Entity\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.EstateOrginalOffice" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAQAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\EstateOrginalOffice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.InsuranceCompany" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Entity\InsuranceCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Person" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAGAEAAABAIAEgAAAAAAACgAAAICAAAABAAACAAk=</HashCode>
+      <FileName>Entity\Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Province" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAiAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Province.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.RequestPermit" Collapsed="true">
+    <Position X="18.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYBAAAAAAAACAAAEAAEAAAAAAAAgAAAAAAAAAAEAAAg=</HashCode>
+      <FileName>Entity\RequestPermit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Roles" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAAAAAACAAgAAAAAEAgAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entity\Roles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Store" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAEAQACAAAIAIAAAABAAACAgA=</HashCode>
+      <FileName>Entity\Store.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.StoreDesign" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAEAQAAAAAgAAAAAAAAQAQAAA=</HashCode>
+      <FileName>Entity\StoreDesign.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Stuff" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAABAAAAMgBAQQAQAAAAAAIACAAAAACAAAAA=</HashCode>
+      <FileName>Entity\Stuff.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.TwonShip" Collapsed="true">
+    <Position X="15.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\TwonShip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Unit" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAkgAAQQIQAAAAAAIACAAAEgAAAAAA=</HashCode>
+      <FileName>Entity\Unit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.UserAttribute" Collapsed="true">
+    <Position X="20.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAABAAAAJAAAAAAgAABRAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Entity\UserAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Users" Collapsed="true">
+    <Position X="11.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAACAIAEAAAAAAgAAgAAAAACAQAAAAAAQAA=</HashCode>
+      <FileName>Entity\Users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Zone" Collapsed="true">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Zone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.AccountDocument" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAQAAAAEAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\AccountDocument.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.Asset" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABgAAAAAQACgAAAIAAAAAAAAECAAA=</HashCode>
+      <FileName>Entity\AssetEntity\Asset.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.Commodity" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\Commodity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.Document" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAwABAAAAAAEAACAAAAAAAhAAACAAAAAEAAAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\Document.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.Estate" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCAAAAAAEAAAAQAIQBIIAEAAAAAAAACAQAADQAAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\Estate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.ImmovableAsset" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\ImmovableAsset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.InCommidity" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\InCommidity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.Location" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BSAIAAAEAAACAAAEAIAAEAAAAggAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.MovableAsset" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIkAAAAAEOAhAAhEAgKACFEAAQBAAACBQAIkEAAAAAA=</HashCode>
+      <FileName>Entity\AssetEntity\MovableAsset.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.StoreBill" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAEAAQAEAAAAwAAAAAAAAgAAAAgAAA=</HashCode>
+      <FileName>Entity\AssetEntity\StoreBill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.AssetEntity.UnConsumption" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAFAAAAAAAAAAQAA=</HashCode>
+      <FileName>Entity\AssetEntity\UnConsumption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.AccountDocumentMap" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\AccountDocumentMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.BuildingDesignMap" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\BuildingDesignMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.BuildingMap" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\BuildingMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.DocumentMap" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\DocumentMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.EmployeeMap" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\EmployeeMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.EstateMap" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\EstateMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.LocationMap" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\LocationMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.MovableAssetMap" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\MovableAssetMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.OrderDetailsMap" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\OrderDetailsMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.OrderHistoryMap" Collapsed="true">
+    <Position X="22.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\OrderHistoryMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.OrderMap" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\OrderMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.PersonMap" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\PersonMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.RequestPermitMap" Collapsed="true">
+    <Position X="20.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\RequestPermitMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.RoleMap" Collapsed="true">
+    <Position X="22.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\RoleMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.StoreBillMap" Collapsed="true">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\StoreBillMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.StoreDesignMap" Collapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\StoreDesignMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.StoreMap" Collapsed="true">
+    <Position X="20.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\StoreMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.StuffMap" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\StuffMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.SubOrderMap" Collapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\SubOrderMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.UnitMap" Collapsed="true">
+    <Position X="18.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\UnitMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.UserAttributeMap" Collapsed="true">
+    <Position X="22.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\UserAttributeMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.Mapping.UserMap" Collapsed="true">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Mapping\UserMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.OrderEntity.Order" BaseTypeListCollapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAAAAAEAAEgACAEghAABAAAAgAAAIAAAAAAAAAAAAE=</HashCode>
+      <FileName>Entity\OrderEntity\Order.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.OrderEntity.OrderDetails" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MQEAIAAAAAAiAQCAABAAAABAAAIAABAAAAAEAAFACAE=</HashCode>
+      <FileName>Entity\OrderEntity\OrderDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.OrderEntity.OrderUserHistory" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAAAgABAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\OrderEntity\OrderUserHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bska.Client.Domain.Entity.OrderEntity.SubOrder" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAgBEAAAAAAAAAAAAAAEAABEAAAAA=</HashCode>
+      <FileName>Entity\OrderEntity\SubOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Bska.Client.Domain.Entity.StoredProcedures.IBskaStoredProcedures" Collapsed="true">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAgAAAAAAAAAAAAAAAAACAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\StoredProcedures\IBskaStoredProcedures.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.PersonMAssetUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" x:Name="personAssetUC">
+    <UserControl.Resources>
+        <Conv:LocationStautsConverter x:Key="LocationStautsConverter"/>
+        <Conv:LocationStatusToStringConverter x:Key="LocationStatusToStringConverter"/>
+        <Conv:CommandValuesConverter x:Key="CommandValuesConverter"/>
+
+        <DataTemplate x:Key="StatusColumnTemplate">
+            <Image Width="25" Height="25" HorizontalAlignment="Left" ToolTip="{Binding Status,Converter={StaticResource LocationStatusToStringConverter}}"
+                   Source="{Binding Status,Converter={StaticResource LocationStautsConverter}}"  />
+        </DataTemplate>
+
+        <DataTemplate x:Key="EditColumnTemplate">
+            <Button ToolTip="جزئیات مال" Width="25"
+                    Style="{DynamicResource BlueButtonStyle}"  FontSize="12" FontFamily="Arial" Height="25" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=personAssetUC,Path=DataContext.MAssetDetailsCommand}" CommandParameter="{Binding}">
+                <Image  Source="{StaticResource DetailNewIcon}" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <C:SortableListView  Grid.Row="1" Margin="0,2,0,2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
+            SelectionMode="Single" ItemsSource="{Binding PersonAssetCollection}"
+                            ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmallNoClickable}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+            <C:SortableListView.View >
+                <GridView AllowsColumnReorder="False" >
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                    <GridViewColumn Header="وضعیت" CellTemplate="{StaticResource StatusColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=Name}" SortProperty="Name" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="برچسب" DisplayMemberBinding="{Binding Path=Label,TargetNullValue=[خالی]}" SortProperty="Label" Width="60" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource EditColumnTemplate}" Width="40" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                </GridView>
+            </C:SortableListView.View>
+        </C:SortableListView>
+    </Grid>
+</UserControl>

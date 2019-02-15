@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.PersonUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+             mc:Ignorable="d" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:masking="clr-namespace:Bska.Client.UI.API"
+             xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common"
+             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <UserControl.Resources>
+        <Conv:ImageConverter x:Key="ImageConverter"/>
+        <Conv:DateConverter x:Key="PersianDateConverter"/>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F4" Command="{Binding NewCommand}"  />
+        <KeyBinding Key="F8" Command="{Binding DeleteCommand}"  />
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"  />
+        <KeyBinding Key="F10" Command="{Binding CancelCommand}"  />
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <ribboon:GlobalToolbar x:Name="toolbarPane"  IsEnabled="{Binding DetailsEnabled}"/>
+            <ribboon:ImportExportToolbar x:Name="importPane" Grid.Column="1" HorizontalAlignment="Left"/>
+            <ribboon:HelpToolbar x:Name="helpbarPane" Grid.Column="2" HorizontalAlignment="Left"/>
+        </Grid>
+        <Border BorderBrush="Silver"  BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Grid.Row="1" Margin="2,2,2,2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border x:Name="b1" IsEnabled="{Binding EnableControlls}" Grid.Row="0" BorderBrush="Silver"  BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  Margin="2,2,2,2">
+                    <Grid Margin="3.75" x:Name="grid1" DataContext="{Binding PersonDetailsVM ,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="نام:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="نام خانوادگی:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock FontSize="11" Text="شماره پرسنلی:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="کد ملی:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="شماره همراه:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="0" Text="نام پدر:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="1" Text="کدپستی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="2" Text="نوع قرارداد:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="3" Text="تاریخ استخدام:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="4" Text="عکس:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBlock FontSize="13" Grid.Column="0" Grid.Row="5" Text="تاریخ تولد:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBlock FontSize="13" Grid.Column="0" Grid.Row="6" Text="آدرس:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+
+                        <TextBox TabIndex="0" masking:Masking.Mask="^[آ-ی ]+$" FontSize="13" Grid.Column="1" Grid.Row="0" Margin="4,5,0,6" x:Name="txtPersonnelName" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"
+                             Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                        <TextBox masking:Masking.Mask="^[آ-ی ]+$" FontSize="13" Grid.Column="1" Grid.Row="1" Margin="4,5,0,6" x:Name="txtPersonnelFamily" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"
+                             Text="{Binding LastName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="1"/>
+                        <TextBox masking:Masking.Mask="^\d+$" MaxLength="10" FontSize="13" Grid.Column="1" Grid.Row="2" Margin="4,5,0,6" x:Name="txtPersonnelMeliCode" Width="187" Height="20" VerticalAlignment="Center" TabIndex="2" HorizontalAlignment="Left"
+                             Text="{Binding NationalId,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,TargetNullValue=[خالی]}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                        <TextBox FontSize="13" Grid.Column="1" Grid.Row="3" Margin="4,5,0,6" x:Name="txtPersonnelCode" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" TabIndex="3"
+                             Text="{Binding PersonCode}"/>
+
+                        <TextBox MaxLength="11" FontSize="13" Grid.Column="1" Grid.Row="4" Margin="4,5,0,6" x:Name="txtPersonnelMobileNum" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding Mobile,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,Mode=TwoWay}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+
+                        <TextBox MaxLength="20" FontSize="13" Grid.Column="1" Grid.Row="5" Margin="4,5,0,6" Width="130" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding BirthDate,Converter={StaticResource PersianDateConverter}}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                        <CheckBox Style="{StaticResource CompletedCheckBox}" Grid.Row="5" Grid.Column="1" Content="متاهل" IsChecked="{Binding Married}" Margin="150,0,5,0" HorizontalAlignment="Left"
+                              VerticalAlignment="Center"/>
+                        <TextBox MaxLength="50" FontSize="13" Grid.Column="3" Grid.Row="0" Margin="4,5,0,6" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding FatherName}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                        <TextBox MaxLength="20" FontSize="13" Grid.Column="3" Grid.Row="1" Margin="4,5,0,6" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding Postalcode}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                        <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="5,0,0,0" x:Name="cmbBondType" ItemsSource="{Binding Source={masking:Enumeration {x:Type local:ContractType}}}" DisplayMemberPath="Description" 
+                             SelectedValuePath="Value" SelectedValue="{Binding Contract,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" SelectedIndex="0" TabIndex="5"/>
+                        <TextBox MaxLength="20" FontSize="13" Grid.Column="3" Grid.Row="3" Margin="4,5,0,6" Width="130" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding EmployeeDate,Converter={StaticResource PersianDateConverter}}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                        <Border HorizontalAlignment="Left" Cursor="Hand" VerticalAlignment="Top"  Width="85" Height="55" Grid.Column="3"  Grid.Row="4"  Grid.RowSpan="3" Background="#CCFFFFFF" BorderBrush="#FF975E5E" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10"
+                             Margin="5,3,0,2">
+                            <Image Grid.Column="0" Margin="4,4,4,4" x:Name="imgstuff1" Width="Auto" Height="Auto" Source="{Binding Photo,Converter={StaticResource ImageConverter}}">
+                            </Image>
+                        </Border>
+                        <Button  Style="{DynamicResource FlatButtonStyle}"   MaxHeight="25" HorizontalAlignment="Left"  Grid.Row="4" Grid.Column="3" Grid.RowSpan="1" Foreground="#FFFFFFFF" Content="...Browser" Width="80"
+                 Margin="110,0,0,0" x:Name="ButtonImage" Click="ButtonImage_Click"/>
+                        <TextBox MaxLength="250" FontSize="13" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" Margin="4,5,0,6" Width="387" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding AddressLine}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="1" BorderBrush="Silver"  BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  Margin="2,2,2,2">
+                    <Grid Margin="2">
+                        <C:SortableListView   Grid.Row="0" x:Name="PersonnelGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True"
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True"
+                           ItemContainerStyle="{DynamicResource BeskaEditListViewItemStyle}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11"
+                                           ItemsSource="{Binding PersonFilterView}" SelectedItem="{Binding Selected}">
+                            <C:SortableListView.View >
+                                <GridView AllowsColumnReorder="False" >
+                                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                                    <C:SortListViewColumn Header="کد"  DisplayMemberBinding="{Binding Path=PersonId}" SortProperty="PersonId" Width="95"  SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                    <C:SortListViewColumn Header="نام و نام خانوادگی" SortProperty="FirstName" Width="160" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}">
+                                        <C:SortListViewColumn.DisplayMemberBinding>
+                                            <MultiBinding StringFormat="{}{0}  {1}">
+                                                <Binding Path="FirstName"></Binding>
+                                                <Binding Path="LastName"></Binding>
+                                            </MultiBinding>
+                                        </C:SortListViewColumn.DisplayMemberBinding>
+                                    </C:SortListViewColumn>
+                                    <C:SortListViewColumn Header="شماره پرسنلی" DisplayMemberBinding="{Binding Path=PersonCode}" SortProperty="PersonnelCode" Width="128" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                    <C:SortListViewColumn Header="شماره همراه" DisplayMemberBinding="{Binding Path=Mobile}" SortProperty="Mobile" Width="111" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                    <C:SortListViewColumn Header="کد ملی" DisplayMemberBinding="{Binding Path=NationalId}" SortProperty="NationalId" Width="105" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                                </GridView>
+                            </C:SortableListView.View>
+                        </C:SortableListView>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

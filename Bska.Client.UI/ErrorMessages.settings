@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Bska.Client.UI" GeneratedClassName="ErrorMessages">
+  <Profiles />
+  <Settings>
+    <Setting Name="NoConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">خطا در برقراری ارتباط با پایگاه داده</Value>
+    </Setting>
+    <Setting Name="UnhandledException" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">خطای ناشناخته.</Value>
+    </Setting>
+    <Setting Name="SuccessfullyMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">تغییرات با موفقیت ذخیره شد</Value>
+    </Setting>
+    <Setting Name="UserNameEmpty" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">نام کاربری وارد نشده است.</Value>
+    </Setting>
+    <Setting Name="NoRowSelected" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">هیچ سطری انتخاب نشده است</Value>
+    </Setting>
+    <Setting Name="ConfirmDelete" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">آیا شما مطمئن به حذف این آیتم می باشید</Value>
+    </Setting>
+    <Setting Name="NoInternetAccess" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">سیستم قادر به اتصال به سیستم مکزی نمی باشد</Value>
+    </Setting>
+    <Setting Name="InputInvalid" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">لطفا ورودی های خود را کنترل کنید</Value>
+    </Setting>
+    <Setting Name="AskConfrimation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">آیا مطمئن به ثبت این اطلاعات می باشید</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

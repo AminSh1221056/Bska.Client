@@ -1,0 +1,14 @@
+﻿<Page x:Class="Bska.Client.UI.Views.MunitionView.SupplierHistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bska.Client.UI.Views.MunitionView"
+      mc:Ignorable="d"  x:Name="supplierHistory"
+    FontFamily="{StaticResource PrimaryFontFamily}"
+	  Title="کارپردازان" FlowDirection="RightToLeft" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" 
+      xmlns:C="clr-namespace:Bska.Client.UI.Controls">
+    <Grid>
+        <UC:SupplierIndentListUC x:Name="supplierHistoryPane"/>
+    </Grid>
+</Page>

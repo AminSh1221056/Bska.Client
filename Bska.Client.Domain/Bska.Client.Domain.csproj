@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03119A3C-2A57-4A63-BF6B-AFF935E68D09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bska.Client.Domain</RootNamespace>
+    <AssemblyName>Bska.Client.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Concrete\BskaContext.cs" />
+    <Compile Include="Concrete\ConnectionHelper.cs" />
+    <Compile Include="Entity\AccountDocumentCoding.cs" />
+    <Compile Include="Entity\AssetEntity\CommodityAsset\CommodityAssetReserveHistory.cs" />
+    <Compile Include="Entity\AssetEntity\Documents\AccountDocumentDetails.cs" />
+    <Compile Include="Entity\AssetEntity\Documents\AccountDocumentMaster.cs" />
+    <Compile Include="Entity\AssetEntity\Asset.cs" />
+    <Compile Include="Entity\AssetEntity\Proceedings\AssetProceeding.cs" />
+    <Compile Include="Entity\AssetEntity\AssetTaxCost.cs" />
+    <Compile Include="Entity\AssetEntity\Belonging.cs" />
+    <Compile Include="Entity\AssetEntity\CommodityAsset\Commodity.cs" />
+    <Compile Include="Entity\AssetEntity\CommodityAsset\PlaceOfUse.cs" />
+    <Compile Include="Entity\AssetEntity\Documents\Document.cs" />
+    <Compile Include="Entity\AssetEntity\Estate.cs" />
+    <Compile Include="Entity\AssetEntity\ExportDetails\ExportDetailsMAsset.cs" />
+    <Compile Include="Entity\AssetEntity\ExportDetails\ExportDetailsProceeding.cs" />
+    <Compile Include="Entity\AssetEntity\ImmovableAsset.cs" />
+    <Compile Include="Entity\AssetEntity\InCommidity.cs" />
+    <Compile Include="Entity\AssetEntity\Installable.cs" />
+    <Compile Include="Entity\AssetEntity\Location.cs" />
+    <Compile Include="Entity\AssetEntity\MeterBills\GasBill.cs" />
+    <Compile Include="Entity\AssetEntity\MeterBills\MeterBill.cs" />
+    <Compile Include="Entity\AssetEntity\MeterBills\MobileBill.cs" />
+    <Compile Include="Entity\AssetEntity\MeterBills\PowerBill.cs" />
+    <Compile Include="Entity\AssetEntity\MeterBills\TellBill.cs" />
+    <Compile Include="Entity\AssetEntity\MeterBills\WaterBill.cs" />
+    <Compile Include="Entity\AssetEntity\Meters\GasMeter.cs" />
+    <Compile Include="Entity\AssetEntity\Meters\Meter.cs" />
+    <Compile Include="Entity\AssetEntity\Meters\MobileMeter.cs" />
+    <Compile Include="Entity\AssetEntity\Meters\PowerMeter.cs" />
+    <Compile Include="Entity\AssetEntity\Meters\TellMeter.cs" />
+    <Compile Include="Entity\AssetEntity\Meters\WaterMeter.cs" />
+    <Compile Include="Entity\AssetEntity\MovableAsset.cs" />
+    <Compile Include="Entity\AssetEntity\Proceedings\Proceeding.cs" />
+    <Compile Include="Entity\AssetEntity\StoreBills\StoreBill.cs" />
+    <Compile Include="Entity\AssetEntity\StoreBills\StoreBillEdit.cs" />
+    <Compile Include="Entity\AssetEntity\MovableAssetReserveHistory.cs" />
+    <Compile Include="Entity\AssetEntity\UnConsumption.cs" />
+    <Compile Include="Entity\EmployeeDesign.cs" />
+    <Compile Include="Entity\Building.cs" />
+    <Compile Include="Entity\CarDetails.cs" />
+    <Compile Include="Entity\City.cs" />
+    <Compile Include="Entity\Company.cs" />
+    <Compile Include="Entity\Country.cs" />
+    <Compile Include="Entity\Employee.cs" />
+    <Compile Include="Entity\EstateOrgan.cs" />
+    <Compile Include="Entity\EventLog.cs" />
+    <Compile Include="Entity\ExportDetails.cs" />
+    <Compile Include="Entity\HelpEntity\BskaHelp.cs" />
+    <Compile Include="Entity\Insurance.cs" />
+    <Compile Include="Entity\InsuranceCompany.cs" />
+    <Compile Include="Entity\Mapping\AccountDocumentCodingMap.cs" />
+    <Compile Include="Entity\Mapping\AccountDocumentDetailsMap.cs" />
+    <Compile Include="Entity\Mapping\AccountDocumentMasterMap.cs" />
+    <Compile Include="Entity\Mapping\AssetProceedingMap.cs" />
+    <Compile Include="Entity\Mapping\AssetTaxCostMap.cs" />
+    <Compile Include="Entity\Mapping\BskaHelpMap.cs" />
+    <Compile Include="Entity\Mapping\CarDetailsMap.cs" />
+    <Compile Include="Entity\Mapping\CityMap.cs" />
+    <Compile Include="Entity\Mapping\CommodityAssetReserveHistoryMap.cs" />
+    <Compile Include="Entity\Mapping\CommodityMap.cs" />
+    <Compile Include="Entity\Mapping\CompanyMap.cs" />
+    <Compile Include="Entity\Mapping\CountryMap.cs" />
+    <Compile Include="Entity\Mapping\EmployeeDesignMap.cs" />
+    <Compile Include="Entity\Mapping\BuildingMap.cs" />
+    <Compile Include="Entity\Mapping\DocumentMap.cs" />
+    <Compile Include="Entity\Mapping\EmployeeMap.cs" />
+    <Compile Include="Entity\Mapping\EstateMap.cs" />
+    <Compile Include="Entity\Mapping\EstateOrganMap.cs" />
+    <Compile Include="Entity\Mapping\EventLogMap.cs" />
+    <Compile Include="Entity\Mapping\ExportDetailsMap.cs" />
+    <Compile Include="Entity\Mapping\ExportDetailsMAssetMap.cs" />
+    <Compile Include="Entity\Mapping\ExportDetailsProceedingMap.cs" />
+    <Compile Include="Entity\Mapping\InsuranceCompanyMap.cs" />
+    <Compile Include="Entity\Mapping\InsuranceMap.cs" />
+    <Compile Include="Entity\Mapping\LocationMap.cs" />
+    <Compile Include="Entity\Mapping\MeterBillMap.cs" />
+    <Compile Include="Entity\Mapping\MeterMap.cs" />
+    <Compile Include="Entity\Mapping\MovableAssetMap.cs" />
+    <Compile Include="Entity\Mapping\OrderDetailsMap.cs" />
+    <Compile Include="Entity\Mapping\OrderHistoryMap.cs" />
+    <Compile Include="Entity\Mapping\OrderMap.cs" />
+    <Compile Include="Entity\Mapping\OrganizationMap.cs" />
+    <Compile Include="Entity\Mapping\OrganizationPefectStuffMap.cs" />
+    <Compile Include="Entity\Mapping\PersonMap.cs" />
+    <Compile Include="Entity\Mapping\PlaceOfUseMap.cs" />
+    <Compile Include="Entity\Mapping\ProceedingMap.cs" />
+    <Compile Include="Entity\Mapping\ProvinceMap.cs" />
+    <Compile Include="Entity\Mapping\RequestPermitMap.cs" />
+    <Compile Include="Entity\Mapping\ReturnIndentRequestMap.cs" />
+    <Compile Include="Entity\Mapping\RoleMap.cs" />
+    <Compile Include="Entity\Mapping\SellerMap.cs" />
+    <Compile Include="Entity\Mapping\StoreBillEditMap.cs" />
+    <Compile Include="Entity\Mapping\StoreBillMap.cs" />
+    <Compile Include="Entity\Mapping\MovableAssetReserveHistoryMap.cs" />
+    <Compile Include="Entity\Mapping\StoreDesignMap.cs" />
+    <Compile Include="Entity\Mapping\StoreMap.cs" />
+    <Compile Include="Entity\Mapping\StuffMap.cs" />
+    <Compile Include="Entity\Mapping\SubOrderMap.cs" />
+    <Compile Include="Entity\Mapping\SupplierIndentMap.cs" />
+    <Compile Include="Entity\Mapping\SupplierTrenderOfferMap.cs" />
+    <Compile Include="Entity\Mapping\TwonShipMap.cs" />
+    <Compile Include="Entity\Mapping\UnitMap.cs" />
+    <Compile Include="Entity\Mapping\UserAttributeMap.cs" />
+    <Compile Include="Entity\Mapping\UserMap.cs" />
+    <Compile Include="Entity\Mapping\ZoneMap.cs" />
+    <Compile Include="Entity\OrderEntity\Order.cs" />
+    <Compile Include="Entity\OrderEntity\OrderDetails.cs" />
+    <Compile Include="Entity\OrderEntity\OrderUserHistory.cs" />
+    <Compile Include="Entity\OrderEntity\ReturnIndentRequest.cs" />
+    <Compile Include="Entity\OrderEntity\SubOrder.cs" />
+    <Compile Include="Entity\OrderEntity\SupplierIndent.cs" />
+    <Compile Include="Entity\OrderEntity\SupplierTrenderOffer.cs" />
+    <Compile Include="Entity\OrganizationModel.cs" />
+    <Compile Include="Entity\Person.cs" />
+    <Compile Include="Entity\Province.cs" />
+    <Compile Include="Entity\RequestPermit.cs" />
+    <Compile Include="Entity\Roles.cs" />
+    <Compile Include="Entity\Seller.cs" />
+    <Compile Include="Entity\Store.cs" />
+    <Compile Include="Entity\StoreDesign.cs" />
+    <Compile Include="Entity\StoredProcedures\BskaContext.cs" />
+    <Compile Include="Entity\StoredProcedures\IBskaStoredProcedures.cs" />
+    <Compile Include="Entity\Stuff.cs" />
+    <Compile Include="Entity\AssetEntity\PortableAsset.cs" />
+    <Compile Include="Entity\OrganizationPefectStuff.cs" />
+    <Compile Include="Entity\TwonShip.cs" />
+    <Compile Include="Entity\Unit.cs" />
+    <Compile Include="Entity\UserAttribute.cs" />
+    <Compile Include="Entity\Users.cs" />
+    <Compile Include="Entity\Zone.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bska.Client.API\Bska.Client.API.csproj">
+      <Project>{51532d5f-6741-4663-ad57-227f5b58a090}</Project>
+      <Name>Bska.Client.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bska.Client.Common\Bska.Client.Common.csproj">
+      <Project>{b830e9bb-e6bc-45aa-a2d9-26e145f50ed4}</Project>
+      <Name>Bska.Client.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

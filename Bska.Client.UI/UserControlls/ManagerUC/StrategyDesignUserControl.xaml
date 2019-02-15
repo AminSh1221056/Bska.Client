@@ -1,0 +1,281 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.BuildingUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="buildingUc"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  xmlns:masking="clr-namespace:Bska.Client.UI.API"
+             mc:Ignorable="d" xmlns:Behaviors="clr-namespace:Bska.Client.UI.Helper"
+             xmlns:conv="clr-namespace:Bska.Client.UI.Converters" xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <UserControl.Resources>
+        <conv:StrategyTreeIconConverter x:Key="StrategyTreeIconConverter"/>
+        <Behaviors:BindingProxy x:Key="proxy" Data="{Binding}"/>
+        
+        <DataTemplate x:Key="HighlightTemplate">
+            <Grid Margin="0"  Background="#FF094AA8">
+                <Border Margin="2" BorderThickness="1" Width="170"
+     BorderBrush="#FF067031" CornerRadius="5" 
+     Background="#FF0C77E2">
+                    <Grid Margin="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontWeight="Bold" Margin="2,2,2,2" Grid.ColumnSpan="2" Grid.Column="0"
+         Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Margin="5,2,5,2" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Left"
+         Text="خیابان اصلی:"></TextBlock>
+                        <TextBlock  Grid.Column="0" Grid.ColumnSpan="2" Margin="10,2,5,2" Grid.Row="2" FontStyle="Italic" HorizontalAlignment="Left"  FontSize="10" FontWeight="Bold"
+                                    Text="{Binding MainStreet}">
+                        </TextBlock>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding DeleteCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"  />
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="355"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Grid.RowSpan="2" x:Name="BorderAllBuilding" Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+            <Grid>
+                <Border x:Name="b2" Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                    <DockPanel>
+                        <TreeView x:Name="treeStrategy" ItemsSource="{Binding FirstGeneration}" Behaviors:TreeViewInPlaceEditBehavior.IsEditable="{Binding IsEditable}"
+                                  SelectedItemChanged="TreeView_SelectedItemChanged"  BorderBrush="Transparent" Background="Transparent">
+                            <TreeView.ItemContainerStyle>
+                                <Style TargetType="{x:Type TreeViewItem}">
+                                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+                                    <Setter Property="FontSize" Value="13"/>
+                                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                                    <Setter Property="FontWeight" Value="Normal" />
+                                    <Setter Property="ContextMenu">
+                                        <Setter.Value>
+                                            <ContextMenu>
+                                                <MenuItem Header="جدید" Command="{Binding Path=Data.NewTreeCommand,Source={StaticResource proxy}}"
+                                                                  CommandParameter="{Binding}"/>
+                                                <MenuItem Header="حذف" Command="{Binding Path=Data.DeleteTreeCommand,Source={StaticResource proxy}}"
+                                                                  CommandParameter="{Binding}"/>
+                                                <MenuItem Header="جزئیات" Command="{Binding Path=Data.DetailsCommand,Source={StaticResource proxy}}"
+                                                                  CommandParameter="{Binding}"/>
+                                            </ContextMenu>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TreeView.ItemContainerStyle>
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="20" Height="20" Margin="3,0"  Source="{Binding Converter={StaticResource StrategyTreeIconConverter}}"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="60"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0}  {1}">
+                                                        <Binding Path="Name" />
+                                                        <Binding Path="Code"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" x:Name="TextBox" MinWidth="20">
+                                                <TextBox.InputBindings>
+                                                    <KeyBinding Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}" Key="Enter"/>
+                                                </TextBox.InputBindings>
+                                            </TextBox>
+                                            <TextBox Margin="5,0,5,0" Grid.Column="1" Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" x:Name="TextBox1" MinWidth="20">
+                                                <TextBox.InputBindings>
+                                                    <KeyBinding Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}" Key="Enter"/>
+                                                </TextBox.InputBindings>
+                                            </TextBox>
+                                        </Grid>
+                                    </StackPanel>
+                                    <HierarchicalDataTemplate.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                                <Condition Binding="{Binding IsEditing}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
+                                            <Setter TargetName="TextBox" Property="FocusManager.FocusedElement"  Value="{Binding RelativeSource={RelativeSource Self}}"/>
+                                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox1" Property="Visibility" Value="Visible"/>
+                                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                                <Condition Binding="{Binding Path=(Behaviors:TreeViewInPlaceEditBehavior.IsEditing), RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
+                                            <Setter TargetName="TextBox" Property="FocusManager.FocusedElement"  Value="{Binding RelativeSource={RelativeSource Self}}"/>
+                                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox1" Property="Visibility" Value="Visible"/>
+                                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                                <Setter.Value>
+                                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiDataTrigger>
+                                    </HierarchicalDataTemplate.Triggers>
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+                        </TreeView>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ribboon:GlobalToolbar x:Name="toolbarPane"  IsEnabled="{Binding DetailsEnabled}"/>
+                <ribboon:ImportExportToolbar x:Name="importToolPane" Grid.Column="1" HorizontalAlignment="Left"/>
+                <ribboon:HelpToolbar x:Name="helpbarPane" Grid.Column="2" HorizontalAlignment="Left"/>
+            </Grid>
+            <Border Grid.Row="1" x:Name="BorderAddEdit" IsEnabled="{Binding DetailsEnabled}" Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <Grid>
+                    <Grid  Margin="10,15,0,0" DataContext="{Binding BuildingDetailsViewModel,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="نام:"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="استان:"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="شهرستان:"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="بخش:"/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="شهر:"/>
+                        <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="محل:"/>
+                        <TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="خیابان اصلی:"/>
+                        <TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="خیابان فرعی:"/>
+                        <TextBlock Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="کوچه:"/>
+                        <TextBlock Grid.Row="9" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="کوچه انحرافی:"/>
+                        <TextBlock Grid.Row="10" Grid.Column="0" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="پلاک قدیم:"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="پلاک جدید:"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" Text="کد پستی:" />
+
+                        <TextBox Focusable="True" TabIndex="0" x:Name="txtName" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="0" Grid.Column="1" 
+                         Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="1" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding Provinces}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedProvince,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="2" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding TwonShips}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedTwonShip,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="3" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding Zones}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedZone,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="4" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding Cities}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedCity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="5" Grid.Column="1"
+                         Text="{Binding District}"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="6" Grid.Column="1"
+                         Text="{Binding MainStreet,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="7" Grid.Column="1"
+                         Text="{Binding SecondaryStreet}"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="8" Grid.Column="1"
+                         Text="{Binding Alley}"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="9" Grid.Column="1"
+                         Text="{Binding SecondaryAlley}"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="90" Grid.Row="10" Grid.Column="1"
+                         Text="{Binding OldPlaque}" MaxLength="10"/>
+
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="90" Grid.Row="0" Grid.Column="3"
+                         Text="{Binding NewPlaque}" MaxLength="10"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120" Grid.Row="1" Grid.Column="3" masking:Masking.Mask="^\d+$" 
+                         Text="{Binding PostalCode}" MaxLength="15"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,198 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.InitAppUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0"
+                BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <riboon:GlobalToolbar x:Name="globalToolPane" HorizontalAlignment="Right"/>
+                <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="1"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="کمترین نرخ مصوب اموال غیرمصرفی:"/>
+                    <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="کمترین نرخ مصوب خرید از طریق مناقصه:"/>
+
+                    <TextBox HorizontalAlignment="Left" Grid.Column="2" Grid.Row="1" Width="180"  VerticalAlignment="Center" Margin="5,0,5,0"
+                         Text="{Binding MStuffPrice,StringFormat={}{0:N0},ConverterCulture=fa}"/>
+
+                    <TextBox HorizontalAlignment="Left" Grid.Column="2" Grid.Row="2" Width="180"  VerticalAlignment="Center" Margin="5,0,5,0"
+                         Text="{Binding CostForOrderMonaghese,StringFormat={}{0:N0},ConverterCulture=fa}"/>
+                </Grid>
+            </Border>
+                <Border Grid.Row="1" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="330"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0"
+                            BorderThickness="0,0,1,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="22"/>
+                                <RowDefinition Height="5"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                       Text="تاریخ جستجوی دیفالت سیستم به ماه" Grid.Column="0"/>
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                    Text="{Binding SearchDateMonth}" Grid.Column="1" Width="100"/>
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0"
+                            BorderThickness="0,0,0,0" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Style="{StaticResource CompletedCheckBox}" Grid.Column="0" 
+                                         HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                         Content="درخواست جابه جایی بین پرسنل با تایید مدیر اداره" IsChecked="{Binding ModirConfirmForDisplacementPersonOrder}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0"
+                            BorderThickness="0,0,1,0">
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="زمان ثبت رای دیوان عدالت اداری در صورت جلسات حادثه:"/>
+
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="در هنگام ثبت صورت جلسه حذف" IsChecked="{Binding AccidentConfirmed}" GroupName="g3"/>
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="در هنگام تایید صورت جلسه حذف" IsChecked="{Binding AccidentConfirmOnDelete}" GroupName="g3"/>
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="امکان ثبت در هر 2 وضعیت"  IsChecked="{Binding AccidentConfirmBoth}" GroupName="g3"/>
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0"
+                            BorderThickness="0,0,1,0" Grid.Column="1">
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع دفاتر:"/>
+
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="نظام نوین" IsChecked="{Binding BookTypeNewSystem}" GroupName="g1"/>
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="موجودی اولیه" IsChecked="{Binding BookTypeOldSystem}" GroupName="g1"/>
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="هردو"  IsChecked="{Binding BookTypeBoth}" GroupName="g1"/>
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0"
+                            BorderThickness="0,0,0,0" Grid.Column="2">
+                        <Grid Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="طبقه نظام قدیم:"/>
+
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="قدیم قدیم" IsChecked="{Binding FlorOld}" GroupName="g2"/>
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="707" IsChecked="{Binding Flor707}" GroupName="g2"/>
+                            <RadioButton Style="{StaticResource CompletedRadioButton}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="20,0,5,0" Content="هردو"  IsChecked="{Binding FlorBoth}" GroupName="g2"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Row="3" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <Grid>
+                    <Border Style="{StaticResource BorderStyle}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height=" 25"/>
+                                <RowDefinition Height=" 25"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام کاربری و رمز عبور ورود به قسمت تنظیمات" Grid.ColumnSpan="2"/>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام کاربری:" Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="رمز عبور:" Grid.Column="0" Grid.Row="2"/>
+
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Width="160" Margin="5,0,5,0" Text="{Binding ConfigUserName}"/>
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Width="160" Margin="5,0,5,0" Text="{Binding ConfigPass}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Row="4" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="مسیر ذخیره سازی فایل خطاهای ناشناخته سیستم"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Text="{Binding LogFolderPath}"/>
+                    <Button Grid.Column="1" Style="{StaticResource FlatButtonStyleTit}" Background="#FF1FAEFF" Content="انتخاب مسیر" Width="80" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Margin="5,0,5,0" Height="26" Command="{Binding LogFilePathCommand}" Grid.Row="0"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

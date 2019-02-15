@@ -1,0 +1,8 @@
+﻿<Window x:Class="Bska.Client.UI.Views.ReportViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{DynamicResource MaterialDesignPaper}"
+        Title="{Binding ReportTitle}" Height="600" Width="800" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+    <Grid>
+        <ContentPresenter Content="{Binding Viewer,UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</Window>

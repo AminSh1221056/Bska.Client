@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.ProceedingsUC.TrustTransferUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters">
+    <UserControl.Resources>
+        <Conv:DateConverter x:Key="DateConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="146"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Text="نام اداره امانت گیرنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Text="نام مدیر اداره  امانت گیرنده:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Text="تاریخ امانت دادن:"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="3" Text="تاریخ برگشت از امانی"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="4" Text="مدت به روز:"/>
+
+        <TextBox IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Desc1,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Desc2,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Date1,Converter={StaticResource DateConverter}}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Width="170" Margin="5,0,5,0" Text="{Binding Date2,Converter={StaticResource DateConverter}}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Margin="5,0,5,0" Text="{Binding CalculateDay}"/>
+    </Grid>
+</UserControl>

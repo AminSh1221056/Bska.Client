@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.StoreUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common"
+             xmlns:masking="clr-namespace:Bska.Client.UI.API" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
+             xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon" xmlns:Uc="clr-namespace:Bska.Client.UI.UserControlls">
+    <UserControl.Resources>
+        <Conv:StoreTypeToStringConverter x:Key="StoreConverter"/>
+        <DataTemplate x:Key="HighlightTemplate">
+            <Grid Margin="2"  x:Name="g1" Background="#FF0881B9">
+                <Border Margin="2" BorderThickness="1" Width="243"
+     BorderBrush="#FF067031" CornerRadius="5" x:Name="b1">
+                    <Grid Margin="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontWeight="Bold" Margin="2,2,2,2" Grid.ColumnSpan="2" Grid.Column="0"
+         Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Margin="5,2,5,2" Grid.Row="1" Grid.Column="0" FontWeight="Bold" HorizontalAlignment="Left"
+         Text="نوع انبار:"></TextBlock>
+                        <TextBlock Margin="2,2,2,2" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
+         Text="{Binding Path=StoreType,Converter={StaticResource StoreConverter}}"></TextBlock>
+                    </Grid>
+                </Border>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding IsSelected,RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
+                    <Setter TargetName="g1" Property="Background" Value="#FF055F3A"/>
+                    <Setter TargetName="b1" Property="BorderBrush" Value="#FF0862A0"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
+                    <Setter TargetName="g1" Property="Background" Value="#FF687802"/>
+                    <Setter TargetName="g1" Property="Cursor" Value="Hand"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding DeleteCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"  />
+        <KeyBinding Key="F4" Command="{Binding NewCommand}"  />
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="570"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Column="1" Grid.RowSpan="2" Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5" Padding="0,0,0,0">
+            <Uc:DropableTreeViewUC/>
+        </Border>
+        <Border Grid.Column="0" Grid.RowSpan="2" Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5" Padding="0,0,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="170"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ribboon:GlobalToolbar x:Name="toolbarPane"  IsEnabled="{Binding DetailsEnabled}"/>
+                    <ribboon:HelpToolbar x:Name="helpbarPane" Grid.Column="1" HorizontalAlignment="Left"/>
+                </Grid>
+                <Border  Grid.Row="1" Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5" Padding="0,25,0,0">
+                    <Grid DataContext="{Binding StoreDetailsVm,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="نام انبار:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="5,0,5,0"/>
+                        <TextBlock Text="نوع انبار:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0"/>
+                        <TextBlock Text="توضیحات:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Margin="5,0,5,0"/>
+                        <TextBox Focusable="True" TabIndex="0" x:Name="txtStoreName"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="1" Width="180"  Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                        <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="1" Width="120" Height="22"  ItemsSource="{Binding Source={masking:Enumeration {x:Type local:StoreType}}}" DisplayMemberPath="Description" 
+                             SelectedValuePath="Value" SelectedValue="{Binding StoreType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                        <TextBox  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="1" Width="390" Text="{Binding Description}"/>
+                    </Grid>
+                </Border>
+                <ListBox BorderThickness="0,1,0,1" BorderBrush="{StaticResource BorderBrush}" Foreground="#FFFFFFFF" Background="Transparent" Name="lstBuilding" Margin="0" AlternationCount="2" ItemTemplate="{StaticResource HighlightTemplate}"
+                     ItemsSource="{Binding StoreFilteredView}" SelectedItem="{Binding Selected,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}" Grid.Row="2"
+                         PreviewMouseMove="lstBuilding_PreviewMouseMove" PreviewMouseDown="lstBuilding_PreviewMouseDown">
+                    <ListBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Control.Padding" Value="0"/>
+                            <Style.Triggers>
+                                <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                                    <Setter Property="Control.Foreground" Value="#FFFF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

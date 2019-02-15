@@ -1,0 +1,51 @@
+﻿<Window x:Class="Bska.Client.UI.Views.MainAccounDocWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bska.Client.UI.Views" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+        mc:Ignorable="d"
+        Title="سند حسابداری" Height="600" Width="1000"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+    <Window.Resources>
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.095"/>
+                <SplineDoubleKeyFrame KeySpline="1,0,0.512,1" KeyTime="00:00:00.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Style="{StaticResource CustomTitButton}" Grid.Column="2" Margin="15,0,15,0"
+                     Width="32" Height="32" Command="{Binding ReportCommand}" ToolTip="چاپ" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl Style="{StaticResource appbar_report}"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <UC:AssetLastAccountDocumentUC Grid.Row="1"/>
+    </Grid>
+</Window>

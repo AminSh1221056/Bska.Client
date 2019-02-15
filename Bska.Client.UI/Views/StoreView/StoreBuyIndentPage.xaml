@@ -1,0 +1,175 @@
+﻿<Page x:Class="Bska.Client.UI.Views.StoreView.StoreBuyIndentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Name="recivedIndentBuy"
+      FontFamily="{StaticResource PrimaryFontFamily}" FlowDirection="RightToLeft" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Title="سفارش های رسیده از خرید"
+      xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:ribon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
+      xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters">
+    <Page.Resources>
+        <Conv:StuffTypeConverter x:Key="StuffTypeConverter"/>
+        <DataTemplate x:Key="CheckBoxColumnTemplate">
+            <Grid Height="30" Width="50">
+                <Border x:Name="OuterBorder" Height="{TemplateBinding Height}" Background="White">
+                    <Border x:Name="ContentBorder" Margin="0.7">
+                        <Grid>
+                            <CheckBox x:Name="chSelect" Tag="{Binding}" Style="{StaticResource CompletedCheckBox}"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0"  
+                      Command="{Binding ElementName=recivedIndentBuy,Path=DataContext.SelectCommand}" 
+                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                        </Grid>
+                    </Border>
+                </Border>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Ongoing">
+                    <Setter TargetName="ContentBorder" Property="Background" Value="#FFE1B700"/>
+                    <Setter TargetName="ContentBorder" Property="ToolTip" Value="انتخاب این سفارش"/>
+                    <Setter TargetName="chSelect" Property="IsEnabled" Value="True"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Delivery">
+                    <Setter TargetName="ContentBorder" Property="Background" Value="#FF529011"/>
+                    <Setter TargetName="ContentBorder" Property="ToolTip" Value="تحویل شده به انبار"/>
+                    <Setter TargetName="chSelect" Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="120" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=recivedIndentBuy,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EditColumnTemplate">
+            <Button ToolTip="جزئیات" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=recivedIndentBuy,Path=DataContext.OrderDetailsCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+    </Page.Resources>
+    <Page.InputBindings>
+        <KeyBinding Key="F2" Command="{Binding AddAssetCommand}"/>
+    </Page.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource BorderStyle}" BorderThickness="0,0,0,1" Margin="0" CornerRadius="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="نام کارپرداز:"/>
+                <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"
+                          Width="190" Margin="5,0,5,0" ItemsSource="{Binding Suppliers}" SelectedItem="{Binding CurrentSupplier}" DisplayMemberPath="FullName"/>
+              
+                <RadioButton Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                          Content="صدور قبض انبار و حواله انبار یکجا" Grid.Column="3" Foreground="Red" FontWeight="Bold" IsChecked="{Binding ToDocumentIssue}"/>
+                
+                <RadioButton Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                          Content="فقط صدور قبض انبار" Grid.Column="2" Foreground="Red" FontWeight="Bold" IsChecked="True"/>
+
+                <ribon:HelpToolbar Grid.Column="5"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Style="{StaticResource BorderStyle}" BorderThickness="0,0,0,1" Margin="0" CornerRadius="0" Background="{DynamicResource PrimaryHueMidBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="190"/>
+                        <ColumnDefinition Width="165"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="تعداد سفارش انتخاب شده:"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Text="{Binding CounterSelect}"/>
+
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="وضعیت:"/>
+                    <UC:MultiSelectComboBox Grid.Column="3" Width="160" Height="22" Margin="5,0,5,0"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                 ItemsSource="{Binding RecivedTypes}" SelectedItems="{Binding SelectedRecivedType}"/>
+                    
+                    <Border MouseEnter="borderFilterDetails_MouseEnter"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" Margin="5,0,5,0" VerticalAlignment="Center" Width="150" Height="35" 
+                            BorderBrush="#6EFBFB96" BorderThickness="1.5,0,1.5,0" CornerRadius="0,20,0,20" x:Name="borderFilterDetails" Background="#00000000">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="بیشتر..."/>
+                    </Border>
+                    
+                    <ribon:GlobalToolbar x:Name="globalToolPane" Grid.Column="5"/>
+                    <Button Content="{Binding RecivedOrdersCount}" HorizontalAlignment="Right" Grid.Column="6" Margin="0,0,4,0" 
+                            x:Name="btnRefresh" Style="{DynamicResource RefreshButtonStyle}" ToolTip="Refresh" Width="26" 
+                            VerticalAlignment="Center" Height="26" Command="{Binding RefreshCommand}"/>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <C:SortableListView x:Name="PropertyGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding IndentFilteredView}" SelectedItem="{Binding SelectedIndent}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                    <C:SortableListView.View >
+                        <GridView AllowsColumnReorder="False" >
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                            <GridViewColumn CellTemplate="{StaticResource CheckBoxColumnTemplate}" Width="60" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=StuffName}" SortProperty="StuffName" Width="180" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding Path=StuffType,Converter={StaticResource StuffTypeConverter}}" SortProperty="StuffType" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="پرسنل" DisplayMemberBinding="{Binding PersonName}" SortProperty="PersonName" Width="160" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Num}" SortProperty="Num" Width="105" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="بافیمانده" DisplayMemberBinding="{Binding Remain}" SortProperty="Remain" Width="105" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="135" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="" CellTemplate="{StaticResource EditColumnTemplate}" Width="50" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                        </GridView>
+                    </C:SortableListView.View>
+                </C:SortableListView>
+            </Grid>
+        </Grid>
+
+        <Popup MouseLeave="PopUpSelectFilter_MouseLeave"  Width="210" Height="155" x:Name="PopUpSelectFilter" PlacementTarget="{Binding ElementName=borderFilterDetails}" OpacityMask="{x:Null}" PopupAnimation="Slide" AllowsTransparency="True" Placement="Bottom" Margin="80,0,0,0" VerticalOffset="-33"  HorizontalOffset="-50">
+            <Border Width="200" Height="155" Margin="0,0,0,0" CornerRadius="8,8,8,8" BorderThickness="1,1,1,1" BorderBrush="#9EB5B5B5" Background="#E5202020">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="66"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" IsEnabled="{Binding ElementName=chgroping,Path=IsChecked}" CornerRadius="2,2,2,2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1,1,1,1" Margin="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="5"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="از تاریخ:"/>
+                            <UC:PersianDatePicker  x:Name="pDate1" DateButtonClick="pDate1_DateButtonClick" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="47,0,0,0" Width="110"  SelectedDate="{Binding FromDate,Mode=TwoWay}"/>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="تا تاریخ:"/>
+                            <UC:PersianDatePicker x:Name="pDate2" DateButtonClick="pDate1_DateButtonClick" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="47,0,0,0" Width="110"  SelectedDate="{Binding ToDate,Mode=TwoWay}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Popup>
+        
+    </Grid>
+</Page>

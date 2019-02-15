@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.MAssetDetailsUC.MAssetAccessUploadListUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" x:Name="accessUploadListUc"
+             xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters">
+    <UserControl.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:CommandValuesConverter x:Key="CommandValuesConverter"/>
+        <Conv:MovableAssetTypeConverter x:Key="MovableAssetTypeConverter"/>
+        <DataTemplate x:Key="CheckBoxColumnTemplate">
+            <CheckBox Tag="{Binding}" ToolTip="انتخاب این مال" IsChecked="{Binding IsSelected}" Style="{StaticResource CompletedCheckBox}" HorizontalAlignment="Left"
+                      VerticalAlignment="Center" Margin="5,0,0,0"  Command="{Binding ElementName=accessUploadListUc,Path=DataContext.SelectCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <C:SortableListView  Grid.Column="1" Grid.Row="1" x:Name="PropertyGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding MovableAssetFilteredView}" SelectedItem="{Binding Selected}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+            <C:SortableListView.View >
+                <GridView AllowsColumnReorder="False" >
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                    <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource CheckBoxColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="کد کالا" DisplayMemberBinding="{Binding Path=kalauid}" SortProperty="kalauid" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=Name}" SortProperty="Name" Width="190" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="برچسب" DisplayMemberBinding="{Binding lable}" SortProperty="lable" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="قبض انبار" DisplayMemberBinding="{Binding anbrsdno}" SortProperty="anbrsdno" Width="100" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="وضعیت" DisplayMemberBinding="{Binding CurState}" SortProperty="CurState" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="قیمت" DisplayMemberBinding="{Binding Cost}" SortProperty="قیمت" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                </GridView>
+            </C:SortableListView.View>
+        </C:SortableListView>
+    </Grid>
+</UserControl>

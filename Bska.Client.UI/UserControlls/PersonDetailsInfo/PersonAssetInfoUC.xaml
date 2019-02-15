@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.PersonDetailsInfo.PersonAssetInfoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             x:Name="personAssetInfo" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Style="{StaticResource BorderStyle}" CornerRadius="0" Margin="0" BorderThickness="0,0,1,0">
+            <UC:BuildingMAssetViewUC OrganizTreeClick="BuildingPersonManageUC_OrganizTreeClick" StrategyTreeClick="BuildingPersonManageUC_StrategyTreeClick"/>
+        </Border>
+        <Border Grid.Column="1" Margin="2,2,2,2" CornerRadius="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="115"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox IsChecked="{Binding ChConsumSelectd}" VerticalAlignment="Center" Grid.Column="0" Foreground="#FFF" Content="مصرفی" HorizontalAlignment="Left" Margin="5,0,0,0" Style="{StaticResource CompletedCheckBox}"/>
+                <CheckBox IsChecked="{Binding ChInConsumSelectd}" VerticalAlignment="Center" Grid.Column="2" Foreground="#FFF" Content="در حکم مصرف" HorizontalAlignment="Left" Margin="5,0,0,0" Style="{StaticResource CompletedCheckBox}"/>
+                <CheckBox IsChecked="{Binding ChUnConsumSelectd}" VerticalAlignment="Center" Grid.Column="1" Foreground="#FFF" Content="غیر مصرفی" HorizontalAlignment="Left" Margin="5,0,0,0" Style="{StaticResource CompletedCheckBox}"/>
+                <CheckBox IsChecked="{Binding ChInstallableSelectd}" VerticalAlignment="Center" Grid.Column="3" Foreground="#FFF" Content="قابل نصب در بنا" HorizontalAlignment="Left" Margin="5,0,0,0" Style="{StaticResource CompletedCheckBox}"/>
+                <CheckBox IsChecked="{Binding ChBelongingelectd}" VerticalAlignment="Center" Grid.Column="4" Foreground="#FFF" Content="متعلقات" HorizontalAlignment="Left" Margin="5,0,0,0" Style="{StaticResource CompletedCheckBox}"/>
+                <CheckBox IsChecked="{Binding ChGroupView}" VerticalAlignment="Center" Grid.Column="5" Foreground="#FFF" Content="نمایش گروهی بر اساس نام و واحد مال" HorizontalAlignment="Right" Margin="5,0,5,0" Style="{StaticResource CompletedCheckBox}"/>
+                <Border Grid.Row="1" Grid.ColumnSpan="6" Margin="2,2,2,2" CornerRadius="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1">
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" Margin="20,0,0,0" Width="Auto" Text="جستجو:" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                        <UC:FilterTextUserControl HorizontalAlignment="Left" Margin="65,0,0,0" Width="150"  x:Name="FilterTextBox"  VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="2" Grid.ColumnSpan="6" Margin="2,2,2,2" CornerRadius="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1">
+                    <UC:MAssetListUC x:Name="mAssetListPane"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

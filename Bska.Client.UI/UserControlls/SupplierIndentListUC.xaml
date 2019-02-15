@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.SupplierIndentListUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
+             mc:Ignorable="d"  xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" x:Name="supplierIndentUc" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls">
+    <UserControl.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:StuffTypeConverter x:Key="StuffTypeConverter"/>
+        <Conv:SupplierIndentStateConverter x:Key="SubOrderStateConverter"/>
+        <Conv:CommandValuesConverter x:Key="CommandValuesConverter"/>
+        
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="120" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=supplierIndentUc,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+        <DataTemplate x:Key="DetailsColumnTemplate">
+            <Button x:Name="btn" Width="32" ToolTip="جزئیات سفارش"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=supplierIndentUc,Path=DataContext.DetailsCommand}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource CommandValuesConverter}">
+                        <Binding/>
+                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SellerColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="140" Height="22" SelectedValue="{Binding SellerId}" IsEnabled="False" SelectedValuePath="SellerId" ItemsSource="{Binding ElementName=supplierIndentUc,Path=DataContext.Sellers}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+        <KeyBinding Key="F6" Command="{Binding SearchCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource BorderStyle}" Margin="0" Grid.Row="0" CornerRadius="0" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام کارپرداز:"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}"  Width="155" Height="22" ItemsSource="{Binding SupplierList}" DisplayMemberPath="FullName" SelectedItem="{Binding SelectedSupplier}">
+                </ComboBox>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع مال:"/>
+                <UC:MultiSelectComboBox Grid.Column="3" Width="180" Height="22" Margin="5,0,5,0"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                 ItemsSource="{Binding StuffTypes}" SelectedItems="{Binding SelectedStuffType}"/>
+                <riboon:GlobalToolbar x:Name="globalToolPane" Grid.Column="4"/>
+                <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="5"/>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" Margin="0" Grid.Row="1" CornerRadius="0" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+               
+                <CheckBox Style="{StaticResource CompletedCheckBox}" Grid.Column="0" Content="نمایش کل سفارش ها" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                             IsChecked="{Binding AllSubOrder}"/>
+                <CheckBox x:Name="chgroping" IsChecked="{Binding RbGroupView}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" 
+                          Content="نمایش گروهی بر اساس نام و واحد مال" Style="{StaticResource CompletedCheckBox}" />
+            </Grid>
+        </Border>
+        <C:SortableListView  Grid.Column="1" Grid.Row="2" x:Name="recivedOrderListView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding RecivedeIndentFilteredView}" SelectedItem="{Binding Selected}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+            <C:SortableListView.View >
+                <GridView AllowsColumnReorder="False" x:Name="recivedOrderGridView">
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                    <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="کد" DisplayMemberBinding="{Binding Path=SupplierId}" SortProperty="OrderId" Width="80" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=StuffName}" SortProperty="StuffName" Width="170" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding StuffType,Converter={StaticResource StuffTypeConverter}}" SortProperty="StuffType" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="وضعیت" DisplayMemberBinding="{Binding SpState,Converter={StaticResource SubOrderStateConverter}}" SortProperty="State" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Num}" SortProperty="Num" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="135" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="تاریخ درخواست" DisplayMemberBinding="{Binding OrderDate,Converter={StaticResource PersianDateConverter}}" SortProperty="InsertDate" Width="100" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="فروشنده" CellTemplate="{StaticResource SellerColumnTemplate}" SortProperty="SellerId" Width="160" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource DetailsColumnTemplate}" Width="45" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                </GridView>
+            </C:SortableListView.View>
+        </C:SortableListView>
+    </Grid>
+</UserControl>

@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.PdfViewerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bska.Client.UI.UserControlls"
+             mc:Ignorable="d" xmlns:mpp="clr-namespace:MoonPdfLib;assembly=MoonPdfLib" Height="600" Width="800" UseLayoutRounding="True" MinHeight="350" MinWidth="450">
+    <Grid>
+        <DockPanel>
+            <mpp:MoonPdfPanel Background="LightGray" ViewType="SinglePage" PageRowDisplay="ContinuousPageRows" PageMargin="0,2,4,2" AllowDrop="True" x:Name="moonPdfPanel" x:FieldModifier="private"/>
+        </DockPanel>
+    </Grid>
+</UserControl>

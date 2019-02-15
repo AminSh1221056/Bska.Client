@@ -1,0 +1,97 @@
+﻿<Window x:Class="Bska.Client.UI.Views.MunitionView.MeterBillWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{DynamicResource MaterialDesignPaper}"
+        Title="ثبت هزینه اموال نامشهود" Height="500" Width="1000" Style="{StaticResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="meterBillWindow" MouseLeftButtonDown="meterBillWindow_MouseLeftButtonDown"
+        xmlns:UCMB="clr-namespace:Bska.Client.UI.UserControlls.MeterBillUC" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters">
+    <Window.Resources>
+        <Conv:ReverseBooleanConverter x:Key="ReverseBooleanConverter"/>
+        <Storyboard x:Key="StoryboardEnterance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="410" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-30" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEnterance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="انتخاب کنتور:"/>
+                <Border  MouseEnter="borderProperty_MouseEnter" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,5,0" VerticalAlignment="Top" Width="200" Height="38" BorderBrush="#6EFBFB96" BorderThickness="1.5,0,1.5,0" CornerRadius="0,20,0,20" x:Name="borderProperty" Background="#00000000">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding CurrentMeter.Name}"/>
+                </Border>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" DataContext="{Binding CurrentMeterVm,ValidatesOnDataErrors=False,ValidatesOnNotifyDataErrors=False}">
+            <UCMB:GasBillUC x:Name="gasPane" Visibility="Collapsed"/>
+            <UCMB:MobileBillUC x:Name="mobilePane" Visibility="Collapsed"/>
+            <UCMB:TellBillUC x:Name="tellPane" Visibility="Collapsed"/>
+            <UCMB:WaterBillUC x:Name="waterPane" Visibility="Collapsed"/>
+            <UCMB:PowerBillUC x:Name="powerPnae" Visibility="Collapsed"/>
+        </Grid>
+        <Border Grid.Row="2" BorderThickness="0,1,0,0" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Button x:Name="edit" Style="{StaticResource FlatButtonStyle}" Margin="15,0,15,0"
+							HorizontalAlignment="Right" FontFamily="Segoe UI" Width="80" Content="ثبت" Grid.Column="5" Height="24" Command="{Binding SubmitCommand}"/>
+        </Border>
+
+        <Popup MouseLeave="PopUpSelectProp_MouseLeave" Width="205" Height="50" x:Name="PopUpSelectProp" PlacementTarget="{Binding ElementName=borderProperty}" OpacityMask="{x:Null}" PopupAnimation="Slide" AllowsTransparency="True" Placement="Bottom" Margin="0,0,0,0" VerticalOffset="-45"  HorizontalOffset="0">
+            <Border Width="205" Height="50" Margin="0,0,0,0" CornerRadius="8,8,8,8" BorderThickness="1,1,1,1" BorderBrush="#9EB5B5B5" Background="#E5202020">
+                <Grid>
+                    <ComboBox Margin="7,0,7,0" Height="Auto"  VerticalAlignment="Center" FontFamily="Arial" FontSize="12" x:Name="cmbAllMeter"  Style="{DynamicResource BeskaComboBoxStyle}" Width="190"
+                              TextSearch.TextPath="Name" Text="{Binding Name,Mode=OneWay}" ItemsSource="{Binding Meters}" SelectedItem="{Binding CurrentMeter}"
+                              SelectionChanged="cmbAllMeter_SelectionChanged" IsEnabled="{Binding IsEditing,Converter={StaticResource ReverseBooleanConverter}}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0" Background="Transparent">
+                                    <Border Margin="3" BorderThickness="1" Width="Auto"
+                                            BorderBrush="SteelBlue" CornerRadius="4"
+                                            Background="{Binding Path=Background, RelativeSource={
+                                            RelativeSource
+                                            Mode=FindAncestor,
+                                            AncestorType={x:Type ListBoxItem}
+                                            }}" >
+                                        <Grid Margin="3" Width="190">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" VerticalAlignment="Center"  FontSize="12" FontWeight="Bold" Text="{Binding CaseNo}"></TextBlock>
+                                            <TextBlock Grid.Row="1"  VerticalAlignment="Center"  FontSize="12"  Text="{Binding TariffType}"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</Window>

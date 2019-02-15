@@ -1,0 +1,143 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.EstateUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:masking="clr-namespace:Bska.Client.UI.API"  xmlns:h="clr-namespace:Bska.Client.UI.Helper" 
+             xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common"
+             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <UserControl.Resources>
+        <Conv:EstateTypeConverter x:Key="EstateTypeConverter"/>
+        <DataTemplate x:Key="HighlightTemplate">
+            <Grid Margin="0"  Background="#FF094AA8">
+                <Border Margin="2" BorderThickness="1" Width="220"
+     BorderBrush="#FF067031" CornerRadius="5" 
+     Background="#FF0C77E2">
+                    <Grid Margin="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontWeight="Bold" Margin="2,2,2,2" Grid.ColumnSpan="2" Grid.Column="0"
+         Text="{Binding Name}"></TextBlock>
+                        <TextBlock Margin="5,2,5,2" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Left"
+         Text="نوع ملک:"></TextBlock>
+                        <TextBlock  Grid.Column="0" Grid.ColumnSpan="2" Margin="10,2,5,2" Grid.Row="2" FontStyle="Italic" HorizontalAlignment="Left"  FontSize="10" FontWeight="Bold"
+                                    Text="{Binding Type,Converter={StaticResource EstateTypeConverter}}">
+                        </TextBlock>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding DeleteCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"  />
+        <KeyBinding Key="F4" Command="{Binding NewCommand}"  />
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <ribboon:GlobalToolbar x:Name="toolbarPane"  IsEnabled="{Binding DetailsEnabled}"/>
+            <ribboon:HelpToolbar x:Name="helpbarPane" Grid.Column="1" HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Grid.RowSpan="2"  Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <ListBox Foreground="#FFFFFFFF" Background="Transparent" Name="lstEstates" Margin="2" AlternationCount="2" ItemTemplate="{StaticResource HighlightTemplate}" BorderThickness="0"
+                     ItemsSource="{Binding EstateFilterView}" SelectedItem="{Binding Selected,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                    <ListBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Control.Padding" Value="0"/>
+                            <Setter Property="Control.Background" Value="#FF064070" />
+                            <Style.Triggers>
+                                <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
+                                    <Setter Property="Control.Foreground" Value="#FFC2CB69" />
+                                </Trigger>
+                                <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                                    <Setter Property="Control.Foreground" Value="#FF212121" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Border>
+            <Border Grid.Column="1" x:Name="BorderAddEdit" Margin="5,5,5,5" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+                <Grid DataContext="{Binding EstateDetailsVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="65"/>
+                        <RowDefinition Height="65"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="0" Text="استان:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="2" Text="واحد ثبتی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="0" Text="بخش ثبتی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="2" Text="ناحیه ثبتی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="0" Text="پلاک اصلی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="2" Text="پلاک فرعی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="3" Grid.Column="0" Text="شماره دفتر:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="3" Grid.Column="2" Text="شماره صفحه:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="4" Grid.Column="0" Text="متن و میزان سهم:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="5" Grid.Column="0" Text="نشانی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="6" Grid.Column="0" Text="کد پستی ملک:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="6" Grid.Column="2" Text="مساحت طبق نقشه:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="7" Grid.Column="0" Text="طول جغرافیایی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="7" Grid.Column="2" Text="عرض جغرافیایی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="8" Grid.Column="0" Text="نوع ملک:"/>
+
+                    <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Grid.Row="0" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center"
+                  Margin="5,0,5,0" ItemsSource="{Binding Provinces}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding State,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                    <ComboBox ItemsSource="{Binding OriginalOffices}" DisplayMemberPath="Name" SelectedValuePath="Name" Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="3" Grid.Row="0" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center"
+                  Margin="5,0,5,0" SelectedValue="{Binding RegistryOffice,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                    <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Grid.Row="1" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center"
+                  Margin="5,0,5,0" SelectedValue="{Binding SectionRecords}"/>
+                    <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="3" Grid.Row="1" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center"
+                  Margin="5,0,5,0" SelectedValue="{Binding AreaRecords}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="1" MaxLength="25" Width="160" Text="{Binding OriginalPlaque}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="3" MaxLength="25" Width="160" Text="{Binding MinorPlaque}"/>
+                    <TextBox masking:Masking.Mask="^\d+$" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="3" Grid.Column="1" MaxLength="10" Width="160" Text="{Binding BookNo}"/>
+                    <TextBox masking:Masking.Mask="^\d+$" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="3" Grid.Column="3" MaxLength="10" Width="160" Text="{Binding PageNumber}"/>
+
+                    <TextBox Style="{StaticResource CustomTextBoxTextStyle}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Width="440" Height="50" Text="{Binding Text,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                    <TextBox Style="{StaticResource CustomTextBoxTextStyle}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Width="440" Height="50" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                    <TextBox masking:Masking.Mask="^\d+$" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="6" Grid.Column="1" MaxLength="10" Width="160" Text="{Binding PostalCode}"/>
+                    <TextBox masking:Masking.Mask="^\d+$" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="6" Grid.Column="3" MaxLength="10" Width="160" Text="{Binding Area,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                    <TextBox masking:Masking.Mask="\b(0*(?:[1-9][0-9]?|99))\b" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="7" Grid.Column="1" MaxLength="9" Width="160" Text="{Binding Longitude,UpdateSourceTrigger=LostFocus,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,StringFormat='{}{0:F6}'}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                    <TextBox masking:Masking.Mask="\b(0*(?:[1-9][0-9]?|99))\b" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="7" Grid.Column="3" MaxLength="9" Width="160" Text="{Binding Latitude,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,StringFormat='{}{0:F6}'}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                    <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Grid.Row="8" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center"
+                  Margin="5,0,5,0" DisplayMemberPath="Description"   SelectedValuePath="Value" SelectedValue="{Binding Type,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" ItemsSource="{Binding Source={masking:Enumeration {x:Type local:EstateType}}}"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

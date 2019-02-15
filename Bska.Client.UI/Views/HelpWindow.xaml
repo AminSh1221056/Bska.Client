@@ -1,0 +1,72 @@
+﻿<Window x:Class="Bska.Client.UI.Views.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bska.Client.UI.Views"
+        mc:Ignorable="d" xmlns:mpp="clr-namespace:MoonPdfLib;assembly=MoonPdfLib" FlowDirection="RightToLeft"
+        Height="600" Width="800"  Background="{DynamicResource PrimaryHueMidBrush}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="helpWin" MouseLeftButtonDown="helpWin_MouseLeftButtonDown"
+        Loaded="helpWin_Loaded">
+    <Window.Resources>
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="490" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-50" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Style x:Name="menuItemStyle" TargetType="{x:Type MenuItem}">
+            <Setter Property="Foreground" Value="#000"/>
+        </Style>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid>
+        <DockPanel LastChildFill="True" UseLayoutRounding="True">
+            <Menu x:Name="mainMenu" IsMainMenu="True" DockPanel.Dock="Top">
+                <MenuItem Header="_تنظیمات نمایش">
+                    <MenuItem x:Name="viewSingle" IsCheckable="True"/>
+                    <MenuItem x:Name="viewFacing" IsCheckable="True"/>
+                    <MenuItem x:Name="viewBook"  IsCheckable="True"/>
+                    <Separator/>
+                    <MenuItem x:Name="rotateLeft" />
+                    <MenuItem x:Name="rotateRight" />
+                    <Separator/>
+                    <MenuItem IsCheckable="True" x:Name="itmFullscreen" Header="Fullscreen" Click="itmFullscreen_Click"/>
+                </MenuItem>
+                <MenuItem Header="_بزرگنمایی">
+                    <MenuItem x:Name="zoomin"/>
+                    <MenuItem x:Name="zoomout" />
+                    <Separator/>
+                    <MenuItem x:Name="itmFitWidth" IsCheckable="True"/>
+                    <MenuItem IsCheckable="True" x:Name="itmFitHeight"/>
+                    <MenuItem IsCheckable="True" x:Name="itmCustomZoom" />
+                </MenuItem>
+                <MenuItem Header="_رفتن به">
+                    <MenuItem x:Name="nextPageCommand"/>
+                    <MenuItem x:Name="previousPageCommand"/>
+                    <MenuItem x:Name="firstPageCommand"/>
+                    <MenuItem x:Name="lastPageCommand"/>
+                </MenuItem>
+            </Menu>
+            <mpp:MoonPdfPanel Background="{DynamicResource PrimaryHueMidBrush}" ViewType="SinglePage" PageRowDisplay="ContinuousPageRows" PageMargin="0,2,4,2" AllowDrop="True" x:Name="moonPdfPanel" x:FieldModifier="private"/>
+        </DockPanel>
+    </Grid>
+</Window>

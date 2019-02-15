@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DbServers>
+  <DbServer DbId="c451fb4d-7942-44d8-a7c6-1fced8cdc202">
+    <Organization>شبکه بهداشت درمان اشنویه</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="968cd0f6-eb94-4c93-9de0-1cacc29aa729">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="be00f551-11a9-4d77-98ca-c45b11034f60">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="26ff8a95-1058-4946-959d-e1d0ef5af6c2">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="96885be3-f075-473e-85e2-200b9897de23">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="764e1983-1287-4d14-bd8e-288f17487bd2">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="76ce22e2-df4c-4748-a3ad-ad7cc02a3fa8">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="4746c989-2cbf-4077-bc01-d4f50d32b378">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="673fe852-dafd-418c-b890-5334bc941287">
+    <Organization>سازمان بازرسي كل كشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="cca756e6-334a-433d-9832-96211e2c000a">
+    <Organization>سازمان بازرسی کل کشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="4a65b452-dfec-49dd-a1f2-0e227981478b">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="bd5ec710-5c50-437b-9139-8f1c198a3343">
+    <Organization>سازمان بازرسی کل کشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="c394ad3b-382f-495b-a85f-9be6388b1949">
+    <Organization>سازمان بازرسی کل کشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="aa66add7-4e59-4b72-90c2-2c8b6e3a7930">
+    <Organization>سازمان بازرسی کل کشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="4c27b2ae-ea4f-498f-81ae-ea20be44fb6b">
+    <Organization>سازمان بازرسی کل کشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="bc950979-3352-44b6-9f5d-b137347e5059">
+    <Organization>سازمان بازرسی کل کشور</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="706561f1-2d0b-46f5-a4f3-7cae4d9c96f4">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="e8ba4a09-d924-482a-a2eb-a213622dfceb">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="ef82691d-f740-4b3d-8c6b-12637c798cca">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="1211bbfe-06a2-4f6d-9077-94e47197226d">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="2675430b-2947-4d87-8bd8-84fa7b36825b">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="ab7f5ef6-1ea7-468b-9ba6-8cfd05a4fdad">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="6132cab3-f15d-4703-9958-90421d24df74">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+  <DbServer DbId="42101578-be16-4434-9428-2bf3dc1785a9">
+    <Organization>سازمان پزشکی قانونی</Organization>
+    <DatabaseName>Bska.Client</DatabaseName>
+    <IsCurrent>true</IsCurrent>
+  </DbServer>
+</DbServers>

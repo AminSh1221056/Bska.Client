@@ -1,0 +1,131 @@
+﻿<Page x:Class="Bska.Client.UI.Views.StoreView.KalaManagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
+      Title="مدیریت کالا" FlowDirection="RightToLeft" 
+      xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+      Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  xmlns:Uc="clr-namespace:Bska.Client.UI.UserControlls">
+    <Page.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding DeleteCommand}"/>
+    </Page.InputBindings>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Style="{StaticResource BorderStyle}" Grid.Column="0" BorderBrush="{StaticResource BorderBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Style="{StaticResource BorderStyle}" Grid.Row="0" BorderBrush="{StaticResource BorderBrush}"
+                       BorderThickness="0,0,0,1" Margin="0" CornerRadius="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Foreground="#FFF" HorizontalAlignment="Right" Margin="5,0,5,0" Width="Auto" Text="جستجوی مال:" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                        <C:AutoFilteredComboBox x:Name="cmbStuffs" IsTextSearchEnabled="True" IsEditable="True"  Style="{StaticResource BeskaStuffComboBoxStyle}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                      Width="170" ItemsSource="{Binding StuffList}" SelectedItem="{Binding SelectedStuff}" Margin="5,0,5,0">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </C:AutoFilteredComboBox>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="نام مال:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="4" Grid.Row="0" Margin="5,0,5,0" Text="کد دارایی:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="کد مال:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                  
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedStuff.Name}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5" Grid.Row="0" Margin="5,0,5,0" Text="{Binding SelectedStuff.StuffId}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding SelectedStuff.KalaNo}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                  
+                    <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="0,1,0,1" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0"  Margin="5,0,5,0" Text="نام شاخه بالا دستی:"/>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5,0,5,0" Text="{Binding SelectedStuff.Parent.Name}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Uc:StuffTreeViewUC Grid.Column="0" StuffTreeViewItemSelect="StuffTreeViewUC_StuffTreeViewItemSelect" />
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" Grid.Column="1" BorderBrush="{StaticResource BorderBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Style="{StaticResource BorderStyle}" Grid.Row="0" BorderBrush="{StaticResource BorderBrush}"
+                       BorderThickness="0,0,0,1" Margin="0" CornerRadius="0">
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <riboon:GlobalToolbar x:Name="globalToolPane" Grid.Column="0"/>
+                        <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="1"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Center" Margin="5,0,5,0"
+                               Text="نام کالا:"/>
+                    <TextBlock HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,5,0"
+                               Text="کد کالا:"/>
+                    <TextBlock HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Margin="5,0,5,0"
+                               Text="GS1:"/>
+
+                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
+                             Text="{Binding StuffName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="0"/>
+                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
+                             Text="{Binding StuffCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="1"/>
+                    <TextBlock HorizontalAlignment="Left" Grid.Column="1" Height="19" Margin="192,0,5,0"
+                             Text="{Binding CurrentRightCode}" Grid.Row="1"/>
+                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
+                             Text="{Binding GS1}" Grid.Row="2"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

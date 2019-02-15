@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Bska.Client.UI" GeneratedClassName="HelpPageingAddress">
+  <Profiles />
+  <Settings>
+    <Setting Name="HelpFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bskaHelp.pdf</Value>
+    </Setting>
+    <Setting Name="StuffApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/getstuffs</Value>
+    </Setting>
+    <Setting Name="UnitApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/getunit</Value>
+    </Setting>
+    <Setting Name="CountryApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/GetCompany</Value>
+    </Setting>
+    <Setting Name="CompanyApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/GetCountry</Value>
+    </Setting>
+    <Setting Name="InsuranceApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/GetInsurance</Value>
+    </Setting>
+    <Setting Name="CarDetailsApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/GetCarDetails</Value>
+    </Setting>
+    <Setting Name="OrganizationApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/GetOrganization</Value>
+    </Setting>
+    <Setting Name="EstateOrganApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/EstateOrgan</Value>
+    </Setting>
+    <Setting Name="ProvinceApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/Provinces</Value>
+    </Setting>
+    <Setting Name="TownShipsApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/TownShips</Value>
+    </Setting>
+    <Setting Name="ZonesApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/Zones</Value>
+    </Setting>
+    <Setting Name="CitiesApiLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/Cities</Value>
+    </Setting>
+    <Setting Name="EmployeeIdentityLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EmployeeIdentity</Value>
+    </Setting>
+    <Setting Name="AccountCodingLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseInformation/AccountCodings</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

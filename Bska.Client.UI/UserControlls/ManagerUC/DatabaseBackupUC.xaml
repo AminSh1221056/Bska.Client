@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.DatabaseBackupUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bska.Client.UI.UserControlls"
+             mc:Ignorable="d" xmlns:masking="clr-namespace:Bska.Client.UI.API">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource BorderStyle}" Margin="2" CornerRadius="2" Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="گرفتن فایل پشتیبان" FontSize="14" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="135,0,5,0" Text="توجه:مسیر ذخیره سازی حتما باید در کامپیوتری که پایگاه داده نصب است ،باشد" />
+                <Border Style="{StaticResource BorderStyle}" BorderThickness="0,1,0,1" Margin="0" CornerRadius="0" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button HorizontalAlignment="Right" Margin="5,5,5,5" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Width="120"
+                                Height="29" Content="انتخاب مسیر" Style="{StaticResource FlatButtonStyle}" Command="{Binding SelectFolderCommand}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="0" Text="{Binding BackupPath}"/>
+                        <ProgressBar Minimum="0" Maximum="100" Value="{Binding BackupReport}" Name="pbStatus1" Grid.Row="1"  Width="500" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                        <TextBlock Text="{Binding ElementName=pbStatus1, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Left" Margin="360,0,5,0" VerticalAlignment="Center" Grid.Row="1" Foreground="#000" Grid.Column="1"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام فایل پشتیبان:"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding BackupFileName}" Width="160" Height="19" Grid.Column="1" masking:Masking.Mask="^[^\\/:*?&lt;>|]+$"/>
+                    <Button HorizontalAlignment="Right" Margin="5,5,5,5" VerticalAlignment="Center" Grid.Column="3" Width="100" Height="29" Content="پشتیبان گیری" Style="{StaticResource FlatButtonStyle}"
+                        Command="{Binding BackupCommand}"/>
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" Margin="2" CornerRadius="2" Grid.Row="1" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="بازیابی از فایل پشتیبان" FontSize="14" FontWeight="Bold"/>
+                <Border Style="{StaticResource BorderStyle}" BorderThickness="0,1,0,1" Margin="0" CornerRadius="0" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button HorizontalAlignment="Right" Margin="5,5,5,5" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Width="120"
+                                Height="29" Content="انتخاب فایل پشتیبان" Style="{StaticResource FlatButtonStyle}" Command="{Binding SelectFileCommand}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="0" Text="{Binding RestorePath}"/>
+                        <ProgressBar Minimum="0" Maximum="100" Value="{Binding RestoreReport}" Name="pbStatus2" Grid.Row="1"  Width="500" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                        <TextBlock Text="{Binding ElementName=pbStatus2, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Left" Margin="360,0,5,0" VerticalAlignment="Center" Grid.Row="1" Foreground="#000" Grid.Column="1"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="2">
+                    <Button HorizontalAlignment="Right" Margin="5,5,5,5" VerticalAlignment="Center" Grid.Column="3" Width="130" Height="29" Content="بازیابی از فایل پشتیبان" Style="{StaticResource FlatButtonStyle}"
+                        Command="{Binding RestoreCommand}"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

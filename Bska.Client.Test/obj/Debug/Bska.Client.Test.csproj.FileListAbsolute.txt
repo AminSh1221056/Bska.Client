@@ -1,0 +1,139 @@
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+E:\Beska solution\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+E:\Beska solution\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+E:\Beska solution\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+E:\Beska solution\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\Bska.Client.Test.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Test\obj\Debug\Bska.Client.Test.pdb

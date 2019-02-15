@@ -1,0 +1,97 @@
+﻿<Window x:Class="Bska.Client.UI.Views.OrderView.OrderEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{DynamicResource MaterialDesignPaper}"
+        Title="ویرایش درخواست ها" Height="600" Width="850"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
+         xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC" x:Name="window" MouseLeftButtonDown="window_MouseLeftButtonDown" Loaded="window_Loaded"
+        xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <Window.Resources>
+        <Conv:OrderTypeConverter x:Key="OrderTypeConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.095"/>
+                <SplineDoubleKeyFrame KeySpline="1,0,0.512,1" KeyTime="00:00:00.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding StoreOrderFinalCommand}"/>
+        <KeyBinding Key="F2" Command="{Binding ConfirmCommand}"/>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+    </Window.InputBindings>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع درخواست:" Grid.Column="0"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding CurrentOrder.OrderType,Converter={StaticResource OrderTypeConverter}}" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="تاریخ درخواست:" Grid.Column="2"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding CurrentOrder.OrderDate,Converter={StaticResource PersianDateConverter}}" Grid.Column="3"/>
+                <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="5"/>
+            </Grid>
+        </Border>
+        <Grid x:Name="rightb1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <UCO:OrderDetailsListUC Margin="5,5,5,0" x:Name="internalOrderList" Visibility="Collapsed" Grid.Row="0"/>
+            <UCO:DisplacementOrderDetailsUC Margin="5,5,5,0" Grid.Row="0" x:Name="displacementOrderList" Visibility="Collapsed"/>
+            <Border Style="{StaticResource BorderStyle}" Grid.Row="1" CornerRadius="0" Margin="0" BorderThickness="0,1,0,0">
+                <UCO:InternalOrderDetailsUC x:Name="internalOrdrUc" Visibility="Collapsed" DataContext="{Binding InternalOrderDetails}"/>
+            </Border>
+        </Grid>
+        <Border Style="{StaticResource BorderStyle}" Grid.Row="2" CornerRadius="0" Margin="0" BorderThickness="0,1,0,0">
+            <Grid>
+                <Button Command="{Binding ConfirmCommand}" CommandParameter="{Binding ElementName=window}" Grid.Row="1" Grid.Column="0" Background="#FF1FAEFF" Style="{DynamicResource CustomTitButton}" IsDefault="False"
+                     HorizontalAlignment="Right" ToolTip="ثبت ویرایش" Width="40" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FontSize="10" Height="32" FontWeight="Normal" Margin="15,0,15,0" VerticalAlignment="Center">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="F2"/>
+                            <ContentControl Style="{StaticResource app-edit-add}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding StoreOrderFinalCommand}" CommandParameter="{Binding ElementName=window}" Grid.Row="1" Grid.Column="0" Background="#FF1FAEFF" Style="{DynamicResource CustomTitButton}" IsDefault="False"
+                     HorizontalAlignment="Right" ToolTip="تایید نهایی" Width="40" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FontSize="10" Height="32" FontWeight="Normal" Margin="5,0,65,0" VerticalAlignment="Center" Visibility="Collapsed" x:Name="btnStoreOrderfinal">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="F3"/>
+                            <ContentControl Style="{StaticResource appbar_save}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

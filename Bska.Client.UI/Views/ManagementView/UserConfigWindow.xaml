@@ -1,0 +1,131 @@
+﻿<Window x:Class="Bska.Client.UI.Views.UserConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bska.Client.UI.Views"
+        mc:Ignorable="d"
+        Title="تنظیمات" Height="400" Width="600"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        xmlns:h="clr-namespace:Bska.Client.UI.Helper" xmlns:masking="clr-namespace:Bska.Client.UI.API">
+    <Window.Resources>
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="490" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-50" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Grid.Row="0" Text="نام کاربری:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Grid.Row="1" Text="رمز عبور:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Grid.Row="2" Text="تکرار رمز عبور:"/>
+
+                <TextBox TabIndex="1" masking:Masking.Mask="^[آ-یA-Za-z\d@!*]+$" Style="{StaticResource CustomTextBoxTextStyle}" Text="{Binding UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" MaxLength="12" Grid.Column="1" Grid.Row="0" Margin="4,5,0,0" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="12" />
+                <PasswordBox TabIndex="2" Style="{StaticResource CustomPasswordBoxTextStyle}" h:PasswordHelper.Attach="True" h:PasswordHelper.Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Grid.Column="1" Grid.Row="1" Margin="4,5,0,0" x:Name="pbPassword" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" MaxLength="12" FontSize="12" />
+                <PasswordBox TabIndex="3" h:PasswordHelper.Attach="True" Style="{StaticResource CustomPasswordBoxTextStyle}" h:PasswordHelper.Password="{Binding PasswordHinit,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Grid.Column="1" Grid.Row="2" Margin="4,2,0,0" x:Name="pbConfirmPassword" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" MaxLength="12" FontSize="12" />
+
+                <Button Style="{DynamicResource CustomTitButton}" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.RowSpan="2" Width="45" Height="35" Margin="15,5,15,0"
+                         Command="{Binding CredentialCommand}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Style="{StaticResource appbar_save}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Grid.Row="2">
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                      Content="فعال بودن رخ داد درخواست های ارسالی" Style="{StaticResource CompletedCheckBox}" IsChecked="{Binding OrderNotify}"/>
+                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
+                      Content="اتوماتیک بسته شدن منوی سمت راست پنل ها" Style="{StaticResource CompletedCheckBox}" IsChecked="{Binding IsClosedMenu}"/>
+                
+                <Button Style="{StaticResource CustomTitButton}" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="2" Width="45" Height="35" Margin="15,0,15,0"
+                         Command="{Binding SettingCommand}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Style="{StaticResource appbar_save}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="انتخاب تم:" Grid.ColumnSpan="4"/>
+
+                <Button ToolTip="آبی تیره" Width="32" Grid.Row="1" HorizontalAlignment="Left"
+                             Style="{DynamicResource EllipseButtonStyle1}" Foreground="#FF14233E" FontSize="12" FontFamily="Arial" Height="32"
+                             Command="{Binding ThemCommand}" CommandParameter="1"/>
+
+                <Button ToolTip="سبز" Width="32" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
+                             Style="{DynamicResource EllipseButtonStyle2}" Foreground="#FF045516" FontSize="12" FontFamily="Arial" Height="32"
+                             Command="{Binding ThemCommand}" CommandParameter="2"/>
+
+                <Button ToolTip="مشکی" Width="32" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"
+                             Style="{DynamicResource EllipseButtonStyle3}" Foreground="#FF14233E" FontSize="12" FontFamily="Arial" Height="32"
+                             Command="{Binding ThemCommand}" CommandParameter="3"/>
+
+                <Button ToolTip="طوسی" Width="32" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left"
+                             Style="{DynamicResource EllipseButtonStyle4}" Foreground="#FF14233E" FontSize="12" FontFamily="Arial" Height="32"
+                             Command="{Binding ThemCommand}" CommandParameter="4"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

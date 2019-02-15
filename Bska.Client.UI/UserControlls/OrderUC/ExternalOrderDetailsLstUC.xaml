@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.OrderUC.ExternalOrderDetailsLstUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bska.Client.UI.UserControlls.OrderUC"
+              xmlns:C="clr-namespace:Bska.Client.UI.Controls" x:Name="exOrderDetailsLst" xmlns:conv="clr-namespace:Bska.Client.UI.Converters">
+    <UserControl.Resources>
+        <conv:ExternalOrderDetailsStateConverter x:Key="ExternalOrderDetailsStateConverter"/>
+        <conv:StuffTypeConverter x:Key="StuffTypeConverter"/>
+        <DataTemplate x:Key="DeleteColumnTemplate">
+            <Button x:Name="btn" Width="32" IsEnabled="False"
+                    Style="{DynamicResource BlueButtonStyle}"  FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=exOrderDetailsLst,Path=DataContext.DeleteCommand}" CommandParameter="{Binding}">
+                <Image  Source="{StaticResource DeleteIcon}" Width="18"  HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="img"/>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="0">
+                    <Setter TargetName="btn" Property="IsEnabled" Value="True"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="110" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=exOrderDetailsLst,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <C:SortableListView x:Name="ProceedingsGridView" Margin="2" Height="Auto" Grid.Row="1"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True"
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ExOrderCollection}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+            <C:SortableListView.View >
+                <GridView AllowsColumnReorder="False" >
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                    <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=StuffName}" SortProperty="StuffName" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding Path=StuffType,Converter={StaticResource StuffTypeConverter}}" SortProperty="StuffType" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Path=Num}" SortProperty="Num" Width="65" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <C:SortListViewColumn Header="وضعیت" DisplayMemberBinding="{Binding Path=State,Converter={StaticResource ExternalOrderDetailsStateConverter}}" SortProperty="State" Width="100" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn CellTemplate="{StaticResource DeleteColumnTemplate}" Header="" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                    <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                </GridView>
+            </C:SortableListView.View>
+        </C:SortableListView>
+    </Grid>
+</UserControl>

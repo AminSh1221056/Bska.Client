@@ -1,0 +1,299 @@
+﻿<Window x:Class="Bska.Client.UI.Views.SupplierIndentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Background="{DynamicResource MaterialDesignPaper}"
+        Title="سفارش به کارپرداز" Height="600" Width="970"   Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="supplierIndentWindow" MouseLeftButtonDown="window_MouseLeftButtonDown" 
+        xmlns:Behaviors="clr-namespace:Bska.Client.UI.Helper" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+        xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <Window.Resources>
+        <DataTemplate x:Key="DeleteColumnTemplate">
+            <Button ToolTip="حذف سفارش" Width="32"
+                    Style="{DynamicResource BlueButtonStyle}" IsEnabled="{Binding ElementName=supplierIndentWindow,Path=DataContext.Deleteable}"  FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=supplierIndentWindow,Path=DataContext.DeleteCommand}" CommandParameter="{Binding}">
+                <Image  Source="{StaticResource DeleteIcon}" Width="18"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="110" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=supplierIndentWindow,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SupplierColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="140" Height="22" SelectedValue="{Binding SupplierId}" IsEnabled="False" SelectedValuePath="UserId" ItemsSource="{Binding ElementName=supplierIndentWindow,Path=DataContext.Suppliers}" DisplayMemberPath="FullName">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SellerColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="140" Height="22" SelectedValue="{Binding SellerId}" IsEnabled="False" SelectedValuePath="SellerId" ItemsSource="{Binding ElementName=supplierIndentWindow,Path=DataContext.Sellers}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+        
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.095"/>
+                <SplineDoubleKeyFrame KeySpline="1,0,0.512,1" KeyTime="00:00:00.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.InputBindings>
+        <KeyBinding Key="F6" Command="{Binding SearchCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,1,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="نام مال:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="2" Text="نوع مال:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="4" Text="تعداد:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="6" Text="واحد:"/>
+
+                <Border  MouseEnter="borderProperty_MouseEnter" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,5,0" VerticalAlignment="Top" Width="200" Height="38" BorderBrush="#6EFBFB96" BorderThickness="1.5,0,1.5,0" CornerRadius="0,20,0,20" x:Name="borderProperty" Background="#00000000">
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Text="{Binding CurrentSubOrder.StuffName}" Margin="5,0,5,0"/>
+                </Border>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Text="{Binding CurrentSubOrder.StuffType,Converter={StaticResource StuffTypeConverter}}"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="5" Text="{Binding CurrentSubOrder.Num}"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="7" Text="{Binding Unit.Name}"/>
+
+                <riboon:OrderToolbar x:Name="orderToolPane" Grid.Column="8" HorizontalAlignment="Right"/>
+                <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="9"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="675"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderThickness="0,0,1,0" Grid.Column="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <C:SortableListView Grid.Row="0" x:Name="SuboOrderGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding SubOrdersCollection}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True">
+                        <C:SortableListView.View >
+                            <GridView AllowsColumnReorder="False" >
+                                <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                                <C:SortListViewColumn Header="کد" DisplayMemberBinding="{Binding Path=ID}" SortProperty="ID" Width="45" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Num}" SortProperty="Num" Width="55" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                <C:SortListViewColumn Header="باقی مانده" DisplayMemberBinding="{Binding Remain}" SortProperty="Remain" Width="75" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                <C:SortListViewColumn Header="کارپرداز" CellTemplate="{StaticResource SupplierColumnTemplate}" SortProperty="SupplierId" Width="150" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                <C:SortListViewColumn Header="فروشنده" CellTemplate="{StaticResource SellerColumnTemplate}" SortProperty="SellerId" Width="150" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                <GridViewColumn CellTemplate="{StaticResource DeleteColumnTemplate}" Width="55" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                            </GridView>
+                        </C:SortableListView.View>
+                    </C:SortableListView>
+                    <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderThickness="0,1,0,0" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="136"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="مقدار سفارش داده شده:"/>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Text="{Binding SubOrdersNum}"/>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="2" Text="باقیمانده:"/>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Text="{Binding RemainNum}"/>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="7" Text="{Binding Unit.Name}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+            <Grid Grid.Column="1">
+                <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderThickness="0,1,0,0" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="73"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Text="تعداد:" Margin="5,0,5,0"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Text="نام کارپرداز:" Margin="5,0,5,0"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" Text="فروشنده:" Margin="5,0,5,0"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Text="واحد:" Margin="5,0,5,0"/>
+
+                        <TextBox x:Name="txtNum" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120" Grid.Column="1" Grid.Row="0" Text="{Binding CurrentNum,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <ComboBox IsEnabled="False" x:Name="cmbunit" Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="1"
+                  Width="180" Height="20" SelectedItem="{Binding SelectedUnit}" ItemsSource="{Binding Units}" DisplayMemberPath="Name" SelectedValuePath="UnitId"/>
+                        <Button x:Name="btnUnit" ToolTip="انتخاب واحد مربوطه" Grid.Row="1" Grid.Column="1" Width="26" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="190,0,0,0"
+                Style="{StaticResource BlackButtonStyle}" Click="btnUnit_Click">
+                            <Image  Source="{StaticResource UnitNode}" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+                        <ComboBox  Grid.Column="1" Width="180" Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                           ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSupplier}" DisplayMemberPath="FullName" Grid.Row="2"/>
+                        <Button x:Name="btnSupplier" ToolTip="جزئیات کارپرداز" Grid.Row="2" Grid.Column="1" Width="26" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="190,0,0,0"
+                Style="{StaticResource BlackButtonStyle}" Command="{Binding SupplierDetailsCommand}" CommandParameter="{Binding ElementName=supplierIndentWindow}">
+                            <Image  Source="{StaticResource supplierDetailsIcon}" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+
+                        <C:AutoFilteredComboBox x:Name="cmbSellers" IsTextSearchEnabled="True" IsEditable="True"  Style="{StaticResource SellerDetailsComboBoxStyle}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                      Width="170" ItemsSource="{Binding Sellers}" SelectedItem="{Binding SelectedSeller}" Margin="5,0,5,0" DisplayMemberPath="Name" Grid.Row="3">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </C:AutoFilteredComboBox>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <Popup Grid.Column="1" MouseLeave="PopUpSelectUnit_MouseLeave"  Width="250" Height="270" x:Name="PopUpSelectUnit" PlacementTarget="{Binding ElementName=btnUnit}" OpacityMask="{x:Null}" PopupAnimation="Slide" AllowsTransparency="True" Placement="Bottom" Margin="0,0,0,0" VerticalOffset="-45"  HorizontalOffset="0">
+            <DockPanel Background="#FF222832" Margin="0,15,0,0">
+                <TreeView ItemsSource="{Binding SubUnits}" Behaviors:TreeViewInPlaceEditBehavior.IsEditable="False" BorderBrush="Transparent" Background="Transparent"
+                        SelectedItemChanged="treeUnit_SelectedItemChanged"  x:Name="treeUnit">
+                    <TreeView.ItemContainerStyle>
+                        <!-- 
+        This Style binds a TreeViewItem to a PersonViewModel. 
+        -->
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                            <Setter Property="FontSize" Value="13"/>
+                            <Setter Property="ToolTip" Value="{Binding UnitCurrent.Desctiption}"/>
+                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                            <Setter Property="FontWeight" Value="Normal" />
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="20" Height="20" Margin="3,0"  Source="{StaticResource UnitNode}"/>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBox Text="{Binding Name, UpdateSourceTrigger=Explicit}" Visibility="Collapsed" x:Name="TextBox"/>
+                                </Grid>
+                            </StackPanel>
+                            <HierarchicalDataTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                        <Condition Binding="{Binding Path=(Behaviors:TreeViewInPlaceEditBehavior.IsEditing), RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
+                                    <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                        <Setter.Value>
+                                            <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                        <Setter.Value>
+                                            <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                        <Setter.Value>
+                                            <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </MultiDataTrigger>
+                            </HierarchicalDataTemplate.Triggers>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </DockPanel>
+        </Popup>
+
+        <Popup MouseLeave="PopUpSelectProp_MouseLeave" Width="175" Height="50" x:Name="PopUpSelectProp" PlacementTarget="{Binding ElementName=borderProperty}" OpacityMask="{x:Null}" PopupAnimation="Slide" AllowsTransparency="True" Placement="Bottom" Margin="0,0,0,0" VerticalOffset="-45"  HorizontalOffset="0">
+            <Border Width="175" Height="50" Margin="0,0,0,0" CornerRadius="8,8,8,8" BorderThickness="1,1,1,1" BorderBrush="#9EB5B5B5" Background="#E5202020">
+                <Grid>
+                    <ComboBox Margin="7,0,7,0" Height="Auto"  VerticalAlignment="Center" FontFamily="Arial" FontSize="12" x:Name="cmbAllProperty"  Style="{DynamicResource BeskaComboBoxStyle}" Width="160"
+                              TextSearch.TextPath="Name" Text="{Binding Name,Mode=OneWay}" ItemsSource="{Binding SubOrders}" SelectedItem="{Binding CurrentSubOrder}"
+                              >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0" Background="Transparent">
+                                    <Border Margin="3" BorderThickness="1" Width="Auto"
+                                            BorderBrush="SteelBlue" CornerRadius="4"
+                                            Background="{Binding Path=Background, RelativeSource={
+                                            RelativeSource
+                                            Mode=FindAncestor,
+                                            AncestorType={x:Type ListBoxItem}
+                                            }}" >
+                                        <Grid Margin="3" Width="190">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="70"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Row="0" VerticalAlignment="Center"  FontSize="12" FontWeight="Bold" Text="{Binding StuffName}" Grid.Column="0" Grid.ColumnSpan="2"></TextBlock>
+                                            <TextBlock Grid.Row="1"  VerticalAlignment="Center" FontFamily="Tahoma"  FontSize="12" HorizontalAlignment="Right"  Text="باقیمانده:" Grid.Column="0"></TextBlock>
+                                            <TextBlock Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="12"  Text="{Binding Remain}" Grid.Column="1"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</Window>

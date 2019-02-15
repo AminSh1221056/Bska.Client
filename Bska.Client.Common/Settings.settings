@@ -1,0 +1,60 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Bska.Client.Common" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RefreshInterval" Type="System.String" Scope="User">
+      <Value Profile="(Default)">45000</Value>
+    </Setting>
+    <Setting Name="WCFServiceUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://localhost:44311/WCFService</Value>
+    </Setting>
+    <Setting Name="ReportServerUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://DC01/ReportServer</Value>
+    </Setting>
+    <Setting Name="ServerUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://localhost:44375/</Value>
+    </Setting>
+    <Setting Name="APIServiceURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://localhost:44375/api/</Value>
+    </Setting>
+    <Setting Name="SSRSUsername" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Administrator</Value>
+    </Setting>
+    <Setting Name="SSRSPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1221056@Am</Value>
+    </Setting>
+    <Setting Name="SSRSDomainName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AminITPro</Value>
+    </Setting>
+    <Setting Name="NETTypeIsDomain" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WCFNetTcpServiceUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">net.tcp://aminpc.localhost:62092/WCFService</Value>
+    </Setting>
+    <Setting Name="providerName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">System.Data.SqlClient</Value>
+    </Setting>
+    <Setting Name="metaData" Type="System.String" Scope="User">
+      <Value Profile="(Default)">res://*/Model.EFShardModel.csdl|res://*/Model.EFShardModel.ssdl|res://*/Model.EFShardModel.msl</Value>
+    </Setting>
+    <Setting Name="dataSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DC03</Value>
+    </Setting>
+    <Setting Name="initialCatalog" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Bska.Client</Value>
+    </Setting>
+    <Setting Name="security" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="username" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sa</Value>
+    </Setting>
+    <Setting Name="password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EAAAAFR85a1TAcE+C8fOcFSFH3MQ8OVBYu9fFdq95xcHQrpc</Value>
+    </Setting>
+    <Setting Name="timeOut" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

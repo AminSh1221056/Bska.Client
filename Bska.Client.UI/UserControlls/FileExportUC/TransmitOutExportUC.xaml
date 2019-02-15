@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.FileExportUC.TransmitOutExportUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" x:Name="transmitOUtExport" xmlns:UCP="clr-namespace:Bska.Client.UI.UserControlls.ProceedingsUC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="2" Text="لیست صورت جلسه های تایید شده و آماده ارسال"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <UCP:MainProceedingListUC/>
+        </Grid>
+    </Grid>
+</UserControl>

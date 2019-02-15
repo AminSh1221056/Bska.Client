@@ -1,0 +1,133 @@
+﻿<Page x:Class="Bska.Client.UI.Views.MunitionView.MeterBillPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      x:Name="meterBillPage"
+	FontFamily="{StaticResource PrimaryFontFamily}"
+	  Title="قبض کنتورها" FlowDirection="RightToLeft" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" 
+      xmlns:li="clr-namespace:Bska.Client.UI.Controls" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"  xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <Page.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:MeterBillTypeToColorConverter x:Key="MeterBillTypeToColorConverter"/>
+        
+        <Style x:Key="MeterBillButtonStyle" TargetType="{x:Type Button}">
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                    <Setter Property="FontSize" Value="10"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Viewbox Margin="0,0,0,0" Stretch="Fill" VerticalAlignment="Stretch" Width="Auto" HorizontalAlignment="Stretch">
+                                    <Grid Width="70" Height="70" x:Name="grid1">
+                                        <Ellipse Stroke="{x:Null}" StrokeThickness="4" x:Name="OuterEllipse">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <GradientStop Color="#FF0975CF" Offset="0.522"/>
+                                                    <GradientStop Color="#BC0857E0" Offset="1"/>
+                                                    <GradientStop Color="#D00E69B6" Offset="0.938"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <Ellipse Stroke="{x:Null}" StrokeThickness="4" Margin="3.6,3.95,4.2,3.85" x:Name="InnerEllipse">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <RadialGradientBrush.RelativeTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1" ScaleY="1"/>
+                                                            <SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+                                                            <RotateTransform Angle="90.279" CenterX="0.5" CenterY="0.5"/>
+                                                            <TranslateTransform X="-0.17" Y="-0.193"/>
+                                                        </TransformGroup>
+                                                    </RadialGradientBrush.RelativeTransform>
+                                                    <GradientStop Color="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType={x:Type Button}},Converter={StaticResource MeterBillTypeToColorConverter}}" Offset="0"/>
+                                                    <GradientStop Color="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type Button}},Converter={StaticResource MeterBillTypeToColorConverter}}" Offset="1"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <Image  Source="{StaticResource EditImage}" Width="43" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Viewbox>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Style.BasedOn>
+        </Style>
+        
+        <DataTemplate x:Key="DetailsColumnTemplate">
+            <Button ToolTip="ویرایش" Width="35"
+                    Style="{DynamicResource MeterBillButtonStyle}"  FontSize="12" FontFamily="Arial" Height="35" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=meterBillPage,Path=DataContext.EditCommand}"
+                    CommandParameter="{Binding}">
+            </Button>
+        </DataTemplate>
+        
+    </Page.Resources>
+    <Page.InputBindings>
+        <KeyBinding Key="F2" Command="{Binding NewBillCommand}"/>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+        <KeyBinding Key="F6" Command="{Binding SearchCommand}"/>
+    </Page.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Foreground="#FFF" Style="{StaticResource CustomTitButton}" Grid.Column="0" Margin="2,0,2,0"
+                     Width="45" Height="32" Command="{Binding NewBillCommand}" ToolTip="ثبت قبض">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="F2"/>
+                            <ContentControl Style="{StaticResource app-add}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <TextBlock HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع کنتور:"/>
+                <UC:MultiSelectComboBox VerticalAlignment="Center" Margin="5,0,0,5" HorizontalAlignment="Left" Width="130"
+                          Height="24" Grid.Column="2" ItemsSource="{Binding Items}" SelectedItems="{Binding SelectedItems}"/>
+
+                <riboon:GlobalToolbar x:Name="globalToolPane" Grid.Column="3"/>
+                <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="4"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <li:SortableListView  Grid.Row="0" x:Name="MeterTripGridView" Margin="0,5,0,0"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True"
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" Foreground="#FFFFFFFF"
+                           ItemContainerStyle="{DynamicResource BeskaEditListViewItemStyle}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" ItemsSource="{Binding FilteredView}" SelectedItem="{Binding Selected}">
+                <li:SortableListView.View >
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=CurrentEntity.Meter.Name}"  Header="نام مشترک" SortProperty="Space" Width="180"  SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=CurrentEntity.Meter.Building.Name}"  Header="محل استراتژیکی" SortProperty="Space" Width="180"  SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=Space}"  Header="دوره(ماه/سال)" SortProperty="Space" Width="140"  SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=TotalCost,StringFormat={}{0:c},ConverterCulture=fa}"  Header= "مبلغ دوره" SortProperty="TotalCost" Width="150" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=CurrentEntity.InsertDate,Converter={StaticResource PersianDateConverter}}" Header="تاریخ ثبت" SortProperty="CurrentEntity.InsertDate"  Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=PayDate,Converter={StaticResource PersianDateConverter}}" Header="تاریخ پرداخت" SortProperty="PayDate"  Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=BillRecognition}" Header="شناسه قبض" SortProperty="BillRecognition"  Width="140" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <li:SortListViewColumn DisplayMemberBinding="{Binding Path=PayRecognition}" Header="شناسه پرداخت" SortProperty="PayRecognition"  Width="140" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource DetailsColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                    </GridView>
+                </li:SortableListView.View>
+            </li:SortableListView>
+        </Grid>
+    </Grid>
+</Page>

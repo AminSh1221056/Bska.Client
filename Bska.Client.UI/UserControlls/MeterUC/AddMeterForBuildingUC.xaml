@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.MetersUC.AddMeterForBuildingUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:conv="clr-namespace:Bska.Client.UI.Converters"
+             mc:Ignorable="d" xmlns:UCM="clr-namespace:Bska.Client.UI.UserControlls.MetersUC" x:Name="meterUc"
+             xmlns:Behaviors="clr-namespace:Bska.Client.UI.Helper" xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <UserControl.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <DataTemplate x:Key="HighlightTemplate">
+            <Grid Margin="0"  Background="#FF094AA8">
+                <Border Margin="2" BorderThickness="1" Width="220"
+     BorderBrush="#FF067031" CornerRadius="5" 
+     Background="#FF0C77E2">
+                    <Grid Margin="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontWeight="Bold" Margin="2,2,2,2" Grid.ColumnSpan="2" Grid.Column="0"
+         Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Margin="5,2,5,2" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Left"
+         Text="شماره پرونده:"></TextBlock>
+                        <TextBlock  Grid.Column="0" Grid.ColumnSpan="2" Margin="10,2,5,2" Grid.Row="2" FontStyle="Italic" HorizontalAlignment="Left"  FontSize="10" FontWeight="Bold"
+                                    Text="{Binding CaseNo}">
+                        </TextBlock>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding DeleteCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"  />
+        <KeyBinding Key="F4" Command="{Binding NewCommand}"  />
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource BorderStyle}" CornerRadius="0" Margin="0" BorderBrush="{StaticResource BorderBrush}"
+               BorderThickness="0,0,0,1">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ribboon:GlobalToolbar x:Name="toolbarPane"  IsEnabled="{Binding DetailsEnabled}"/>
+                <ribboon:HelpToolbar x:Name="helpbarPane" Grid.Column="1" HorizontalAlignment="Left"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1"   BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="نوع مال:"/>
+                <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Grid.Row="0" Width="120"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center" Height="22" Margin="5,0,0,0" SelectedValue="{Binding MeterType,Mode=TwoWay}"
+                          SelectedValuePath="Name">
+                    <ComboBoxItem Name="A" Tag="1">برق</ComboBoxItem>
+                    <ComboBoxItem Name="B" Tag="2">آب</ComboBoxItem>
+                    <ComboBoxItem Name="C" Tag="3">گاز</ComboBoxItem>
+                    <ComboBoxItem Name="D" Tag="4">تلفن</ComboBoxItem>
+                    <ComboBoxItem Name="E" Tag="5">تلفن همراه</ComboBoxItem>
+                    <ComboBoxItem Name="F" Tag="6">نرم افزار</ComboBoxItem>
+                    <ComboBoxItem Name="G" Tag="7">سرقفلی</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="240"/>
+                <ColumnDefinition Width="240"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="2" Grid.RowSpan="2" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,0,0" CornerRadius="0"  RenderTransformOrigin="0.5,0.5" Padding="0,0,0,0">
+                <DockPanel>
+                    <TreeView ItemsSource="{Binding FirstGeneration}" SelectedItemChanged="TreeView_SelectedItemChanged" BorderBrush="Transparent" Background="Transparent">
+                        <TreeView.ItemContainerStyle>
+                            <!--This Style binds a TreeViewItem to a PersonViewModel.-->
+                            <Style TargetType="{x:Type TreeViewItem}">
+                                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+                                <Setter Property="FontSize" Value="13"/>
+                                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                                <Setter Property="FontWeight" Value="Normal" />
+                                <Setter Property="Focusable" Value="{Binding IsEnabled}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TreeView.ItemContainerStyle>
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="20" Height="20" Margin="3,0"  Source="{StaticResource TreeviewIcon}"/>
+                                    <Grid>
+                                        <TextBlock Text="{Binding Name}" x:Name="TextBlock"/>
+                                        <TextBox Text="{Binding Name, UpdateSourceTrigger=Explicit}" Visibility="Collapsed" x:Name="TextBox"/>
+                                    </Grid>
+                                </StackPanel>
+                                <HierarchicalDataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                                        <Setter TargetName="TextBlock" Property="Foreground"  Value="#FF9C9A9A"/>
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                            <Condition Binding="{Binding Path=(Behaviors:TreeViewInPlaceEditBehavior.IsEditing), RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
+                                        <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                            <Setter.Value>
+                                                <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                            <Setter.Value>
+                                                <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                            <Setter.Value>
+                                                <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </MultiDataTrigger>
+                                </HierarchicalDataTemplate.Triggers>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </DockPanel>
+            </Border>
+            <Border Grid.RowSpan="2" Grid.Column="1"  BorderThickness="1,0,0,0" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                <ListBox Foreground="#FFFFFFFF" Background="Transparent" Name="lstBuilding" Margin="2" AlternationCount="2" ItemTemplate="{StaticResource HighlightTemplate}" BorderThickness="0"
+                     ItemsSource="{Binding MeterFilterView}" SelectedItem="{Binding SelectedMeter,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                    <ListBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Control.Padding" Value="0"/>
+                            <Setter Property="Control.Background" Value="#FF064070" />
+                            <Style.Triggers>
+                                <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
+                                    <Setter Property="Control.Foreground" Value="#FFC2CB69" />
+                                </Trigger>
+                                <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                                    <Setter Property="Control.Foreground" Value="#FF212121" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Border>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <UCM:GasUserControl x:Name="gasPane" Visibility="{Binding ElementName=meterUc,Path=DataContext.GasIsVisible,Converter={StaticResource BoolToVisibilityConverter}}" DataContext="{Binding GasVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}"/>
+                <UCM:MobileUserControl x:Name="mobilePane" Visibility="{Binding ElementName=meterUc,Path=DataContext.MobileIsVisible,Converter={StaticResource BoolToVisibilityConverter}}" DataContext="{Binding MobileVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}"/>
+                <UCM:PowerUserControl x:Name="powerPane" Visibility="{Binding ElementName=meterUc,Path=DataContext.PowerIsVisible,Converter={StaticResource BoolToVisibilityConverter}}" DataContext="{Binding PowerVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}"/>
+                <UCM:TellUserControl x:Name="tellPane" Visibility="{Binding ElementName=meterUc,Path=DataContext.TellIsVisible,Converter={StaticResource BoolToVisibilityConverter}}" DataContext="{Binding TellVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}"/>
+                <UCM:WaterUserControl x:Name="waterPane" Visibility="{Binding ElementName=meterUc,Path=DataContext.WaterIsVisible,Converter={StaticResource BoolToVisibilityConverter}}" DataContext="{Binding WaterVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

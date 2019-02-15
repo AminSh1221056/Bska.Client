@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.Ribon.ImportExportToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="accessbtn" Width="40" Grid.Column="0" Margin="5,0,5,0" ToolTip="آپلود فایل اکسس"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" 
+                Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding AccessCommand}">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="F2"/>
+                    <ContentControl Style="{StaticResource app-Access}"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="excelbtn" Width="40" Grid.Column="1" Margin="5,0,5,0" ToolTip="آپلود فایل اکسل"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" 
+                Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ExcelCommand}">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="F2"/>
+                    <ContentControl Style="{StaticResource app-Excel}"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+    </Grid>
+</UserControl>

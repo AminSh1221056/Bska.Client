@@ -1,0 +1,115 @@
+﻿<Window x:Class="Bska.Client.UI.Views.StoreBillDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{DynamicResource MaterialDesignPaper}"
+        Title="جزئیات قبض انبار" Height="600" Width="810"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="billDetailsWindow"
+        MouseLeftButtonDown="StoreBillDetailsWindow_MouseLeftButtonDown" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
+       xmlns:UCSD="clr-namespace:Bska.Client.UI.UserControlls.DraftUC" DataContextChanged="billDetailsWindow_DataContextChanged"
+        xmlns:UCSB="clr-namespace:Bska.Client.UI.UserControlls.StoreBillUC">
+    <Window.InputBindings>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+    </Window.InputBindings>
+    <Window.Resources>
+        <Conv:StoreBillTypeConverter x:Key="StoreBillTypeConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.095"/>
+                <SplineDoubleKeyFrame KeySpline="1,0,0.512,1" KeyTime="00:00:00.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,1,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="نوع قبض انبار:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="2" Text="شماره:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="4" Text="تاریخ:"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Text="{Binding CurrentBill.AcqType,Converter={StaticResource StoreBillTypeConverter}}"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Text="{Binding CurrentBill.StoreBillNo}"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="5" Text="{Binding CurrentBill.ArrivalDate,Converter={StaticResource PersianDateConverter}}"/>
+                <Button Style="{StaticResource CustomTitButton}" Grid.Column="8" Margin="5,0,5,0"
+                     Width="40" Height="32" Command="{Binding ReportCommand}" ToolTip="چاپ" Foreground="#FFF">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="F7"/>
+                            <ContentControl Style="{StaticResource appbar_report}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="0" Text="نام کارپرداز:"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Text="{Binding SupplierName}"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1" Margin="0,5,0,0" Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}"
+                    CornerRadius="0" BorderThickness="0,0,0,1">
+                <Grid DataContext="{Binding StoreBillVM}">
+                    <UCSD:StoreDonationDraftUC Visibility="Collapsed" x:Name="donationPane" VerticalAlignment="Top"/>
+                    <UCSD:StoreOwnedDraftUC Visibility="Collapsed" x:Name="ownedPane" VerticalAlignment="Top"/>
+                    <UCSD:StoreTransferDraftUC Visibility="Collapsed" x:Name="transferPane" VerticalAlignment="Top"/>
+                    <UCSD:StoreTrustDraftUC Visibility="Collapsed" x:Name="trustPane" VerticalAlignment="Top"/>
+                    <UCSD:StorePruchaseDraftUC Visibility="Collapsed" x:Name="purchasePane" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="ثبت درخواست ویرایش" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,5,0"></TextBlock>
+            <Border Grid.Row="1" Margin="0,0,0,0" Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}"
+                    CornerRadius="0" BorderThickness="0,1,0,0" IsEnabled="{Binding IsEditableOrder}">
+                <UCSB:StoreBillEditUC x:Name="sbEditUc" DataContext="{Binding StoreBillEditVm,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}"/>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

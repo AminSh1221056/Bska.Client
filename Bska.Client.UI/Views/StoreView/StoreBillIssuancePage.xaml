@@ -1,0 +1,183 @@
+﻿<Page x:Class="Bska.Client.UI.Views.StoreView.StoreBillIssuancePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" FontFamily="{StaticResource PrimaryFontFamily}" FlowDirection="RightToLeft" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+      xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+	  x:Name="billIssuancePage" xmlns:UCD="clr-namespace:Bska.Client.UI.UserControlls.DraftUC" xmlns:Behaviors="clr-namespace:Bska.Client.UI.Helper"
+	  Title="صدور قبض انبار" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <Page.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:StuffTypeConverter x:Key="StuffTypeConverter"/>
+        <Conv:MovableAssetTypeConverter x:Key="MovableAssetTypeConverter"/>
+        <Conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <Conv:StoreBillTypeConverter x:Key="StoreBillTypeConverter"/>
+        
+        <DataTemplate x:Key="ShowDetailsColumnTemplate">
+            <Button Width="32" Style="{DynamicResource CustomTitButton}" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  Command="{Binding ElementName=billIssuancePage,Path=DataContext.EditCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DeleteColumnTemplate">
+            <Button x:Name="btn" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=billIssuancePage,Path=DataContext.DeleteCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource appbar_delete}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+    </Page.Resources>
+    <Page.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F4" Command="{Binding AddListCommand}"/>
+        <KeyBinding Key="F5" Command="{Binding ShowListCommand}"/>
+        <KeyBinding Key="F2" Command="{Binding StoreDetailsCommand}"/>
+        <KeyBinding Key="F9" Command="{Binding ParentAssetForBelongingCommand}"/>
+    </Page.InputBindings>
+    <Grid>
+      <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{StaticResource BorderStyle}" BorderBrush="{StaticResource BorderBrush}" Margin="0" CornerRadius="0" BorderThickness="0,0,1,0">
+                <UC:StoreOrderManageUC x:Name="storeManage" StoreTreeViewClick="storeManage_StoreTreeViewClick" />
+            </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="95"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Margin="5,0,5,0" Text="نام مال:"/>
+                    <C:AutoFilteredComboBox Text="{Binding Name}" x:Name="cmbStuffs" IsTextSearchEnabled="True" IsEditable="True"  Style="{StaticResource BeskaStuffComboBoxStyle}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                      Width="170" ItemsSource="{Binding Stuffs}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedStuff}" Margin="5,0,5,0" SelectionChanged="cmbStuffs_SelectionChanged">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </C:AutoFilteredComboBox>
+                    <Button Click="btnStuffFilter_Click"  Style="{StaticResource BlackButtonStyle}" Grid.Column="2" Width="35" Height="30" ToolTip="فیلتر اموال" x:Name="btnStuffFilter">
+                        <Image Source="{StaticResource StuffIcon}" Width="25" Height="25"/>
+                    </Button>
+                    <Button ToolTip="موجودی داخل انبار" Width="40" Grid.Column="3" Margin="5,0,5,0"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding StoreDetailsCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="F2"/>
+                                    <ContentControl Style="{StaticResource app-stock}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    <CheckBox Style="{StaticResource CompletedCheckBox}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,5,0" Content="ثبت با برچسب"
+                              IsChecked="{Binding ToLabel}"/>
+                    <Grid Grid.Column="5" x:Name="grBelonging">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource CustomTitButton}" Width="50" Height="32" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                Foreground="#FFF" Command="{Binding ParentAssetForBelongingCommand}" ToolTip="انتخاب مال اصلی">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="F9"/>
+                                        <ContentControl Style="{StaticResource app-belongingParent}"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Text="نام مال:" Margin="5,0,5,0"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Text="{Binding BelongingParent.Name}" Margin="5,0,5,0"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="4" Text="برچسب:" Margin="5,0,5,0"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5" Text="{Binding BelongingParent.Label}" Margin="5,0,5,0"/>
+
+                            <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="6"/>
+                        </Grid>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" 
+                    DataContext="{Binding StoreBillVM,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="66"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <UC:StoreReciptUC x:Name="storeRecipetPane" CmbSelectionChanged="storeRecipetPane_CmbSelectionChanged"/>
+                    <UCD:StoreTrustDraftUC x:Name="trustDraftPane" Visibility="Collapsed" Grid.Row="1"/>
+                    <UCD:StoreOwnedDraftUC x:Name="ownedDraftPane" Visibility="Collapsed" Grid.Row="1"/>
+                    <UCD:StoreTransferDraftUC x:Name="transferDraftPane" Visibility="Collapsed" Grid.Row="1"/>
+                    <UCD:StoreDonationDraftUC x:Name="donationDraftPane" Visibility="Collapsed" Grid.Row="1"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" >
+                <Grid>
+                    <UC:UnConsumptionUserControl Visibility="Collapsed" x:Name="uncounsuptionPane" DataContext="{Binding UnConsumptionVM,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}"/>
+                    <UC:BelongingUserControl Visibility="Collapsed" x:Name="belongingPane" DataContext="{Binding BelongingVM,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}"/>
+                    <UC:InCommodityUC Visibility="Collapsed" x:Name="incommodityPane" DataContext="{Binding IncommodityVM,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}"/>
+                    <UC:InstallableUC Visibility="Collapsed" x:Name="installablePane" DataContext="{Binding InstallableVM,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}"/>
+                        <UC:CommodityUC Visibility="Collapsed" x:Name="commodityPane" DataContext="{Binding CommodityVM,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}"/>
+                    </Grid>
+            </Border>
+            <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <riboon:AssetToolbar x:Name="assetToolPane"/>
+                    <riboon:GlobalToolbar x:Name="globalToolpane" Grid.Column="1"/>
+                </Grid>
+            <Border Grid.Row="4" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" CornerRadius="0" >
+                <C:SortableListView  Grid.Column="1" Grid.Row="1" x:Name="PropertyGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Collection}" SelectedItem="{Binding SelectedAsset}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                    <C:SortableListView.View >
+                        <GridView AllowsColumnReorder="False" >
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                            <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=Name}" SortProperty="Name" Width="180" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding Converter={StaticResource MovableAssetTypeConverter}}" SortProperty="Name" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="برچسب" DisplayMemberBinding="{Binding Label,TargetNullValue=[خالی]}" SortProperty="Label" Width="60" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="شماره قبض انبار" DisplayMemberBinding="{Binding StoreBill.StoreBillNo}" SortProperty="StoreBill.StoreBillNo" Width="105" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <C:SortListViewColumn Header="نوع قبض انبار" DisplayMemberBinding="{Binding StoreBill.AcqType,Converter={StaticResource StoreBillTypeConverter}}" SortProperty="StoreBill.AcqType" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn CellTemplate="{StaticResource ShowDetailsColumnTemplate}" Header="" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn CellTemplate="{StaticResource DeleteColumnTemplate}" Header="" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                            <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                        </GridView>
+                    </C:SortableListView.View>
+                </C:SortableListView>
+            </Border>
+        </Grid>
+        <UC:StuffTreeViewFilterUC StuffTreeItemSelect="stuffviewPopUp_StuffTreeItemSelect"  x:Name="stuffviewPopUp"/>
+    </Grid>
+    </Grid>
+</Page>

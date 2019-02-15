@@ -1,0 +1,141 @@
+﻿<Window x:Class="Bska.Client.UI.Views.MAssetCostWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Background="{DynamicResource MaterialDesignPaper}"
+        Title="هزینه های جاری" x:Name="mAssetCosttWin" Height="600" Width="800"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" MouseLeftButtonDown="mAssetCosttWin_MouseLeftButtonDown"  xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+        xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:masking="clr-namespace:Bska.Client.UI.API" xmlns:h="clr-namespace:Bska.Client.UI.Helper" xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common" >
+    <Window.Resources>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="490" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-50" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+    </Window.InputBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="نام مال:" FontSize="12.5"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="برچسب:" FontSize="12.5"/>
+                <TextBlock Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="قیمت مال:" FontSize="12.5"/>
+                <TextBlock Grid.Column="6" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="تاریخ ثبت:" FontSize="12.5"/>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Text="{Binding CurrentMovableAsset.Name}" Margin="5,0,5,0"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Text="{Binding CurrentMovableAsset.Label,TargetNullValue=[نامشخص]}" Margin="5,0,5,0"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5" Text="{Binding CurrentMovableAsset.Cost,StringFormat={}{0:N0},ConverterCulture=fa}" Margin="5,0,5,0"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="7" Text="{Binding CurrentMovableAsset.InsertDate,Converter={StaticResource PersianDateConverter}}" Margin="5,0,5,0"/>
+
+                <Button Style="{StaticResource CustomTitButton}" Grid.Column="8" Margin="5,0,5,0"
+                     Width="40" Height="32" Command="{Binding ReportCommand}" ToolTip="چاپ" Foreground="#FFF">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="F7"/>
+                            <ContentControl Style="{StaticResource appbar_report}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <C:SortableListView  Grid.Column="2" x:Name="PropertyGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Collection}" SelectedItem="{Binding Selected,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}" FlowDirection="RightToLeft"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                <C:SortableListView.View >
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="60" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نوع" DisplayMemberBinding="{Binding TaxCostType}" SortProperty="TaxCostType" Width="100" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="مقدار هزینه" DisplayMemberBinding="{Binding Cost,StringFormat={}{0:N0},ConverterCulture=fa}" SortProperty="Cost" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تاریخ ثبت" DisplayMemberBinding="{Binding ModifiedDate,Converter={StaticResource PersianDateConverter}}" SortProperty="Label" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="توضیحات" DisplayMemberBinding="{Binding Description,TargetNullValue=[خالی]}" SortProperty="Description" Width="360" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                    </GridView>
+                </C:SortableListView.View>
+            </C:SortableListView>
+        </Grid>
+        <Border FlowDirection="RightToLeft" Grid.Row="2"   BorderThickness="0,1,0,0" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}" Visibility="{Binding IsEditableAsset,Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid DataContext="{Binding Selected,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع هزینه:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="مقدار:" Grid.Column="2"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="توضیحات:" Grid.Column="4"/>
+
+                <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Width="120" Height="19" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" 
+                          ItemsSource="{Binding Source={masking:Enumeration {x:Type local:TaxCostType}}}" DisplayMemberPath="Description" SelectedValue="{Binding TaxCostType,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"  SelectedValuePath="Value"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120" Height="19" Grid.Column="3" Text="{Binding Cost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat={}{0:N0},ConverterCulture=fa,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="315" Height="19" Grid.Column="5" Text="{Binding Description}"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3"  BorderThickness="0,1,0,0" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="قیمت واقعی محاسبه شده:" FontSize="12.5"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Text="{Binding RealCost,StringFormat={}{0:N0},ConverterCulture=fa}" FontSize="12.5"/>
+                <Button Style="{StaticResource FlatButtonStyleTit}" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                    Content="جدید" Width="80" Height="28" Background="#FF1FAEFF" Command="{Binding NewCommand}"/>
+                <Button Style="{StaticResource FlatButtonStyleTit}" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,15,0"
+                    Content="تایید" Width="80" Height="28" Background="#FF1FAEFF" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=mAssetCosttWin}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

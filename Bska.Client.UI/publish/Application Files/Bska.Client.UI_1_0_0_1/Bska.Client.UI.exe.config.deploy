@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="Bska.Client.UI.ErrorMessages" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+      <section name="Bska.Client.UI.ErrorMessage" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    </sectionGroup>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="Bska.Client.UI.APPSettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+      <section name="Bska.Client.UI.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="v11.0" />
+      </parameters>
+    </defaultConnectionFactory>
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+    </providers>
+  </entityFramework>
+  <system.serviceModel>
+    <bindings>
+      <wsHttpBinding>
+        <binding name="WSHttpBinding_IProceedingExchangeService">
+          <reliableSession inactivityTimeout="00:05:00" enabled="true" />
+          <security mode="None" />
+        </binding>
+        <binding name="WSHttpBinding_IMAssetExchangeService">
+          <reliableSession inactivityTimeout="00:05:00" enabled="true" />
+          <security mode="None" />
+        </binding>
+        <binding name="WSHttpBinding_IEmployeeExchangeService">
+          <reliableSession inactivityTimeout="00:05:00" enabled="true" />
+          <security mode="None" />
+        </binding>
+        <binding name="WSHttpBinding_IBaseInformationExchangeService">
+          <reliableSession inactivityTimeout="00:05:00" enabled="true" />
+          <security mode="None" />
+        </binding>
+      </wsHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="http://bska.ir/WCFService/ProceedingExchangeService.svc" binding="wsHttpBinding" bindingConfiguration="WSHttpBinding_IProceedingExchangeService" contract="ProceedingExchangeService.IProceedingExchangeService" name="WSHttpBinding_IProceedingExchangeService" />
+      <endpoint address="http://bska.ir/WCFService/EmployeeExchangeService.svc" binding="wsHttpBinding" bindingConfiguration="WSHttpBinding_IEmployeeExchangeService" contract="EmployeeExchange.IEmployeeExchangeService" name="WSHttpBinding_IEmployeeExchangeService" />
+      <endpoint address="http://bska.ir/WCFService/MAssetExchangeService.svc" binding="wsHttpBinding" bindingConfiguration="WSHttpBinding_IMAssetExchangeService" contract="MAssetExchangeService.IMAssetExchangeService" name="WSHttpBinding_IMAssetExchangeService" />
+      <endpoint address="http://bska.ir/WCFService/BaseInformationExchangeService.svc" binding="wsHttpBinding" bindingConfiguration="WSHttpBinding_IBaseInformationExchangeService" contract="BaseInformationExchangeService.IBaseInformationExchangeService" name="WSHttpBinding_IBaseInformationExchangeService" />
+    </client>
+  </system.serviceModel>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Net.Http.Extensions" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-2.2.29.0" newVersion="2.2.29.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Net.Http.Primitives" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.2.29.0" newVersion="4.2.29.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Practices.ServiceLocation" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.3.0.0" newVersion="1.3.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.0.0" newVersion="4.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <applicationSettings>
+    <Bska.Client.UI.ErrorMessages>
+      <setting name="NoConnection" serializeAs="String">
+        <value>خطا در برقراری ارتباط با پایگاه داده</value>
+      </setting>
+      <setting name="UnhandledException" serializeAs="String">
+        <value>خطای ناشناخته.</value>
+      </setting>
+      <setting name="SuccessfullyMessage" serializeAs="String">
+        <value>تغییرات با موفقیت ذخیره شد</value>
+      </setting>
+      <setting name="UserNameEmpty" serializeAs="String">
+        <value>نام کاربری وارد نشده است.</value>
+      </setting>
+      <setting name="NoRowSelected" serializeAs="String">
+        <value>هیچ سطری انتخاب نشده است</value>
+      </setting>
+      <setting name="ConfirmDelete" serializeAs="String">
+        <value>آیا شما مطمئن به حذف این آیتم می باشید</value>
+      </setting>
+      <setting name="NoInternetAccess" serializeAs="String">
+        <value>سیستم قادر به اتصال به سیستم مکزی نمی باشد</value>
+      </setting>
+      <setting name="InputInvalid" serializeAs="String">
+        <value>لطفا ورودی های خود را کنترل کنید</value>
+      </setting>
+      <setting name="AskConfrimation" serializeAs="String">
+        <value>آیا مطمئن به ثبت این اطلاعات می باشید</value>
+      </setting>
+    </Bska.Client.UI.ErrorMessages>
+    <Bska.Client.UI.ErrorMessage>
+      <setting name="NoConnection" serializeAs="String">
+        <value>خطا در برقراری ارتباط با پایگاه داده</value>
+      </setting>
+      <setting name="UnhandledException" serializeAs="String">
+        <value>خطای ناشناخته.</value>
+      </setting>
+      <setting name="SuccessfullyMessage" serializeAs="String">
+        <value>تغییرات با موفقیت ذخیره شد</value>
+      </setting>
+      <setting name="UserNameEmpty" serializeAs="String">
+        <value>نام کاربری وارد نشده است.</value>
+      </setting>
+      <setting name="NoRowSelected" serializeAs="String">
+        <value>هیچ سطری انتخاب نشده است</value>
+      </setting>
+      <setting name="ConfirmDelete" serializeAs="String">
+        <value>آیا شما مطمئن به حذف این آیتم می باشید</value>
+      </setting>
+      <setting name="NoInternetAccess" serializeAs="String">
+        <value>سیستم قادر به اتصال به شبکه اینترنت نمی باشد.لطفا اتصال خود را چک کنید</value>
+      </setting>
+      <setting name="InputInvalid" serializeAs="String">
+        <value>لطفا ورودی های خود را کنترل کنید</value>
+      </setting>
+    </Bska.Client.UI.ErrorMessage>
+  </applicationSettings>
+  <userSettings>
+    <Bska.Client.UI.APPSettings>
+      <setting name="MStuffPrice" serializeAs="String">
+        <value>3300000</value>
+      </setting>
+      <setting name="BookType" serializeAs="String">
+        <value>1001</value>
+      </setting>
+      <setting name="AccidentProccedingConfirm" serializeAs="String">
+        <value>2001</value>
+      </setting>
+      <setting name="AccessExportFilePath" serializeAs="String">
+        <value>Transdata.mdb</value>
+      </setting>
+      <setting name="OldSystemFloorType" serializeAs="String">
+        <value>701</value>
+      </setting>
+      <setting name="ConfigUserName" serializeAs="String">
+        <value>Config</value>
+      </setting>
+      <setting name="ConfigPass" serializeAs="String">
+        <value>EAAAAFR85a1TAcE+C8fOcFSFH3MQ8OVBYu9fFdq95xcHQrpc</value>
+      </setting>
+      <setting name="EnabledNBookStore" serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="EnabledStuffDeprication" serializeAs="String">
+        <value>False</value>
+      </setting>
+      <setting name="BackupFolder" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="LogPath" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="employeeCer" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="mainWinHelpPage" serializeAs="String">
+        <value>1</value>
+      </setting>
+      <setting name="IsCompletedAssets" serializeAs="String">
+        <value>False</value>
+      </setting>
+      <setting name="DbServers" serializeAs="String">
+        <value />
+      </setting>
+    </Bska.Client.UI.APPSettings>
+    <Bska.Client.UI.Properties.Settings>
+      <setting name="example" serializeAs="String">
+        <value>111</value>
+      </setting>
+    </Bska.Client.UI.Properties.Settings>
+  </userSettings>
+</configuration>

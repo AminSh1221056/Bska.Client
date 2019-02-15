@@ -1,0 +1,170 @@
+﻿<Window x:Class="Bska.Client.UI.Views.StuffHonestView.AddProceddingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       x:Name="addProceddingWindow"
+        Title="ثبت صورت جلسه" Height="700" Width="1050" Style="{StaticResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"  xmlns:masking="clr-namespace:Bska.Client.UI.API" xmlns:h="clr-namespace:Bska.Client.UI.Helper"
+        xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
+        xmlns:UCP="clr-namespace:Bska.Client.UI.UserControlls.ProceedingsUC" xmlns:c="clr-namespace:Bska.Client.UI.Controls">
+    <Window.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:ReverseBooleanToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter"/>
+        
+        <Storyboard x:Key="StoryboardEnterance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="410" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-30" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ExpandingStoryboard">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:0.2" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="305" KeySpline="0.681,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:0.2" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:0.2" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.2" Value="0.1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.4" Value="0.5"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="1" KeySpline="0.705,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ContractingStoryboard">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="305" KeySpline="0,0,1,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" KeySpline="0.602,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.3" Value="0.5"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" KeySpline="0.705,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEnterance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F6" Command="{Binding SearchCommand}"/>
+    </Window.InputBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" FontWeight="Bold" FontSize="13.5"
+                           Text="نوع صورت جلسه:"/>
+            <ComboBox x:Name="cmbProceedyngType" Style="{StaticResource BeskaComboBoxStyle}" VerticalAlignment="Center" Margin="5,0,0,5" HorizontalAlignment="Left" Width="180"
+                          Height="24" Grid.Column="1" DisplayMemberPath="Description" SelectedValue="{Binding ProceedingType}"  SelectedValuePath="Value"
+                          ItemsSource="{Binding Source={masking:Enumeration {x:Type local:ProceedingsType}}}" SelectionChanged="ComboBox_SelectionChanged" />
+            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Margin="5,0,5,0" FontWeight="Bold" FontSize="13.5"
+                           Text="تعداد مال انتخاب شده:"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Margin="5,0,5,0" FontWeight="Bold" FontSize="13.5"
+                           Text="{Binding Counter}"/>
+        </Grid>
+        <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderThickness="0,1,0,1" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderThickness="0,0,0,1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="510"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" x:Name="gr1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="145"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="chIsBuildingAsset" Content="اموال داخل واحد ها" Style="{StaticResource CompletedCheckBox}" Grid.Column="0" Margin="5,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="{Binding IsOrderMAsset}"/>
+                            <CheckBox x:Name="chIsStoreAsset" Content="اموال داخل انبار" Style="{StaticResource CompletedCheckBox}" Grid.Column="1" Margin="5,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="{Binding IsStoreMAsset}"/>
+                            <CheckBox x:Name="chIsRetiringAsset" Content="اموال اسقاط" Style="{StaticResource CompletedCheckBox}" Grid.Column="2" Margin="5,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="{Binding IsRetiringMAsset}"/>
+                            <CheckBox x:Name="chIsAccidentAsset" Content="اموال حادثه دیده" Style="{StaticResource CompletedCheckBox}" Grid.Column="3" Margin="5,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="{Binding IsAccidentMAsset}"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <UCP:RefundTrustUC x:Name="refundPane" Visibility="Collapsed"/>
+                        </Grid>
+                        <riboon:GlobalToolbar x:Name="globalToolPane" Grid.Column="2"/>
+                        <riboon:HelpToolbar x:Name="helpToolPane" Grid.Column="3" HorizontalAlignment="Left"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderThickness="0,0,0,1" Visibility="Collapsed" x:Name="brOrganSelection">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" x:Name="txtOrganDesc"/>
+                            <c:AutoFilteredComboBox IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Name" Style="{StaticResource OrganComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="200" Grid.Column="1" 
+                            ItemsSource="{Binding OrganNames}" SelectedValue="{Binding SelectedOrgan}" SelectedValuePath="BudgetNo" DisplayMemberPath="Name"/>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Row="1" DataContext="{Binding ProceedingDetailsVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                        <UCP:AccidentsUc x:Name="accidentPane" Visibility="Collapsed"/>
+                        <UCP:SaleUC x:Name="salePane" Visibility="Collapsed"/>
+                        <UCP:TransferUC x:Name="transferPane" Visibility="Collapsed"/>
+                        <UCP:TrustTransferUC x:Name="transferTrustPane" Visibility="Collapsed"/>
+                        <UCP:RetiringAssetUC x:Name="retiringAssetPane" Visibility="Collapsed"/>
+                    </Grid>
+                    <Border Grid.Row="2" Style="{StaticResource BorderStyle}" BorderThickness="0,1,0,0" Margin="0" CornerRadius="0">
+                        <Grid>
+                            <UCP:ProceedingListUC Visibility="Collapsed" x:Name="procMainList"/>
+                            <UCP:AccidentProceedingListUC Visibility="Collapsed" x:Name="procAccidentList"/>
+                            <UCP:RefundTrustListUC Visibility="Collapsed" x:Name="RefundTrustList"/>
+                            <UCP:PermEditProcList Visibility="Collapsed" x:Name="PermEditProcList"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

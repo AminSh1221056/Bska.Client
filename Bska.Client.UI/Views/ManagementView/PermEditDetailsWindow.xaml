@@ -1,0 +1,119 @@
+﻿<Window x:Class="Bska.Client.UI.Views.PermEditDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bska.Client.UI.Views"
+        Title="تغییرات پیشنهادی برای مال" Height="500" Width="600"  Style="{DynamicResource FlatWindowStyle}" WindowStartupLocation="CenterScreen"
+        RenderTransformOrigin="0.5,0.5"  ShowInTaskbar="False" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" MouseLeftButtonDown="permEditindow_MouseLeftButtonDown"
+        x:Name="permEditindow" xmlns:MAUC="clr-namespace:Bska.Client.UI.UserControlls.MAssetDetailsUC" DataContextChanged="permEditindow_DataContextChanged">
+    <Window.Resources>
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="490" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-50" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEntrance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Border FlowDirection="RightToLeft" Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="260"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="نام مال:" FontSize="12.5"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="شماره برچسب:" FontSize="12.5"/>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Text="{Binding CurrentMovableAsset.Name}" Margin="5,0,5,0"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Text="{Binding CurrentMovableAsset.Label,TargetNullValue=[نامشخص]}" Margin="5,0,5,0"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="سال تهیه مال:"/>
+                    <TextBox Width="160" Height="19" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding EditYear}"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Uid1}" Grid.Row="0" Grid.Column="0"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Uid2}" Grid.Row="1" Grid.Column="0"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Uid3}" Grid.Row="2" Grid.Column="0"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Uid4}" Grid.Row="3" Grid.Column="0"/>
+
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Desc1}" Grid.Row="0" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Desc2}" Grid.Row="1" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Desc3}" Grid.Row="2" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding Desc4}" Grid.Row="3" Grid.Column="2"/>
+                </Grid>
+            </Border>
+            <Grid x:Name="grAccessories" Grid.Row="2">
+                <MAUC:ElectricAccessories Visibility="Collapsed" x:Name="ElectricPane"/>
+                <MAUC:NonElectricAccessories Visibility="Collapsed" x:Name="NonElectricPane"/>
+                <MAUC:AutomotiveAccessories Visibility="Collapsed" x:Name="AutomotivePane"/>
+                <MAUC:AutomotiveSportAccessories Visibility="Collapsed" x:Name="AutomotiveSport"/>
+                <MAUC:CameraAccessories Visibility="Collapsed" x:Name="CameraPane"/>
+                <MAUC:CDAccessories Visibility="Collapsed" x:Name="CDPane"/>
+                <MAUC:ComputerAccessories Visibility="Collapsed" x:Name="ComputerPane"/>
+                <MAUC:HandmadeCarpetAccessories Visibility="Collapsed" x:Name="HandmadeCarpetPane"/>
+                <MAUC:PrintedBooksAccessories Visibility="Collapsed" x:Name="PrintedBooksPane"/>
+                <MAUC:SportAccessories Visibility="Collapsed" x:Name="SportPane"/>
+                <MAUC:ToolAccessories Visibility="Collapsed" x:Name="ToolPane"/>
+                <MAUC:VideoAudioAccessories Visibility="Collapsed" x:Name="VideoAudioPane"/>
+            </Grid>
+        </Grid>
+        <Border Grid.Row="2" Background="{DynamicResource PrimaryHueMidBrush}"  BorderThickness="0,1,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Button Style="{StaticResource FlatButtonStyleTit}" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,15,0"
+                    Content="تایید" Width="80" Height="28" Background="#FF1FAEFF" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=permEditindow}" IsEnabled="{Binding IsEditable}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

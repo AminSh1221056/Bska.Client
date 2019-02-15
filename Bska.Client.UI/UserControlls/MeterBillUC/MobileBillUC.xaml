@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.MeterBillUC.MobileBillUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters">
+    <UserControl.Resources>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:NullableDecimalValueConverter x:Key="NullableValueConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource BorderStyle}" Margin="2,2,2,2" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="130"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,5,0" Text="شماره دوره:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Margin="0,0,5,0" Text="تاریخ آغاز صورت حساب:"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="4" Margin="0,0,5,0" Text="تاریخ پایان صورت حساب:"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"  Margin="5,0,0,0" Width="80"  x:Name="txtDorehNo"
+                         Text="{Binding Num1}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtDateNow" Text="{Binding NowReadDate,Converter={StaticResource PersianDateConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtDateAgo" Text="{Binding AgoReadDate,Converter={StaticResource PersianDateConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" Margin="2,2,2,2" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="شهری:"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="بین شهری:"/>
+                <TextBlock Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="خارجی:"
+                          />
+                <TextBlock Grid.Column="6" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="پیام کوتاه:"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="مالیات و عوارض:"/>
+                <TextBlock Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="متفرقه:"/>
+                <TextBlock Grid.Column="4" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="بستانکاری:"/>
+                <TextBlock Grid.Column="6" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="کسرهزار ریال:"/>
+               
+
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Margin="5,0,0,0" Width="120" 
+                         x:Name="txtCityCost"  Text="{Binding CostEra,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0" Margin="5,0,0,0" Width="120" 
+                         x:Name="txtZoneCost"  Text="{Binding DNum1,Converter={StaticResource NullableValueConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5" Grid.Row="0" Margin="5,0,0,0" Width="120" 
+                          x:Name="txtexternalCost"  Text="{Binding DNum2,Converter={StaticResource NullableValueConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="7" Grid.Row="0" Margin="5,0,0,0" Width="120" 
+                         x:Name="txtSmsCost"  Text="{Binding DNum3,Converter={StaticResource NullableValueConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="5,0,0,0" Width="120" 
+                         x:Name="txtTaxCost"  Text="{Binding TaxCost,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1" Margin="5,0,0,0" Width="120" 
+                         x:Name="txtOtherCost"  Text="{Binding OtehrCost,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5" Grid.Row="1" Margin="5,0,0,0" Width="120" 
+                         x:Name="txtDeboterCost"  Text="{Binding DebtorCost,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="7" Grid.Row="1" Margin="5,0,0,0" Width="120" 
+                         x:Name="txtThosandrialCost"  Text="{Binding DNum4,Converter={StaticResource NullableValueConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+             
+
+                <TextBlock Grid.Column="4" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="مبلغ قابل پرداخت:"/>
+                <TextBox Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" Width="150"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="False"
+                         x:Name="txtSumCost" Text="{Binding TotalCost,StringFormat={}{0:c},ConverterCulture=fa}"/>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" Margin="2,2,2,2" Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="شناسه قبض:"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="شناسه پرداخت:"/>
+                <TextBlock Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="مهلت پرداخت:"/>
+
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtRecognizBill" Text="{Binding BillRecognition,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}">
+                </TextBox>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtRecognizPay" Text="{Binding PayRecognition,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}">
+                </TextBox>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtSpaceDatePay" Text="{Binding PayDateSpace,Converter={StaticResource PersianDateConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource BorderStyle}" Margin="2,2,2,2" Grid.Row="3">
+            <Grid VerticalAlignment="Top" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="تاریخ پرداخت:"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="نام بانک:"/>
+                <TextBlock Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="شماره حساب پرداخت کننده:"/>
+                <TextBlock Grid.Column="6" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Text="شماره پی گیری:"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtDatePay" Text="{Binding PayDate,Converter={StaticResource PersianDateConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtBankName" Text="{Binding BankName}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtPersonAccountNum" Text="{Binding PersonAccountnumber}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="7"  Margin="5,0,0,0" Width="120" 
+                         x:Name="txtPursuitNum" Text="{Binding PursuitNum}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

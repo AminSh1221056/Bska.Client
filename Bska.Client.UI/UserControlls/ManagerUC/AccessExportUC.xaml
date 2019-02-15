@@ -1,0 +1,247 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.AccessExportUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"  xmlns:UCA="clr-namespace:Bska.Client.UI.UserControlls.FileExportUC" xmlns:conv="clr-namespace:Bska.Client.UI.Converters"
+             x:Name="accessExport" xmlns:C="clr-namespace:Bska.Client.UI.Controls" Loaded="accessExport_Loaded">
+    <UserControl.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <conv:IndexConverter x:Key="IndexConverter"/>
+        <conv:ExportDetailsConverter x:Key="ExportDetailsConverter"/>
+        
+        <Storyboard x:Key="ExpandingStoryboard">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="leftPane" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1050" KeySpline="0.681,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="leftPane" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="leftPane" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="0.1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.7" Value="0.5"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1" KeySpline="0.705,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnExpand" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnContract" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ContractingStoryboard">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="leftPane" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1050" KeySpline="0,0,1,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" KeySpline="0.602,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="leftPane" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="leftPane" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.3" Value="0.5"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" KeySpline="0.705,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnContract" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnExpand" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <DataTemplate x:Key="VerifiedNumberTemplate">
+            <TextBox Text="{Binding VertifiedNo}" Width="130" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,2,0" x:Name="txtLicence" IsEnabled="False"/>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Pending">
+                    <Setter  TargetName="txtLicence" Property="IsEnabled" Value="True"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="VerifiedColumnTemplate">
+            <Button x:Name="btn" Width="32" ToolTip="ثبت این شماره مجوز" IsEnabled="False"
+                    Style="{DynamicResource BlueButtonStyle}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=accessExport,Path=DataContext.VerifiedCommand}" CommandParameter="{Binding}">
+                <Image  Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource CompletedAssetIcon}"/>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Pending">
+                    <Setter TargetName="btn" Property="IsEnabled" Value="True"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="RejectColumnTemplate">
+            <Button x:Name="btn1" Width="32" ToolTip="عودت این ارسال" IsEnabled="False"
+                    Style="{DynamicResource BlueButtonStyle}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=accessExport,Path=DataContext.RejectCommand}" CommandParameter="{Binding}">
+                <Image  Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource DeleteIcon}"/>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Pending">
+                    <Setter TargetName="btn1" Property="IsEnabled" Value="True"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="DetailsColumnTemplate">
+            <Button x:Name="btn" Width="32" ToolTip="اموال"
+                    Style="{DynamicResource BlueButtonStyle}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=accessExport,Path=DataContext.ExportDetailsCommand}" CommandParameter="{Binding}">
+                <Image  Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource DetailNewIcon}"/>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ExportDescriptionColumnTemplate">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Description}" ToolTip="{Binding Description}" FontSize="9"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="AccessRowColumnTemplate">
+            <Button x:Name="btn" Width="32" ToolTip="تولید فایل خروجی با این شماره نامه و جدول"
+                    Style="{DynamicResource BlueButtonStyle}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=accessExport,Path=DataContext.RowExportCommand}" CommandParameter="{Binding}">
+                <Image  Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource msAccess}"/>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AccessFileShowTemplate">
+            <Button x:Name="btn" Width="32" ToolTip="نمایش جدول خروجی"
+                    Style="{DynamicResource BlueButtonStyle}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=accessExport,Path=DataContext.AccessOpenCommand}" CommandParameter="{Binding}">
+                <Image  Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource tableViewIcon}"/>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0"  RenderTransformOrigin="0.5,0.5">
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="شماره نامه:"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Grid.Column="1" Text="{Binding LetterNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Margin="5,0,5,0"/>
+                <RadioButton GroupName="rbFolder" Style="{StaticResource CompletedRadioButton}" Content="انتخاب مسیر جدید" Margin="5,0,5,0" Grid.Column="2" IsChecked="{Binding IsNewFolder}"/>
+                <RadioButton GroupName="rbFolder" Style="{StaticResource CompletedRadioButton}" Content="انتخاب فایل موجود" Margin="5,0,5,0" Grid.Column="3"/>
+                <Button Grid.Column="4" Style="{StaticResource FlatButtonStyleTit}" Background="#FF1FAEFF" Content="انتخاب مسیر" Width="80" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Margin="5,0,5,0" Height="26" Command="{Binding AccessFilePathCommand}"/>
+                <TextBlock Text="{Binding AccessFilePath}" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0"  RenderTransformOrigin="0.5,0.5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="145"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="نام جدول خروجی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <RadioButton Click="rbUnconsum_Click" x:Name="rbUnconsum" Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" IsChecked="{Binding IsArrival}" Grid.Column="1" Content="اموال غیر مصرفی"/>
+                <RadioButton Click="rbUnconsum_Click" x:Name="rbIncommodity" Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" IsChecked="{Binding IsArrivalHokm}" Grid.Column="2" Content="اموال درحکم مصرف"/>
+                <RadioButton Click="rbUnconsum_Click" x:Name="rbTransmitIn" Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" IsChecked="{Binding IsTransmitIn}" Grid.Column="3" Content="صورت حساب رسیده"/>
+                <RadioButton Click="rbTransmitOut_Click" x:Name="rbPerm" Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" IsChecked="{Binding IsPerm}" Grid.Column="4" Content="درخواست مجوز"/>
+                <RadioButton Click="rbTransmitOut_Click" x:Name="rbTransmitOut" Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" IsChecked="{Binding IsTransmitOut}" Grid.Column="5" Content="صورت حساب فرستاده"/>
+                <RadioButton Click="rbTransmitOut_Click" x:Name="rbPermEdit" Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" IsChecked="{Binding IsPermEdit}" Grid.Column="6" Content="مجوز ویرایش مال"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0" CornerRadius="2"  RenderTransformOrigin="0.5,0.5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Margin="5" Grid.Row="0" Style="{DynamicResource BorderStyle}" CornerRadius="0" BorderThickness="0,0,0,1">
+                    <Grid>
+                        <UCA:MAssetExportUC x:Name="mAssetExportpane" Margin="0,5,0,5"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="leftPane" Style="{DynamicResource BorderStyle}" CornerRadius="2" BorderThickness="0,0,1,0" Grid.Column="0" Width="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock HorizontalAlignment="Right" Margin="5,0,5,0" Width="Auto" Text="جستجو:" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <UC:FilterTextUserControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Width="190"  x:Name="FilterTextBox"  VerticalAlignment="Center"/>
+                            </Grid>
+                            <C:SortableListView  Grid.Column="1" Grid.Row="1" x:Name="exportDetailsGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ExportDetailsCollection}" SelectedItem="{Binding SelectedExport}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                                <C:SortableListView.View >
+                                    <GridView AllowsColumnReorder="False">
+                                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="40" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <C:SortListViewColumn Header="شماره نامه" DisplayMemberBinding="{Binding Path=FileNo}" SortProperty="FileNo" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <C:SortListViewColumn Header="نام جدول خروجی" DisplayMemberBinding="{Binding Path=TbName}" SortProperty="TbName" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <C:SortListViewColumn Header="تاریخ" DisplayMemberBinding="{Binding InsertDate,Converter={StaticResource PersianDateConverter}}" SortProperty="InsertDate" Width="80" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <C:SortListViewColumn Header="وضعیت" DisplayMemberBinding="{Binding State}" SortProperty="State" Width="90" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <C:SortListViewColumn Header="شماره مجوز" CellTemplate="{StaticResource VerifiedNumberTemplate}" Width="110" SortProperty="VertifiedNo" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Converter={StaticResource ExportDetailsConverter}}" SortProperty="MAssets.Count" Width="50" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <GridViewColumn Header="توضیحات" CellTemplate="{StaticResource ExportDescriptionColumnTemplate}" Width="240" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <GridViewColumn CellTemplate="{StaticResource VerifiedColumnTemplate}" Width="42" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <GridViewColumn CellTemplate="{StaticResource RejectColumnTemplate}" Width="42" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <GridViewColumn CellTemplate="{StaticResource AccessRowColumnTemplate}" Width="42" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <GridViewColumn CellTemplate="{StaticResource DetailsColumnTemplate}" Width="42" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <GridViewColumn CellTemplate="{StaticResource AccessFileShowTemplate}" Width="42" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                                    </GridView>
+                                </C:SortableListView.View>
+                            </C:SortableListView>
+                        </Grid>
+                    </Border>
+                    <Border Style="{DynamicResource BorderStyle}" CornerRadius="2" BorderThickness="1,0,0,0" Grid.Column="2">
+                        <Grid>
+                            <UCA:TransmitOutExportUC x:Name="transmitOutPane" Visibility="{Binding ElementName=rbTransmitOut,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            <UCA:PermExportUC x:Name="permPane" Visibility="{Binding ElementName=rbPerm,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            <UCA:PermEditUC x:Name="permEditPane" Visibility="{Binding ElementName=rbPermEdit,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Column="1">
+                        <Button Click="btnExpand_Click"  FontSize="14" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="10" Height="50" FlowDirection="LeftToRight" x:Name="btnExpand" Content="&lt;"/>
+                        <Button Click="btnContract_Click" FontSize="14" Content="&gt;" FlowDirection="LeftToRight" x:Name="btnContract" VerticalAlignment="Center" HorizontalAlignment="Center" Width="10" Height="50" Visibility="Hidden" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" CornerRadius="0"  RenderTransformOrigin="0.5,0.5">
+            <Grid>
+                <Button Grid.Row="1" Style="{StaticResource FlatButtonStyleTit}" Background="#FF1FAEFF" Content="تایید" Width="90" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Margin="20,0,15,0" Height="26" Command="{Binding ConfirmCommand}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

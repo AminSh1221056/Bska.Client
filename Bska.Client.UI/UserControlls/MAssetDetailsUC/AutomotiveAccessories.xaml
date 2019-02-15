@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.MAssetDetailsUC.AutomotiveAccessories"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common" xmlns:masking="clr-namespace:Bska.Client.UI.API"
+             xmlns:C="clr-namespace:Bska.Client.UI.Controls">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Style="{StaticResource BorderStyle}" CornerRadius="0" Margin="2" BorderThickness="0,0,0,1" x:Name="borderTop">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="کشور سازنده:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="کارخانه سازنده:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="1" Text="نوع وسیله نقلیه:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="مشخصات اصلی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="VIN:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="2" Text="سوخت:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                
+                <TextBlock Grid.Column="4" Grid.Row="0" Text="سال ساخت:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="4" Grid.Row="1" Text="تیپ:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="5" Grid.Row="0" Text="{Binding BuildYear}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="5" Grid.Row="1" Text="{Binding Tip}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                
+                <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                          Margin="5,0,5,0" Width="160" ItemsSource="{Binding  Countries}" DisplayMemberPath="CountryName"  SelectedItem="{Binding CountryItem,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+                <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"
+                          Margin="5,0,5,0" Width="160"  SelectedItem="{Binding SelectedCompany,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" ItemsSource="{Binding Companies}" DisplayMemberPath="Name"/>
+                <C:AutoFilteredComboBox Style="{StaticResource CarDetailsComboBoxStyle}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                          Margin="5,0,5,0" Width="160"  ItemsSource="{Binding CarDetailsList}"
+                          DisplayMemberPath="SystemType" SelectedItem="{Binding CarDetails,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" IsEditable="True" TextSearch.TextPath="SystemType" IsTextSearchEnabled="False"/>
+            
+                <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"
+                          Margin="5,0,5,0" Width="160" DisplayMemberPath="Description" ItemsSource="{Binding Source={masking:Enumeration {x:Type local:CarType}}}" SelectedValue="{Binding CarTypeItem}" SelectedValuePath="Value"/>
+            
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120" Grid.Column="1" Grid.Row="2" Text="{Binding VIN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+                <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Height="19" Width="130"
+                  Grid.Column="3" Grid.Row="2" SelectedValuePath="Tag" SelectedValue="{Binding Fuel}">
+                    <ComboBoxItem Name="Fuel1" Tag="بنزین">بنزین</ComboBoxItem>
+                    <ComboBoxItem Name="Fuel2" Tag="گازوئیل">گازوئیل</ComboBoxItem>
+                    <ComboBoxItem Name="Fuel3" Tag="گاز مایع (LPG)">گاز مایع (LPG)</ComboBoxItem>
+                    <ComboBoxItem x:Name="Fuel4" Tag="گاز طبیعی(CNG)">گاز طبیعی(CNG)</ComboBoxItem>
+                    <ComboBoxItem x:Name="Fuel5" Tag="متانول">متانول</ComboBoxItem>
+                    <ComboBoxItem x:Name="Fuel6" Tag="اتانول">اتانول</ComboBoxItem>
+                    <ComboBoxItem x:Name="Fuel7" Tag="بیو دیزل">بیو دیزل</ComboBoxItem>
+                    <ComboBoxItem x:Name="Fuel8" Tag="هیدروژن">هیدروژن</ComboBoxItem>
+                    <ComboBoxItem x:Name="Fuel9" Tag="دی متیل اتر">دی متیل اتر</ComboBoxItem>
+                    <ComboBoxItem x:Name="Fuel10" Tag="هیبریدی">هیبریدی</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="شماره موتور:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="2" Grid.Row="0" Text="شماره شاسی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="ظرفیت-نفر/تن:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <TextBlock FontSize="10" Grid.Column="2" Grid.Row="1" Text="شماره کمیسیون ماده 2:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="رنگ اصلی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="2" Grid.Row="2" Text="پلاک-شماره/نوع:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
+
+            <TextBox Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding MotorNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+            <TextBox Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding ChassisNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding Capacity}"/>
+            <TextBox IsEnabled="{Binding VINEnabled}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding CommissionNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding Color}"/>
+           
+            <TextBox Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding Plaque,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+        </Grid>
+    </Grid>
+</UserControl>

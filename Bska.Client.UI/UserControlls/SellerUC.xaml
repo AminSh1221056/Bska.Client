@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.SellerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:conv="clr-namespace:Bska.Client.UI.Converters" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+             x:Name="sellerUC" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+    <UserControl.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
+        <DataTemplate x:Key="DeleteColumnTemplate">
+            <Button ToolTip="حذف" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=sellerUC,Path=DataContext.DeleteCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource appbar_delete}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DetailsColumnTemplate">
+            <Button ToolTip="فعالیت های اقتصادی" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=sellerUC,Path=DataContext.DetailsCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-currency}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع فروشنده:"/>
+            <RadioButton x:Name="rbRealSeller" Style="{StaticResource CompletedRadioButton}" Grid.Column="1" Content="حقیقی" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding IsRealSeller}"/>
+            <RadioButton x:Name="rbLegalSeller" Style="{StaticResource CompletedRadioButton}" Grid.Column="2" Content="حقوقی" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <riboon:GlobalToolbar Grid.Column="3" x:Name="globalToolPnae"/>
+            <riboon:HelpToolbar Grid.Column="4" x:Name="helpToolPane"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="550"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,1" Grid.Row="1"
+                Visibility="{Binding ElementName=rbRealSeller,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid DataContext="{Binding SellerDetailsVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Text="نام:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Text="نام خانوادگی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Text="کد ملی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" Text="موبایل:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4" Text="آدرس:"/>
+
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Text="تلفن:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Text="نام فروشگاه:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" Text="کد اقتصادی:"/>
+
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="0" Width="160" Text="{Binding Name}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="1" Width="160" Text="{Binding Lastname}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" Width="160" Text="{Binding Coding}" MaxLength="10"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="3" Width="120" Text="{Binding Mobile}" MaxLength="12"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="4" Width="450" Text="{Binding AddressLine}" Grid.ColumnSpan="3"/>
+
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Grid.Row="0" Width="120" Text="{Binding Tell}" MaxLength="12"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Grid.Row="1" Width="160" Text="{Binding MiddleName}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Grid.Row="2" Width="120" Text="{Binding Coding}"/>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,1" Grid.Row="1"
+                Visibility="{Binding ElementName=rbLegalSeller,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid DataContext="{Binding SellerDetailsVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Text="نام شرکت:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Text="شناسه ملی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Text="کد اقتصادی:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" Text="تلفن:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4" Text="آدرس:"/>
+
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Text="نام نماینده:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Text="موبایل نماینده:"/>
+
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="0" Width="160" Text="{Binding Name}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="1" Width="160" Text="{Binding NationalCode}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" Width="160" Text="{Binding Coding}" MaxLength="10"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="3" Width="120" Text="{Binding Tell}" MaxLength="12"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="4" Width="450" Text="{Binding AddressLine}" Grid.ColumnSpan="3"/>
+
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Grid.Row="0" Width="120" Text="{Binding Lastname}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Grid.Row="1" Width="160" Text="{Binding Mobile}" MaxLength="12"/>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource BorderStyle}" Margin="0" CornerRadius="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1,1,0,1" Grid.Row="1"
+                    Grid.Column="1">
+                <Grid DataContext="{Binding SellerDetailsVM,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Text="استان:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Text="شهرستان:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Text="بخش:"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" Text="شهر:"/>
+
+                    <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="0" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding Provinces}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedProvince,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                    <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="1" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding TwonShips}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedTwonShip,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                    <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="2" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding Zones}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedZone,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                    <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="180" Grid.Row="3" Grid.Column="1" Style="{StaticResource BeskaComboBoxStyle}"
+                          ItemsSource="{Binding Cities}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SelectedCity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <C:SortableListView x:Name="orderDetailsGridView" Margin="2" Height="Auto" Grid.Row="1"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding Selected}" ItemsSource="{Binding FilteredView}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                <C:SortableListView.View>
+                    <GridView AllowsColumnReorder="False" >
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="40" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نام" DisplayMemberBinding="{Binding Path=FullName}" SortProperty="FullName" Width="180" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نوع" DisplayMemberBinding="{Binding Path=Type}" SortProperty="Type" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تلفن" DisplayMemberBinding="{Binding Path=Tell,TargetNullValue=[خالی]}" SortProperty="Tell" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="کد" DisplayMemberBinding="{Binding Path=Coding}" SortProperty="NationalCode" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource DetailsColumnTemplate}" Header="" Width="55" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource DeleteColumnTemplate}" Header="" Width="55" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                    </GridView>
+                </C:SortableListView.View>
+            </C:SortableListView>
+        </Grid>
+    </Grid>
+</UserControl>

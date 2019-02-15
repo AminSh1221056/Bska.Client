@@ -1,0 +1,348 @@
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+C:\Users\Administrator\Desktop\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\bska.client all projects\تغییرات وزارت دارایی\تا جلسه چهارم\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+C:\Users\HP0\Desktop\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+E:\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+E:\Beska solution\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+E:\Beska solution\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+E:\Beska solution\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+E:\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+E:\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+F:\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\client new\New folder\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+D:\projects\flow projects\Beska solution\client new\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll.config
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\Client New\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll.config
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll.config
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll.config
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll.config
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csproj.CoreCompileInputs.cache
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+D:\projects\flow projects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll.config
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll.config
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll.config
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\123\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll.config
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Repository.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.API.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Common.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\Bska.Client.Domain.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.xml
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\bin\Debug\LinqKit.dll.config
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csprojResolveAssemblyReference.cache
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.csproj.CoreCompileInputs.cache
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.dll
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Repository\obj\Debug\Bska.Client.Repository.pdb

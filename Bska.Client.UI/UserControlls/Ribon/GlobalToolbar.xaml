@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.Ribon.GlobalToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Background="Transparent"
+             xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" Margin="0" Padding="0" CornerRadius="0" BorderBrush="{StaticResource BorderBrush}" 
+                Style="{StaticResource BorderStyle}" BorderThickness="0,0,0,0">
+            <Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" x:Name="gridMainBtn">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="newbtn" ToolTip="جدید" Width="70" Grid.Column="0" Margin="5,0,5,0"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding NewCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="(F4)جدید"/>
+                                    <ContentControl Style="{StaticResource appbar_new}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="editbtn" ToolTip="ویرایش" Width="80" Grid.Column="1" Margin="5,0,5,0"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding EditCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="(F2)ویرایش"/>
+                                    <ContentControl Style="{StaticResource appbar_edit}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="savebtn" Width="70" Grid.Column="2" Margin="5,0,5,0" ToolTip="ثبت"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding SaveCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="(F3)ثبت"/>
+                                    <ContentControl Style="{StaticResource appbar_save}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="deletebtn" Width="70" Grid.Column="3" Margin="5,0,5,0" ToolTip="حذف"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding DeleteCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="(F8)حذف"/>
+                                    <ContentControl Style="{StaticResource appbar_delete}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="cancelbtn" Width="90" Grid.Column="4" Margin="5,0,5,0" ToolTip="انصراف"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding CancelCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="(F10)انصراف"/>
+                                    <ContentControl Style="{StaticResource appbar_cancel}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="1" x:Name="gridToolsbtn">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="filterbtn" ToolTip="فیلتر" Width="70" Grid.Column="0" Margin="5,0,5,0"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding SearchCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="(F6)فیلتر"/>
+                                    <ContentControl Style="{StaticResource appbar_filter}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+
+                        <Button x:Name="reportbtn" ToolTip="چاپ" Width="70" Grid.Column="1" Margin="5,0,5,0"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ReportCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="(F7)چاپ"/>
+                                    <ContentControl Style="{StaticResource appbar_report}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    
+                    <Grid Grid.Column="2" x:Name="gridsearchbtn">
+                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0" Width="Auto" Text="جستجو:" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                        <UC:FilterTextUserControl TabIndex="-1" HorizontalAlignment="Left" Margin="45,0,0,0" Width="170"  x:Name="FilterTextBox"  VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
