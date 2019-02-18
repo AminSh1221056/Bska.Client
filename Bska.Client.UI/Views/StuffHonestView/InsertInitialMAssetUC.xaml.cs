@@ -34,7 +34,6 @@ namespace Bska.Client.UI.Views.StuffHonestView
 
             this.initMassetView.Visibility = Visibility.Collapsed;
             FoldersShow.DataContext = folders;
-            this.FoldersShow.m_listbox.SelectedIndex = 0;
         }
 
         private void FoldersShow_ComboColorOrganizChanged(object sender, RoutedEventArgs e)
@@ -48,10 +47,12 @@ namespace Bska.Client.UI.Views.StuffHonestView
                 {
                     case 1:
                         var viewModel = new InitialMAssetViewModel(_container) { Num = 0, IsInStore = false };
+                        viewModel.Window = Window.GetWindow(this);
                         this.initMassetView.DataContext = viewModel;
                         break;
                     case 2:
                         var viewModel1 = new InitialMAssetViewModel(_container) { Num = 0, IsInStore = true };
+                        viewModel1.Window = Window.GetWindow(this);
                         this.initMassetView.DataContext = viewModel1;
                         break;
                 }

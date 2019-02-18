@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Bska.Client.UI.Views.StuffHonestView.ExternalOrderManagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bska.Client.UI.Views.StuffHonestView"
+      mc:Ignorable="d" FontFamily="{StaticResource PrimaryFontFamily}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+    FlowDirection="RightToLeft" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC">
+    <UserControl.Resources>
+        <Conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <Storyboard x:Key="StoryboardEntrance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.095"/>
+                <SplineDoubleKeyFrame KeySpline="1,0,0.512,1" KeyTime="00:00:00.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding ShowExOrderWindowCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border FlowDirection="RightToLeft" Grid.Row="0"   BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="230"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="230"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام سازمان بالا دستی:" />
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Text="{Binding Customer.ParentName}"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام سازمان:" Grid.Column="2"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="3" Text="{Binding Customer.Name}"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="کد شناسایی:" Grid.Column="4"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="5" Text="{Binding IdentificationCode}"/>
+            </Grid>
+        </Border>
+        <Border FlowDirection="RightToLeft" Grid.Row="1"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="230"/>
+                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,5,0" Text="{Binding IdentityInfo}" Grid.Column="0"/>
+                <RadioButton x:Name="rbShowRecivedOrder" Style="{StaticResource CompletedRadioButton}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Content="نمایش درخواست های ارسالی به شما" IsChecked="{Binding RecivedExOrderShow}"/>
+                <RadioButton x:Name="rbShow" Style="{StaticResource CompletedRadioButton}" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Content="نمایش درخواست های ثبت شده" IsChecked="{Binding AllOrderShow}"/>
+                <Button Width="35" Grid.Column="3" Margin="5,0,5,0" ToolTip="ثبت درخواست خارجی"
+                    Style="{DynamicResource CustomTitButton}" HorizontalAlignment="Right" FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ShowExOrderWindowCommand}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="F3"/>
+                            <ContentControl Style="{StaticResource app-add}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="2">
+            <UCO:ExternalOrderListUC x:Name="exListPane" Visibility="{Binding ElementName=rbShow,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <UCO:RecivedExternalOrderLstUC x:Name="recivedOrderPane" Visibility="{Binding ElementName=rbShowRecivedOrder,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}"/>
+        </Grid>
+    </Grid>
+</UserControl>

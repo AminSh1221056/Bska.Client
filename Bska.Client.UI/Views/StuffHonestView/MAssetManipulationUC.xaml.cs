@@ -35,7 +35,6 @@ namespace Bska.Client.UI.Views.StuffHonestView
             folders.Add(new Tuple<int, string, Color>(3, "بررسی اموال(Ctrl+F)", BOT.ParseHexColor("#FF1FAEFF")));
 
             FoldersShow.DataContext = folders;
-            this.FoldersShow.m_listbox.SelectedIndex = 0;
             this.MAssetPane.Visibility = Visibility.Collapsed;
             this.organAssetPane.Visibility = Visibility.Collapsed;
             this.stuffInformationPane.Visibility = Visibility.Collapsed;
@@ -55,6 +54,7 @@ namespace Bska.Client.UI.Views.StuffHonestView
                         stuffInformationPane.Visibility = Visibility.Collapsed;
                         
                         var viewModel = new OrganMovabelAssetHistoryViewModel(_container);
+                        viewModel.Window = Window.GetWindow(this);
                         organAssetPane.DataContext = viewModel;
                         break;
                     case 2:
@@ -63,6 +63,7 @@ namespace Bska.Client.UI.Views.StuffHonestView
                         stuffInformationPane.Visibility = Visibility.Collapsed;
 
                         var massetViewModel = new MAssetManageViewModel(_container);
+                        massetViewModel.Window = Window.GetWindow(this);
                         this.MAssetPane.DataContext = massetViewModel;
                         break;
                     case 3:

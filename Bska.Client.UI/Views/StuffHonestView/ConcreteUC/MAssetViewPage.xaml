@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="Bska.Client.UI.Views.StuffHonestView.MAssetViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" x:Name="mAssetViewpage" FontFamily="{StaticResource PrimaryFontFamily}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+      xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+      FlowDirection="RightToLeft"  xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
+      xmlns:toolbar="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
+       xmlns:treeFilter="clr-namespace:Bska.Client.UI.Controls.CustomGridView"
+      xmlns:masking="clr-namespace:Bska.Client.UI.API"
+             xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common">
+    <UserControl.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:DateConverter x:Key="DateConverter"/>
+        <Conv:LocationViewVisibilityConverter x:Key="LocationViewVisibilityConverter"/>
+        <Conv:ReverseBooleanConverter x:Key="ReverseBooleanConverter"/>
+        <Conv:StoreBillTypeConverter x:Key="StoreBillTypeConverter"/>
+        
+        <DataTemplate x:Key="ShowDetailsColumnTemplate">
+            <Button Width="32" Style="{DynamicResource CustomTitButton}" Height="23" IsEnabled="{Binding ElementName=chgroping,Path=IsChecked,Converter={StaticResource ReverseBooleanConverter}}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  Command="{Binding ElementName=mAssetViewpage,Path=DataContext.EditCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="120" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=mAssetViewpage,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F6" Command="{Binding SearchCommand}"/>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+        <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نوع مال:"/>
+                <UC:MultiSelectComboBox Grid.Column="1" Width="180" Height="22" Margin="5,0,5,0"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                 ItemsSource="{Binding StuffTypes}" SelectedItems="{Binding SelectedStuffType}"/>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <toolbar:GlobalToolbar x:Name="globalToolPane"/>
+                    <toolbar:HelpToolbar Grid.Column="1" HorizontalAlignment="Left" x:Name="helpToolPane"/>
+                </Grid>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{StaticResource BorderStyle}" CornerRadius="0" Margin="0" BorderThickness="0,0,1,0">
+                <UC:BuildingMAssetViewUC Foreground="#000" OrganizTreeClick="BuildingMAssetViewUC_OrganizTreeClick" StrategyTreeClick="BuildingMAssetViewUC_StrategyTreeClick"/>
+            </Border>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="chgroping" IsChecked="{Binding ChGroupView}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,5,0" Content="نمایش گروهی بر اساس نام و واحد مال" Style="{StaticResource CompletedCheckBox}" />
+                <TextBlock Margin="5,0,15,0" Text="{Binding ElementName=myGrid1,Path=Items.Count,StringFormat={}تعداد: {0}}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                <Border Grid.Row="1" Style="{StaticResource BorderStyle}" CornerRadius="0" Margin="0" BorderThickness="0,1,0,0">
+                    <Grid Grid.Column="1">
+                        <DataGrid Grid.Row="1" AlternationCount="2"
+                     treeFilter:DataGridExtensions.UseBackgroundWorkerForFiltering="True"
+                       treeFilter:DataGridExtensions.IsClearButtonVisible="True"
+                      IsReadOnly="True"
+                       treeFilter:DataGridExtensions.IsFilterVisible="True"
+                    ColumnHeaderStyle="{StaticResource DataGridHeaderFilterControlStyle}" AutoGenerateColumns="False"
+                        ItemsSource="{Binding Path=Collection}" SelectedItem="{Binding Selected}" 
+                        Name="myGrid1">
+                            <DataGrid.Columns>
+                                <!--<DataGridTextColumn Header="ردیف" Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}},Converter={StaticResource IndexConverter}}"
+                                            treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>-->
+                                <DataGridTextColumn
+                                    Header="کد کالا" Binding="{Binding Path=KalaNo}" Width="110"/>
+                                <DataGridTextColumn
+                                    Header="نام مال" Binding="{Binding Path=Name}" Width="180"
+                            treeFilter:DataGridColumnExtensions.IsBetweenStringFilterControl="True"/>
+
+                                <DataGridTextColumn Header="تاریخ ثبت" Binding="{Binding PersianInsertDate}"
+                                            treeFilter:DataGridColumnExtensions.IsBetweenFilterControl="True"/>
+                                <DataGridTextColumn
+                                    Header="نوع مال" Binding="{Binding Path=MAssetType}" Width="130" 
+                                    treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+                                <DataGridComboBoxColumn
+                            ItemsSource="{Binding Source={masking:Enumeration {x:Type local:StateOwnership}}}" DisplayMemberPath="Description" 
+                             SelectedValuePath="Value"
+                                    Header="نوع قبض انبار" SelectedValueBinding="{Binding AcqType}" Width="130" />
+
+                                <DataGridTextColumn Binding="{Binding Path=Label,TargetNullValue=[خالی]}"
+                                    Header="برچسب" Width="80" />
+
+                                <DataGridTextColumn
+                                    Header="تعداد" Binding="{Binding Path=Num}" Width="80" />
+
+                                <DataGridTemplateColumn CellTemplate="{StaticResource UnitColumnTemplate}"
+                                                Header="واحد" Width="120" treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>
+
+                                <DataGridTemplateColumn Width="50" CellTemplate="{StaticResource ShowDetailsColumnTemplate}" 
+                                                treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>
+                            </DataGrid.Columns>
+                            <!--<DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Style.Triggers>
+                                        <Trigger Property="AlternationIndex" Value="0">
+                                            <Setter Property="Background" Value="White" />
+                                        </Trigger>
+                                        <Trigger Property="AlternationIndex" Value="1">
+                                            <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>-->
+                            <DataGrid.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick"
+                                      Command="{Binding Path=DoubleClickListViewItemCommand}"
+                  CommandParameter="{Binding ElementName=myGrid1, Path=SelectedItem}"/>
+                            </DataGrid.InputBindings>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -98,6 +98,19 @@ namespace Bska.Client.UI
                 else if (model.Key.Equals("A2", StringComparison.Ordinal))
                 {
                     var page = new MAssetManipulationUC(_container);
+                    page.FoldersShow.m_listbox.SelectedIndex = 0;
+                    model.Content = page;
+                }
+                else if (model.Key.Equals("A3", StringComparison.Ordinal))
+                {
+                    var page = new OrderManipulationUC(_container);
+                    page.FoldersShow.m_listbox.SelectedIndex = 0;
+                    model.Content = page;
+                }
+                else if (model.Key.Equals("A4", StringComparison.Ordinal))
+                {
+                    var page = new ProcedingManipulationUC(_container);
+                    page.FoldersShow.m_listbox.SelectedIndex = 0;
                     model.Content = page;
                 }
             }
@@ -122,6 +135,8 @@ namespace Bska.Client.UI
                         lstItems.Add(new DemoItem("ثبت موجودی اولیه", "A1", null, null));
                     }
                     lstItems.Add(new DemoItem("اموال", "A2", null, null));
+                    lstItems.Add(new DemoItem("درخواست ها", "A3", null, null));
+                    lstItems.Add(new DemoItem("صورت جلسات", "A4", null, null));
                 }
 
                 this.DemoItemsListBox.ItemsSource = lstItems;

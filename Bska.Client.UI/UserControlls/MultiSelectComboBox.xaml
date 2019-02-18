@@ -12,7 +12,7 @@
                            >
         <ComboBox.ItemTemplate>
             <DataTemplate>
-                <CheckBox Content="{Binding Title}"
+                <CheckBox Content="{Binding Title}" Foreground="{DynamicResource PrimaryHueMidBrush}"
                           IsChecked="{Binding Path=IsSelected, Mode=TwoWay}"
                           Tag="{RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}"
                            Click="CheckBox_Click"/>

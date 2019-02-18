@@ -125,7 +125,6 @@ namespace Bska.Client.UI
             container.RegisterType<DisplacementIndentWindow>();
             container.RegisterType<StoreIndentConfirmWindow>();
             container.RegisterType<MunitionMainWindow>();
-            container.RegisterType<AddProceddingWindow>();
             container.RegisterType<GeneralManagerWindow>();
             container.RegisterType<PersonDetailsWindow>();
             container.RegisterType<DataUpdateWindow>();

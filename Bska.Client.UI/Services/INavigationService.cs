@@ -18,7 +18,6 @@ namespace Bska.Client.UI.Services
         Window ShowSuggestWindow(object viewModel);
         Window ShowDisplacementIndentWindow(object viewModel);
         Window ShowStoreIndentConfirmWindow(object viewModel);
-        Window ShowAddProceedingWindow(object viewModel);
         Window ShowPersonDetailsWindow(object viewModel);
         Window ShowDocumentShowWindow(object viewModel);
         Window ShowOrderHistoryWindow(object viewModel);

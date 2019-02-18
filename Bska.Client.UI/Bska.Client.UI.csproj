@@ -1191,28 +1191,31 @@
     <Compile Include="Views\StuffConfigWindow.xaml.cs">
       <DependentUpon>StuffConfigWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\AddExternalOrderWindow.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\AddProceddingUC.xaml.cs">
+      <DependentUpon>AddProceddingUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StuffHonestView\ProcedingManipulationUC.xaml.cs">
+      <DependentUpon>ProcedingManipulationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StuffHonestView\Windows\AddExternalOrderWindow.xaml.cs">
       <DependentUpon>AddExternalOrderWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\AddProceddingWindow.xaml.cs">
-      <DependentUpon>AddProceddingWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StuffHonestView\DisplacementIndentWindow.xaml.cs">
+    <Compile Include="Views\StuffHonestView\Windows\DisplacementIndentWindow.xaml.cs">
       <DependentUpon>DisplacementIndentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\DocumentPage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\DocumentPage.xaml.cs">
       <DependentUpon>DocumentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\ExternalOrderDetailsWindow.xaml.cs">
+    <Compile Include="Views\StuffHonestView\Windows\ExternalOrderDetailsWindow.xaml.cs">
       <DependentUpon>ExternalOrderDetailsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\ExternalOrderManagePage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\ExternalOrderManagePage.xaml.cs">
       <DependentUpon>ExternalOrderManagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\IndentWindow.xaml.cs">
+    <Compile Include="Views\StuffHonestView\Windows\IndentWindow.xaml.cs">
       <DependentUpon>IndentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\InitialMAsset.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\InitialMAsset.xaml.cs">
       <DependentUpon>InitialMAsset.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StuffHonestView\InsertInitialMAssetUC.xaml.cs">
@@ -1221,28 +1224,31 @@
     <Compile Include="Views\StuffHonestView\MAssetManipulationUC.xaml.cs">
       <DependentUpon>MAssetManipulationUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\MAssetViewPage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\MAssetViewPage.xaml.cs">
       <DependentUpon>MAssetViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\OldLabelEditWindow.xaml.cs">
+    <Compile Include="Views\StuffHonestView\Windows\OldLabelEditWindow.xaml.cs">
       <DependentUpon>OldLabelEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\OrderManagePage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\OrderManagePage.xaml.cs">
       <DependentUpon>OrderManagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\OrganMovableAssetHistoryPage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\OrderManipulationUC.xaml.cs">
+      <DependentUpon>OrderManipulationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StuffHonestView\ConcreteUC\OrganMovableAssetHistoryPage.xaml.cs">
       <DependentUpon>OrganMovableAssetHistoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\ProceedingPage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\ProceedingPage.xaml.cs">
       <DependentUpon>ProceedingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\StuffInformationPage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\StuffInformationPage.xaml.cs">
       <DependentUpon>StuffInformationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OrderView\SuggestViewWindow.xaml.cs">
       <DependentUpon>SuggestViewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StuffHonestView\UploadArrivallPage.xaml.cs">
+    <Compile Include="Views\StuffHonestView\ConcreteUC\UploadArrivallPage.xaml.cs">
       <DependentUpon>UploadArrivallPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SupplierDetailsWindow.xaml.cs">
@@ -2349,35 +2355,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\AddExternalOrderWindow.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\AddProceddingUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\AddProceddingWindow.xaml">
+    <Page Include="Views\StuffHonestView\ProcedingManipulationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\DisplacementIndentWindow.xaml">
+    <Page Include="Views\StuffHonestView\Windows\AddExternalOrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\DocumentPage.xaml">
+    <Page Include="Views\StuffHonestView\Windows\DisplacementIndentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\ExternalOrderDetailsWindow.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\DocumentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\ExternalOrderManagePage.xaml">
+    <Page Include="Views\StuffHonestView\Windows\ExternalOrderDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\IndentWindow.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\ExternalOrderManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\InitialMAsset.xaml">
+    <Page Include="Views\StuffHonestView\Windows\IndentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StuffHonestView\ConcreteUC\InitialMAsset.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2389,27 +2399,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\MAssetViewPage.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\MAssetViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\OldLabelEditWindow.xaml">
+    <Page Include="Views\StuffHonestView\Windows\OldLabelEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\OrderManagePage.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\OrderManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\OrganMovableAssetHistoryPage.xaml">
+    <Page Include="Views\StuffHonestView\OrderManipulationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\ProceedingPage.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\OrganMovableAssetHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\StuffInformationPage.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\ProceedingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StuffHonestView\ConcreteUC\StuffInformationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2417,7 +2431,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StuffHonestView\UploadArrivallPage.xaml">
+    <Page Include="Views\StuffHonestView\ConcreteUC\UploadArrivallPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

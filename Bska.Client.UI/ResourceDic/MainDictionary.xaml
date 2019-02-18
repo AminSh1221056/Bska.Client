@@ -1674,7 +1674,7 @@
 
     <!-- Repeat Button Style - This is used by ScrollBar for the up and down buttons -->
     <Style x:Key="RepeatButtonStyle" TargetType="{x:Type RepeatButton}" BasedOn="{x:Null}">
-        <Setter Property="Background" Value="{DynamicResource NormalBrush}" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -1708,7 +1708,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Grid Margin="0,0,0,0" x:Name="Grid">
-                        <Rectangle HorizontalAlignment="Stretch" x:Name="Rectangle" VerticalAlignment="Stretch" Width="Auto" Height="Auto" RadiusX="2" RadiusY="2" Fill="#FF414C6F" Stroke="#FFFFFFFF" />
+                        <Rectangle HorizontalAlignment="Stretch" x:Name="Rectangle" VerticalAlignment="Stretch" Width="Auto" Height="Auto" RadiusX="2" RadiusY="2" Fill="{DynamicResource PrimaryHueMidBrush}" Stroke="#FFFFFFFF" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True" />
@@ -1742,6 +1742,7 @@
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Background" Value="#000" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -2040,7 +2041,7 @@
                             </Border>
                             <Path x:Name="Checkmark" Width="15" Margin="1,-5,-1,5" Data="M0,0.6 L0.4,1 L1,0" Opacity="0" Stretch="Fill" Stroke="Black" StrokeThickness="2.5" />
                         </Grid>
-                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"
                                      Margin="5,0,0,0" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -2095,7 +2096,7 @@
                             </Border>
                             <Path x:Name="Checkmark" Width="11.5" Margin="2,2,2,2" Data="F1 M 6.535156,4.492188 C 6.535156,2.011719 8.546875,0.000000 11.029297,0.000000 C 13.509766,0.000000 15.521484,2.011719 15.521484,4.492188 C 15.521484,6.974609 13.509766,8.986328 11.029297,8.986328 C 8.546875,8.986328 6.535156,6.974609 6.535156,4.492188 Z" Opacity="0" Stretch="Fill" Fill="OrangeRed" StrokeThickness="2.5" />
                         </Grid>
-                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"
                                      Margin="5,0,0,0" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -2138,7 +2139,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
                         <Border x:Name="OuterBorder" Background="White" Height="{TemplateBinding Height}">
-                            <Border x:Name="ContentBorder" Background="#FF164E6E" Margin="0.7"
+                            <Border x:Name="ContentBorder" Background="{DynamicResource PrimaryHueMidBrush}" Margin="0.7"
 									  BorderThickness="{TemplateBinding BorderThickness}">
                                 <TextBlock x:Name="OK_TextBlock" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" HorizontalAlignment="Center" VerticalAlignment="Center"
 											  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
@@ -2770,7 +2771,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border BorderBrush="{DynamicResource PrimaryHueMidBrush}" BorderThickness="1" CornerRadius="4" >
+                    <Border BorderThickness="1" CornerRadius="4" >
                         <ScrollViewer Margin="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <ItemsPresenter Margin="1"></ItemsPresenter>
                         </ScrollViewer>

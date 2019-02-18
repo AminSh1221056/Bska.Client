@@ -125,15 +125,7 @@ namespace Bska.Client.UI.Services
             window.ShowDialog();
             return window;
         }
-
-        public Window ShowAddProceedingWindow(object viewModel)
-        {
-            var window = Container.Resolve<AddProceddingWindow>();
-            window.DataContext = viewModel;
-            window.ShowDialog();
-            return window;
-        }
-
+        
         public Window ShowPersonDetailsWindow(object viewModel)
         {
             var window = Container.Resolve<PersonDetailsWindow>();

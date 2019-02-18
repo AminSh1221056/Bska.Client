@@ -100,7 +100,7 @@ D:\myProjects\Beska solution\Bska On the time\Bska.Client\Bska.Client.Common\obj
 D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\bin\Debug\Bska.Client.Common.dll.config
 D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\bin\Debug\Bska.Client.Common.dll
 D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\bin\Debug\Bska.Client.Common.pdb
+D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\obj\Debug\Bska.Client.Common.csprojResolveAssemblyReference.cache
 D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\obj\Debug\Bska.Client.Common.csproj.CoreCompileInputs.cache
 D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\obj\Debug\Bska.Client.Common.dll
 D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\obj\Debug\Bska.Client.Common.pdb
-D:\myProjects\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.Common\obj\Debug\Bska.Client.Common.csprojResolveAssemblyReference.cache

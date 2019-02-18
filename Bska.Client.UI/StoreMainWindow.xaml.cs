@@ -126,17 +126,17 @@ namespace Bska.Client.UI
                     }
                     else if (menu.Id == "A6")
                     {
-                        page = new Bska.Client.UI.Views.StuffHonestView.DocumentPage("storeBill");
-                        var viewModel = new DocumentManageViewModel(_container, 1);
-                        viewModel.Window = this;
-                        page.DataContext = viewModel;
+                        //page = new Bska.Client.UI.Views.StuffHonestView.DocumentPage("storeBill");
+                        //var viewModel = new DocumentManageViewModel(_container, 1);
+                        //viewModel.Window = this;
+                        //page.DataContext = viewModel;
                     }
                     else if (menu.Id == "A7")
                     {
-                        page = new Bska.Client.UI.Views.StuffHonestView.DocumentPage("documents");
-                        var viewModel = new DocumentManageViewModel(_container, 2);
-                        viewModel.Window = this;
-                        page.DataContext = viewModel;
+                        //page = new Bska.Client.UI.Views.StuffHonestView.DocumentPage("documents");
+                        //var viewModel = new DocumentManageViewModel(_container, 2);
+                        //viewModel.Window = this;
+                        //page.DataContext = viewModel;
 
                     }
                     else if (menu.Id == "A5")

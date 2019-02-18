@@ -208,18 +208,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             ts.Start();
             return ts;
         }
-
-        private async void showAddProceedingWindow()
-        {
-            Mouse.SetCursor(Cursors.Wait);
-            StoryboardManager.PlayStoryboard("StoryboardFadeOut", this.Window);
-            var viewmodel = new AddProceedingViewModel(_container);
-            var window = _navigationService.ShowAddProceedingWindow(viewmodel);
-            await this.getProceedingAsync();
-            StoryboardManager.PlayStoryboard("StoryboardFadeIn", this.Window);
-            Mouse.SetCursor(Cursors.Arrow);
-        }
-
+        
         private async void showProceedingDetails(object parameter)
         {
             var proc = parameter as Proceeding;
@@ -361,7 +350,6 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
 
         public ICommand ProceedingDetailsCommand { get; private set; }
         public ICommand ProceedingMAssetCommand { get; private set; }
-        public ICommand AddProceddingCommand { get; private set; }
         public ICommand RecivedOrderCommand { get; private set; }
         public ICommand ReportCommand { get; private set; }
         public ICommand SearchCommand { get; private set; }
@@ -371,12 +359,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             ProceedingDetailsCommand = new MvvmCommand(
                 (parameter) => { this.showProceedingDetails(parameter); },
                 (parameter) => { return true; });
-
-            AddProceddingCommand = new MvvmCommand(
-                 (parameter) => { this.showAddProceedingWindow(); },
-                (parameter) => { return true; }
-                );
-
+            
             ProceedingMAssetCommand = new MvvmCommand(
                 (parameter) => { this.showProcAssets(parameter); },
                 (parameter) => { return true; }
