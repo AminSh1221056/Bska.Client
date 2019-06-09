@@ -59,15 +59,15 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="13" Width="Auto" Text="جستجو:" TextWrapping="Wrap" VerticalAlignment="Center"/>
-                <Uc:FilterTextUserControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Height="21" Width="200"  x:Name="FilterTextBox"  VerticalAlignment="Center"/>
+                <!--<TextBlock Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="13" Width="Auto" Text="جستجو:" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <Uc:FilterTextUserControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Height="21" Width="200"  x:Name="FilterTextBox"  VerticalAlignment="Center"/>-->
                 <Button Content="{Binding RecivedOrdersCount}" HorizontalAlignment="Right" Grid.Column="4" Margin="0,0,4,0" x:Name="btnRefresh" Style="{DynamicResource RefreshButtonStyle}" ToolTip="Refresh" Width="26" VerticalAlignment="Center" Height="26" Command="{Binding RefreshCommand}">
 
                 </Button>
                 <TextBlock x:Name="txtUserName" Grid.Column="3" HorizontalAlignment="Right" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FontSize="13.5" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding CurrentUserDetails,Mode=TwoWay}"/>
             </Grid>
         </Border>
-        <C:SortableListView Grid.Column="1" Grid.Row="1" x:Name="OrdersGridView" Margin="0,5,0,0" Height="Auto"
+        <!--<C:SortableListView Grid.Column="1" Grid.Row="1" x:Name="OrdersGridView" Margin="0,5,0,0" Height="Auto"
                                    BorderBrush="{x:Null}"  Background="{DynamicResource PrimaryHueMidBrush}"
             ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
             VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" SelectedItem="{Binding Selected,Mode=TwoWay}"
@@ -89,6 +89,6 @@
                     <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
                 </GridView>
             </C:SortableListView.View>
-        </C:SortableListView>
+        </C:SortableListView>-->
     </Grid>
 </UserControl>

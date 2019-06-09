@@ -117,9 +117,9 @@
                                Text="GS1:"/>
 
                     <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
-                             Text="{Binding StuffName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="0"/>
+                             Text="{Binding StuffName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"  Grid.Row="0"/>
                     <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
-                             Text="{Binding StuffCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="1"/>
+                             Text="{Binding StuffCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"  Grid.Row="1"/>
                     <TextBlock HorizontalAlignment="Left" Grid.Column="1" Height="19" Margin="192,0,5,0"
                              Text="{Binding CurrentRightCode}" Grid.Row="1"/>
                     <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"

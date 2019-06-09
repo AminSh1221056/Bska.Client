@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:conv="clr-namespace:Bska.Client.UI.Converters"
              mc:Ignorable="d" xmlns:UCM="clr-namespace:Bska.Client.UI.UserControlls.MetersUC" x:Name="meterUc"
-             xmlns:Behaviors="clr-namespace:Bska.Client.UI.Helper" xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
+              xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon" xmlns:UCT="clr-namespace:Bska.Client.UI.UserControlls.TreeViewUC">
     <UserControl.Resources>
         <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <DataTemplate x:Key="HighlightTemplate">
@@ -87,62 +87,7 @@
             </Grid.ColumnDefinitions>
             <Border Grid.Column="2" Grid.RowSpan="2" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,0,0" CornerRadius="0"  RenderTransformOrigin="0.5,0.5" Padding="0,0,0,0">
                 <DockPanel>
-                    <TreeView ItemsSource="{Binding FirstGeneration}" SelectedItemChanged="TreeView_SelectedItemChanged" BorderBrush="Transparent" Background="Transparent">
-                        <TreeView.ItemContainerStyle>
-                            <!--This Style binds a TreeViewItem to a PersonViewModel.-->
-                            <Style TargetType="{x:Type TreeViewItem}">
-                                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
-                                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
-                                <Setter Property="FontSize" Value="13"/>
-                                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-                                <Setter Property="FontWeight" Value="Normal" />
-                                <Setter Property="Focusable" Value="{Binding IsEnabled}"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="FontWeight" Value="Bold" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TreeView.ItemContainerStyle>
-                        <TreeView.ItemTemplate>
-                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="20" Height="20" Margin="3,0"  Source="{StaticResource TreeviewIcon}"/>
-                                    <Grid>
-                                        <TextBlock Text="{Binding Name}" x:Name="TextBlock"/>
-                                        <TextBox Text="{Binding Name, UpdateSourceTrigger=Explicit}" Visibility="Collapsed" x:Name="TextBox"/>
-                                    </Grid>
-                                </StackPanel>
-                                <HierarchicalDataTemplate.Triggers>
-                                    <DataTrigger Binding="{Binding IsEnabled}" Value="False">
-                                        <Setter TargetName="TextBlock" Property="Foreground"  Value="#FF9C9A9A"/>
-                                    </DataTrigger>
-                                    <MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>
-                                            <Condition Binding="{Binding IsSelected}" Value="True"/>
-                                            <Condition Binding="{Binding Path=(Behaviors:TreeViewInPlaceEditBehavior.IsEditing), RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}" Value="True"/>
-                                        </MultiDataTrigger.Conditions>
-                                        <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
-                                        <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
-                                            <Setter.Value>
-                                                <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
-                                            <Setter.Value>
-                                                <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
-                                            <Setter.Value>
-                                                <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </MultiDataTrigger>
-                                </HierarchicalDataTemplate.Triggers>
-                            </HierarchicalDataTemplate>
-                        </TreeView.ItemTemplate>
-                    </TreeView>
+                    <UCT:StrategyTreeViewUC StrategyTreeItemSelect="StrategyTreeViewUC_StrategyTreeItemSelect"/>
                 </DockPanel>
             </Border>
             <Border Grid.RowSpan="2" Grid.Column="1"  BorderThickness="1,0,0,0" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">

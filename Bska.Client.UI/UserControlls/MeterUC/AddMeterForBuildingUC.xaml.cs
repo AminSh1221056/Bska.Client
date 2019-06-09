@@ -28,9 +28,9 @@ namespace Bska.Client.UI.UserControlls.MetersUC
             InitializeComponent();
         }
 
-        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void StrategyTreeViewUC_StrategyTreeItemSelect(object sender, RoutedEventArgs e)
         {
-            var item = sender as TreeView;
+            var item = e.OriginalSource as TreeView;
             var buildingDesign = item.SelectedItem as EmployeeDesignTreeViewModel;
             if (buildingDesign != null)
                 ((AddMeterForBuildingViewModel)this.DataContext).SelectedNode = buildingDesign;

@@ -10,7 +10,7 @@ namespace Bska.Client.UI.ViewModels
     {
         private Dictionary<string, List<MetroMenuItem>> _menu;
 
-        private  Dictionary<string,List<MenuItem>> _menuItems;
+        private Dictionary<string,List<MenuItem>> _menuItems;
 
         public Dictionary<string, List<MetroMenuItem>> Menu
         {
@@ -38,68 +38,37 @@ namespace Bska.Client.UI.ViewModels
                 {
                     if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute1)
                     {
-                        lstStuffHonestMetroMenu.Add(new MetroMenuItem("آپلود فایل اکسس اموال", MetroMenuResources.Logo.Upload, "A9"));
-                        lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem1", Header = "آپلود فایل اکسس اموال", Tag = 1009 });
+                        lstStuffHonestMenu.Add(new MenuItem { Name = "A9", Header = "آپلود فایل اکسس اموال", Tag = 1009 });
                     }
 
                     if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute2)
                     {
-                        lstStuffHonestMetroMenu.Add(new MetroMenuItem("موجودی اولیه خارج از انبار", MetroMenuResources.Logo.OuterAsset, "A1"));
-                        lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem2", Header = "ثبت موجودی اولیه خارج از انبار", Tag = 1001 });
-                    }
-
-                    if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute3)
-                    {
-                        lstStuffHonestMetroMenu.Add(new MetroMenuItem("موجودی اولیه داخل انبار", MetroMenuResources.Logo.Store, "A2"));
-                        lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem3", Header = "ثبت موجودی اولیه داخل انبار", Tag = 1002 });
+                        lstStuffHonestMenu.Add(new MenuItem { Name = "A1", Header = "ثبت موجودی اولیه", Tag = 1001 });
                     }
                 }
 
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute4)
                 {
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("دفتر اموال", MetroMenuResources.Logo.AssetBook, "A3"));
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem4", Header = "دفتر اموال", Tag = 1003 });
+                    lstStuffHonestMenu.Add(new MenuItem { Name = "A2", Header = "اموال", Tag = 1003 });
                 }
 
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute5)
                 {
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("بررسی موجودی خارج از انبار", MetroMenuResources.Logo.OuterAssetCheck, "A4"));
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem5", Header = "بررسی موجودی خارج از انبار", Tag = 1004 });
+                    lstStuffHonestMenu.Add(new MenuItem { Name = "A3", Header = "درخواست ها", Tag = 1004 });
                 }
 
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute6)
                 {
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("بررسی اموال", MetroMenuResources.Logo.StuffCheck, "A5"));
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem6", Header = "بررسی اموال", Tag = 1005 });
+                    lstStuffHonestMenu.Add(new MenuItem { Name = "A4", Header = "صورت جلسات", Tag = 1005 });
                 }
-
-                if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute7)
-                {
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("درخواست های داخل سازمان", MetroMenuResources.Logo.InternalOrder, "A6"));
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem7", Header = "درخواست های داخل سازمان", Tag = 1006 });
-                }
-
-                if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute8)
-                {
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("مدیریت صورت جلسات", MetroMenuResources.Logo.ProcedingManag, "A7"));
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem8", Header = "مدیریت صورت جلسات", Tag = 1007 });
-                }
-
-                if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute9)
-                {
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("درخواست های خارجی", MetroMenuResources.Logo.ExternalOrder, "A8"));
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem9", Header = "درخواست های خارجی", Tag = 1008 });
-                }
-
+                
                 _menuItems.Add("stuffHonest", lstStuffHonestMenu);
-                _menu.Add("stuffHonest", lstStuffHonestMetroMenu);
 
                 var lstorderMetroMenu = new List<MetroMenuItem>();
                 var lstOrder = new List<MenuItem>();
                 this.setOrderMenus(lstOrder, lstorderMetroMenu);
 
                 _menuItems.Add("order", lstOrder);
-                _menu.Add("order", lstorderMetroMenu);
             }
             else if(string.Equals(title, "store"))
             {
@@ -111,13 +80,6 @@ namespace Bska.Client.UI.ViewModels
                     lstStoreMetroMenu.Add(new MetroMenuItem("طراحی انبار", MetroMenuResources.Logo.StoreDesign, "A1"));
                     lstStore.Add(new MenuItem { Header = "طراحی انبار", Tag = 1002, Name = "ENTREPOTmAnageMenuItem1" });
                 }
-
-
-                //if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute2)
-                //{
-                //    lstStoreMetroMenu.Add(new MetroMenuItem("مدیریت کالا", MetroMenuResources.Logo.StoreKala, "A11"));
-                //    lstStore.Add(new MenuItem { Header = "مدیریت کالا", Tag = 1012, Name = "ENTREPOTmAnageMenuItem2" });
-                //}
 
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute3)
                 {
@@ -185,43 +147,17 @@ namespace Bska.Client.UI.ViewModels
             }
             else if (string.Equals(title, "generalmanager"))
             {
-                var lstGManagerMetroMenu = new List<MetroMenuItem>();
                 var lstgManager = new List<MenuItem>();
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute1)
                 {
-                    lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست های انبار", MetroMenuResources.Logo.NewOrder, "A3"));
-                    lstgManager.Add(new MenuItem { Header = "درخواست های انبار", Tag = 1003, Name = "InternalOrderMenuItem" });
+                    lstgManager.Add(new MenuItem { Header = "درخواست ها", Tag = 1003, Name = "A1" });
                 }
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute2)
                 {
-                    lstGManagerMetroMenu.Add(new MetroMenuItem("بررسی صورت جلسات", MetroMenuResources.Logo.ProcedingManag, "A1"));
-                    lstgManager.Add(new MenuItem { Header = "بررسی صورت جلسات", Tag = 1001, Name = "EmissionOrderMenuItem1" });
-                }
-                if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute3)
-                {
-                    lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست های خارجی", MetroMenuResources.Logo.ExternalOrder, "A2"));
-                    lstgManager.Add(new MenuItem { Header = "درخواست های خارجی", Tag = 1002, Name = "EmissionOrderMenuItem2" });
-                }
-                if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute4)
-                {
-                    lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست ویرایش قبض انبار", MetroMenuResources.Logo.StoreDraftCheck, "A5"));
-                    lstgManager.Add(new MenuItem { Header = "درخواست ویرایش قبض انبار", Tag = 1005, Name = "EmissionOrderMenuItem4" });
-                }
-
-                if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute5)
-                {
-                    lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست عودت خرید", MetroMenuResources.Logo.StuffCheck, "A6"));
-                    lstgManager.Add(new MenuItem { Header = "درخواست عودت خرید", Tag = 1006, Name = "EmissionOrderMenuItem5" });
-                }
-
-                if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute6)
-                {
-                    lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست آزاد کردن مال", MetroMenuResources.Logo.StuffCheck, "A7"));
-                    lstgManager.Add(new MenuItem { Header = "درخواست آزاد کردن مال", Tag = 1007, Name = "EmissionOrderMenuItem6" });
+                    lstgManager.Add(new MenuItem { Header = "صورت جلسات", Tag = 1001, Name = "A2" });
                 }
 
                 _menuItems.Add("gManager", lstgManager);
-                _menu.Add("gManager", lstGManagerMetroMenu);
 
                 var lstorderMetroMenu = new List<MetroMenuItem>();
                 var lstOrder = new List<MenuItem>();
@@ -367,33 +303,17 @@ namespace Bska.Client.UI.ViewModels
                 _menuItems.Add("manager", lstmanagerMetroMenu);
 
                 var lstStuffHonestMenu = new List<MenuItem>();
-                var lstStuffHonestMetroMenu = new List<MetroMenuItem>();
                 if (!APPSettings.Default.IsCompletedAssets)
                 {
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("آپلود فایل اکسس اموال", MetroMenuResources.Logo.Upload, "A9"));
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("موجودی اولیه خارج از انبار", MetroMenuResources.Logo.OuterAsset, "A1"));
-                    lstStuffHonestMetroMenu.Add(new MetroMenuItem("موجودی اولیه داخل انبار", MetroMenuResources.Logo.Store, "A2"));
-
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem1", Header = "آپلود فایل اکسس اموال", Tag = 1009 });
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem2", Header = "ثبت موجودی اولیه خارج از انبار", Tag = 1001 });
-                    lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem3", Header = "ثبت موجودی اولیه داخل انبار", Tag = 1002 });
+                    lstStuffHonestMenu.Add(new MenuItem { Name = "A9", Header = "آپلود فایل اکسس اموال", Tag = 1009 });
+                    lstStuffHonestMenu.Add(new MenuItem { Name = "A1", Header = "ثبت موجودی اولیه", Tag = 1001 });
                 }
 
-                lstStuffHonestMetroMenu.Add(new MetroMenuItem("دفتر اموال", MetroMenuResources.Logo.AssetBook, "A3"));
-                lstStuffHonestMetroMenu.Add(new MetroMenuItem("بررسی موجودی خارج از انبار", MetroMenuResources.Logo.OuterAssetCheck, "A4"));
-                lstStuffHonestMetroMenu.Add(new MetroMenuItem("بررسی اموال", MetroMenuResources.Logo.StuffCheck, "A5"));
-                lstStuffHonestMetroMenu.Add(new MetroMenuItem("درخواست های داخل سازمان", MetroMenuResources.Logo.InternalOrder, "A6"));
-                lstStuffHonestMetroMenu.Add(new MetroMenuItem("مدیریت صورت جلسات", MetroMenuResources.Logo.ProcedingManag, "A7"));
-                lstStuffHonestMetroMenu.Add(new MetroMenuItem("درخواست های خارجی", MetroMenuResources.Logo.ExternalOrder, "A8"));
+                lstStuffHonestMenu.Add(new MenuItem { Name = "A2", Header = "اموال", Tag = 1003 });
+                lstStuffHonestMenu.Add(new MenuItem { Name = "A3", Header = "درخواست ها", Tag = 1004 });
+                lstStuffHonestMenu.Add(new MenuItem { Name = "A4", Header = "صورت جلسات", Tag = 1005 });
 
-                lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem4", Header = "دفتر اموال", Tag = 1003 });
-                lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem5", Header = "بررسی موجودی خارج از انبار", Tag = 1004 });
-                lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem6", Header = "بررسی اموال", Tag = 1005 });
-                lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem7", Header = "درخواست های داخل سازمان", Tag = 1006 });
-                lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem8", Header = "مدیریت صورت جلسات", Tag = 1007 });
-                lstStuffHonestMenu.Add(new MenuItem { Name = "StuffUploadMenuItem9", Header = "درخواست های خارجی", Tag = 1008 });
                 _menuItems.Add("stuffHonest", lstStuffHonestMenu);
-                _menu.Add("stuffHonest", lstStuffHonestMetroMenu);
 
                 var lstStoreMetroMenu = new List<MetroMenuItem>();
                 lstStoreMetroMenu.Add(new MetroMenuItem("طراحی انبار", MetroMenuResources.Logo.StoreDesign, "A1"));
@@ -423,24 +343,11 @@ namespace Bska.Client.UI.ViewModels
 
                 _menuItems.Add("store", lstStore);
                 _menu.Add("store", lstStoreMetroMenu);
-
-                var lstGManagerMetroMenu = new List<MetroMenuItem>();
-                lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست های انبار", MetroMenuResources.Logo.NewOrder, "A3"));
-                lstGManagerMetroMenu.Add(new MetroMenuItem("بررسی صورت جلسات", MetroMenuResources.Logo.ProcedingManag, "A1"));
-                lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست های خارجی", MetroMenuResources.Logo.ExternalOrder, "A2"));
-                lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست ویرایش قبض انبار", MetroMenuResources.Logo.StoreDraftCheck, "A5"));
-                lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست عودت خرید", MetroMenuResources.Logo.SupplierReturnRequest, "A6"));
-                lstGManagerMetroMenu.Add(new MetroMenuItem("درخواست آزاد کردن مال", MetroMenuResources.Logo.RelaseAsset, "A7"));
-
+                
                 var lstgManager = new List<MenuItem>();
-                lstgManager.Add(new MenuItem { Header = "درخواست های انبار", Tag = 1003, Name = "InternalOrderMenuItem" });
-                lstgManager.Add(new MenuItem { Header = "بررسی صورت جلسات", Tag = 1001, Name = "EmissionOrderMenuItem1" });
-                lstgManager.Add(new MenuItem { Header = "درخواست های خارجی", Tag = 1002, Name = "EmissionOrderMenuItem2" });
-                lstgManager.Add(new MenuItem { Header = "درخواست ویرایش قبض انبار", Tag = 1005, Name = "EmissionOrderMenuItem4" });
-                lstgManager.Add(new MenuItem { Header = "درخواست عودت خرید", Tag = 1006, Name = "EmissionOrderMenuItem5" });
-                lstgManager.Add(new MenuItem { Header = "درخواست آزاد کردن مال", Tag = 1007, Name = "EmissionOrderMenuItem6" });
+                lstgManager.Add(new MenuItem { Header = "درخواست ها", Tag = 1003, Name = "A1" });
+                lstgManager.Add(new MenuItem { Header = "صورت جلسات", Tag = 1001, Name = "A2" });
                 _menuItems.Add("gManager", lstgManager);
-                _menu.Add("gManager", lstGManagerMetroMenu);
 
                 var lstMunitionMetroMenu = new List<MetroMenuItem>();
                 lstMunitionMetroMenu.Add(new MetroMenuItem("فروشنده ها", MetroMenuResources.Logo.SalesMan, "A1"));

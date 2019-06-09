@@ -36,7 +36,6 @@
                     <TreeView.ItemContainerStyle>
                         <Style TargetType="{x:Type TreeViewItem}">
                             <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
-                            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
                             <Setter Property="FontSize" Value="13"/>
                             <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                             <Setter Property="FontWeight" Value="Normal" />
@@ -120,7 +119,7 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,5,0"
+            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,5,0"
                                Text="برای ارتباط اموال با قسمت سازمانی ، شاخه مورد نظر اموال را با موس به روی شاخه سازمانی بیندازید"/>
             <Border Style="{StaticResource BorderStyle}" Grid.Row="1" BorderBrush="{StaticResource BorderBrush}"
                             BorderThickness="0,1,0,0" CornerRadius="0" Margin="0">

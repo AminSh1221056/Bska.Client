@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Bska.Client.UI.Views.PersonManageWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-         Title="پرسنل" Height="600" Width="900" Style="{StaticResource FlatTitleMoalWindowStyle}" MinWidth="580" WindowStartupLocation="CenterScreen"
+         Title="پرسنل" Height="700" Width="900" Style="{StaticResource FlatTitleMoalWindowStyle}" MinWidth="580" WindowStartupLocation="CenterScreen"
         xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" RenderTransformOrigin="0.5,0.5" x:Name="personManageWin" MouseLeftButtonDown="personManageWin_MouseLeftButtonDown">
     <Window.Resources>
         <Storyboard x:Key="StoryboardEnterance">

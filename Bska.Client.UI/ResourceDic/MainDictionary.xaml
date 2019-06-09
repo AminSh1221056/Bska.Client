@@ -42,7 +42,6 @@
     <FontFamily x:Key="LatinFontFamily">..\Fonts\#SEGOE UI</FontFamily>
 
     <Style x:Key="FlatWindowStyle" TargetType="{x:Type Window}">
-        <Setter Property="Foreground" Value="{DynamicResource MainForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource PrimaryFontFamily}"/>
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="AllowsTransparency" Value="True"/>
@@ -60,7 +59,7 @@
                                 </Grid.RowDefinitions>
 
                                 <!--Header-->
-                                <Border Grid.Row="0" x:Name="Header" Background="{TemplateBinding Foreground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0">
+                                <Border Grid.Row="0" x:Name="Header" Background="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto"/>
@@ -105,7 +104,7 @@
                                     <RowDefinition Height="10"/>
                                 </Grid.RowDefinitions>
                                 <!--Header-->
-                                <Border Grid.Row="0" x:Name="Header" Background="{TemplateBinding Foreground}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0" Width="{TemplateBinding MinWidth}" HorizontalAlignment="Left">
+                                <Border Grid.Row="0" x:Name="Header" Background="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0" Width="{TemplateBinding MinWidth}" HorizontalAlignment="Left">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto"/>
@@ -164,7 +163,7 @@
                 <Setter Property="BorderBrush" Value="#7FFFFFFF" />
             </Trigger>
             <Trigger Property="IsSelected" Value="true">
-                <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" TargetName="Border"/>
+                <Setter Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" TargetName="Border"/>
                 <Setter Property="BorderBrush" Value="#7FFFFFFF" />
             </Trigger>
         </ControlTemplate.Triggers>
@@ -190,7 +189,7 @@
                 <Setter Property="BorderBrush" Value="#7FFFFFFF" />
             </Trigger>
             <Trigger Property="IsSelected" Value="true">
-                <Setter Property="Background" Value="{StaticResource PanelGradientBrush}" TargetName="Border"/>
+                <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" TargetName="Border"/>
                 <Setter Property="BorderBrush" Value="#7FFFFFFF" />
             </Trigger>
         </ControlTemplate.Triggers>
@@ -216,7 +215,7 @@
                 <Setter Property="BorderBrush" Value="#7FFFFFFF" />
             </Trigger>
             <Trigger Property="IsSelected" Value="true">
-                <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" TargetName="Border"/>
+                <Setter Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" TargetName="Border"/>
                 <Setter Property="BorderBrush" Value="#7FFFFFFF" />
             </Trigger>
         </ControlTemplate.Triggers>
@@ -1158,7 +1157,7 @@
                         </Grid.ColumnDefinitions>
                         <Popup Margin="1" x:Name="PART_Popup" AllowsTransparency="true" IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Grid.ColumnSpan="2">
                             <Microsoft_Windows_Themes:SystemDropShadowChrome MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding Path=ActualWidth, ElementName=MainGrid}" x:Name="Shdw" Color="Transparent">
-                                <Border x:Name="DropDownBorder" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" CornerRadius="5">
+                                <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" CornerRadius="5">
                                     <ScrollViewer CanContentScroll="true" >
                                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.DirectionalNavigation="Contained"/>
                                     </ScrollViewer>
@@ -1210,8 +1209,7 @@
                 <DataTemplate>
                     <Grid Margin="0">
                         <Border BorderBrush="SteelBlue" BorderThickness="1" Margin="1,1,1,1" MinWidth="360"
-                                                        Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-                                                    AncestorType=ComboBoxItem},Path=Background}" CornerRadius="4">
+                                                       CornerRadius="4">
                             <Grid Margin="3">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="20"></RowDefinition>
@@ -1252,8 +1250,7 @@
                 <DataTemplate>
                     <Grid Margin="0">
                         <Border BorderBrush="SteelBlue" BorderThickness="1" Margin="1,1,1,1" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ComboBox},Path=Width}"
-                                                        Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-                                                    AncestorType=ComboBoxItem},Path=Background}" CornerRadius="4">
+                                                       CornerRadius="4">
                             <Grid Margin="3" Width="150">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="35"/>
@@ -1285,8 +1282,7 @@
                 <DataTemplate>
                     <Grid Margin="0">
                         <Border BorderBrush="SteelBlue" BorderThickness="1" Margin="1,1,1,1" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ComboBox},Path=Width}"
-                                                        Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-                                                    AncestorType=ComboBoxItem},Path=Background}" CornerRadius="4">
+                                                        CornerRadius="4">
                             <Grid Margin="3" Width="150">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="35"/>
@@ -1316,8 +1312,7 @@
                 <DataTemplate>
                     <Grid Margin="0">
                         <Border BorderBrush="SteelBlue" BorderThickness="1" Margin="1,1,1,1" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ComboBox},Path=Width}"
-                                                        Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-                                                    AncestorType=ComboBoxItem},Path=Background}" CornerRadius="4">
+                                                       CornerRadius="4">
                             <Grid Margin="3" Width="150">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -1345,8 +1340,7 @@
                 <DataTemplate>
                     <Grid Margin="0">
                         <Border BorderBrush="SteelBlue" BorderThickness="1" Margin="1,1,1,1" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ComboBox},Path=Width}"
-                                                        Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-                                                    AncestorType=ComboBoxItem},Path=Background}" CornerRadius="4">
+                                                         CornerRadius="4">
                             <Grid Margin="3" Width="150">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -1374,12 +1368,7 @@
                 <DataTemplate>
                     <Grid Margin="0" Background="Transparent">
                         <Border x:Name="border" Margin="3,0,3,0" BorderThickness="1" Width="Auto"
-                                            BorderBrush="SteelBlue" CornerRadius="4"
-                                            Background="{Binding Path=Background, RelativeSource={
-                                            RelativeSource
-                                            Mode=FindAncestor,
-                                            AncestorType={x:Type ListBoxItem}
-                                            }}" >
+                                            BorderBrush="SteelBlue" CornerRadius="4">
                             <Grid Margin="3" Width="70">
                                 <TextBlock  VerticalAlignment="Center" FontWeight="Bold" Text="{Binding Path=Label}" HorizontalAlignment="Left" Margin="5,0,5,0"/>
                             </Grid>
@@ -1835,7 +1824,6 @@
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
@@ -1859,7 +1847,7 @@
                             <!-- The Popup is the body of the menu which expands down or across depending on the level of the item -->
                             <Popup IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" x:Name="SubMenuPopup" Focusable="false" AllowsTransparency="true" VerticalOffset="0" PopupAnimation="Slide">
                                 <Grid x:Name="SubMenu">
-                                    <Border x:Name="SubMenuBorder" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource SolidBorderBrush}" BorderThickness="1" />
+                                    <Border x:Name="SubMenuBorder" Background="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{DynamicResource SolidBorderBrush}" BorderThickness="1" />
                                     <!-- StackPanel holds children of the menu. This is set bu IsItemsHost=True -->
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                                 </Grid>
@@ -2027,6 +2015,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="MaxHeight" Value="25"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">

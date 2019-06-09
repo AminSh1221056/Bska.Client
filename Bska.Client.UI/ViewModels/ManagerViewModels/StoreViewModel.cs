@@ -209,6 +209,7 @@ namespace Bska.Client.UI.ViewModels
         public override void SelectedItemChanged()
         {
             this.StoreDetailsVm = (StoreDetailsViewModel)Selected;
+            if(Selected!=null)
             UserLog.UniqueInstance.LastView("store", Selected.CurrentEntity.StoreId.ToString());
             this.PerformSearch();
         }
@@ -296,7 +297,7 @@ namespace Bska.Client.UI.ViewModels
 
             if (!_matchingBuildingEnumerator.MoveNext())
             {
-                _dialogService.ShowInfo("دوباره سعی کنید", "هیچ بخش استراتژیکی برای این انبار ثبت نشده است");
+                _dialogService.ShowAlert("دوباره سعی کنید", "هیچ بخش استراتژیکی برای این انبار ثبت نشده است");
             }
         }
 
@@ -452,6 +453,11 @@ namespace Bska.Client.UI.ViewModels
                 CurrentEntity.Description = value;
                 OnPropertyChanged("Description");
             }
+        }
+
+        public bool HaveStrategy
+        {
+            get { return CurrentEntity.StrategyId.HasValue; }
         }
 
         #endregion

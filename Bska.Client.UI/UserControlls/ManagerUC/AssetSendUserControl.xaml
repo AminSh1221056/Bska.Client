@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d"  Foreground="#FFFFFFFF" xmlns:masking="clr-namespace:Bska.Client.UI.API" 
+             mc:Ignorable="d" xmlns:masking="clr-namespace:Bska.Client.UI.API" 
              xmlns:conv="clr-namespace:Bska.Client.UI.Converters">
     <UserControl.Resources>
         <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
@@ -27,9 +27,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Top" Margin="15,5,5,0" Text="تایید تمام اموال ثبت شده تاکنون به طوری که دیگر قابل ویرایش نباشند"/>
-                        <Button Background="#FF1FAEFF" Grid.Column="1" Style="{DynamicResource FlatButtonStyleTit}" Content="انجام عملیات" Command="{Binding ConfirmAssetCommand}" 
+                        <Button Grid.Column="1" Style="{DynamicResource FlatButtonStyle}" Content="انجام عملیات" Command="{Binding ConfirmAssetCommand}" 
                             Foreground="#FFFFFFFF" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="28"/>
-                        <Button Background="#FF1FAEFF" Grid.Column="2" Style="{DynamicResource FlatButtonStyleTit}" Content="حذف تمام اطلاعات ثبت شده" Command="{Binding DeleteAssetCommand}" 
+                        <Button Background="#FF1FAEFF" Grid.Column="2" Style="{DynamicResource FlatButtonStyle}" Content="حذف تمام اطلاعات ثبت شده" Command="{Binding DeleteAssetCommand}" 
                             Foreground="#FFFFFFFF" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="28"/>
                     </Grid>
                 </Border>
@@ -45,8 +45,8 @@
             </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="کد شناسایی:"/>
-            <TextBox Width="180" Height="19" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="75,0,5,0" Text="{Binding IdentificationCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" masking:Masking.Mask="^[A-Za-z\d]+$"/>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyleTit}"
+            <TextBox Width="180" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="75,0,5,0" Text="{Binding IdentificationCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" masking:Masking.Mask="^[A-Za-z\d]+$"/>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyle}"
                         Content="تعیین هویت" Width="100" Height="28" Foreground="#FFF" Margin="295,0,5,0" Command="{Binding IdentifyCommand}"/>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="410,0,5,0" Text="{Binding AutheniticationInfo}"/>
         </Grid>
@@ -62,7 +62,7 @@
                             <ColumnDefinition Width="215"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyleTit}"
+                        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyle}"
                         Content="ارسال اموال غیر مصرفی" Width="190" Height="30" Foreground="#FFF" Margin="15,0,5,0" Command="{Binding SendNonConsumCommand}"/>
 
                         <ProgressBar Grid.ColumnSpan="4" Minimum="0" Maximum="100" Value="{Binding Report}" Name="pbStatus" Grid.Row="1"  Width="500" HorizontalAlignment="Left" Margin="5,0,5,0"/>
@@ -82,7 +82,7 @@
                             <ColumnDefinition Width="210"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button  IsEnabled="{Binding SendingIsActive}" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyleTit}"
+                        <Button  IsEnabled="{Binding SendingIsActive}" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyle}"
                         Content="ارسال اموال مصرفی" Width="190" Height="30" Foreground="#FFF" Margin="15,0,5,0" Command="{Binding SendCommodityCommand}"/>
 
                         <ProgressBar Grid.ColumnSpan="4" Minimum="0" Maximum="100" Value="{Binding Report3}" Name="pbStatus2" Grid.Row="1"  Width="500" HorizontalAlignment="Left" Margin="5,0,5,0"/>

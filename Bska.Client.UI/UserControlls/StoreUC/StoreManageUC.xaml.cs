@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Bska.Client.UI.UserControlls
+{
+    /// <summary>
+    /// Interaction logic for StoreManageUC.xaml
+    /// </summary>
+    public partial class StoreManageUC : UserControl
+    {
+        public static readonly RoutedEvent StoreTreeViewClickEvent = EventManager.RegisterRoutedEvent(
+              "StoreTreeViewClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(StoreManageUC));
+
+        public event RoutedEventHandler StoreTreeViewClick
+        {
+            add { AddHandler(StoreTreeViewClickEvent, value); }
+            remove { RemoveHandler(StoreTreeViewClickEvent, value); }
+        }
+
+        public StoreManageUC()
+        {
+            InitializeComponent();
+        }
+
+        private void StoreTreeViewUC_StoreTreeItemSelect(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(StoreTreeViewClickEvent, e.OriginalSource));
+        }
+    }
+}

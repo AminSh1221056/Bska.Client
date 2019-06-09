@@ -26,8 +26,8 @@ namespace Bska.Client.UI
     {
         private readonly IUnityContainer _container;
         private readonly bool _isQuickLunch;
-        private int _quickNo;
-        public StuffHonestMainWindow(IUnityContainer container, bool isQuciLunch, int quickNo)
+        private string _quickNo;
+        public StuffHonestMainWindow(IUnityContainer container, bool isQuciLunch, string quickNo)
         {
             InitializeComponent();
             this._container = container;
@@ -73,6 +73,7 @@ namespace Bska.Client.UI
                 }
             }
         }
+
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -115,7 +116,7 @@ namespace Bska.Client.UI
                 }
             }
         }
-
+        
         private void showUser_Click(object sender, RoutedEventArgs e)
         {
            
@@ -138,8 +139,47 @@ namespace Bska.Client.UI
                     lstItems.Add(new DemoItem("درخواست ها", "A3", null, null));
                     lstItems.Add(new DemoItem("صورت جلسات", "A4", null, null));
                 }
+                else if (Thread.CurrentPrincipal.IsInRole("StuffHonest"))
+                {
+                    if (!APPSettings.Default.IsCompletedAssets)
+                    {
+                        if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute1)
+                        {
+                            lstItems.Add(new DemoItem("آپلود فایل اکسس اموال", "A9", null, null));
+                        }
+
+                        if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute2)
+                        {
+                            lstItems.Add(new DemoItem("ثبت موجودی اولیه", "A1", null, null));
+                        }
+                    }
+
+                    if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute4)
+                    {
+                        lstItems.Add(new DemoItem("اموال", "A2", null, null));
+                    }
+
+                    if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute5)
+                    {
+                        lstItems.Add(new DemoItem("درخواست ها", "A3", null, null));
+                    }
+
+                    if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute6)
+                    {
+                        lstItems.Add(new DemoItem("صورت جلسات", "A4", null, null));
+                    }
+                }
 
                 this.DemoItemsListBox.ItemsSource = lstItems;
+
+                if (!string.IsNullOrWhiteSpace(_quickNo))
+                {
+                    var item = lstItems.FirstOrDefault(s => s.Key == _quickNo);
+                    if (item != null)
+                    {
+                        this.DemoItemsListBox.SelectedItem = item;
+                    }
+                }
             }
         }
 

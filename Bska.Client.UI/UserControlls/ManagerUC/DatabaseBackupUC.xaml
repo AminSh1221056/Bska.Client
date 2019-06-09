@@ -43,7 +43,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام فایل پشتیبان:"/>
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding BackupFileName}" Width="160" Height="19" Grid.Column="1" masking:Masking.Mask="^[^\\/:*?&lt;>|]+$"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="{Binding BackupFileName}" Width="160" Height="25" Grid.Column="1" masking:Masking.Mask="^[^\\/:*?&lt;>|]+$"/>
                     <Button HorizontalAlignment="Right" Margin="5,5,5,5" VerticalAlignment="Center" Grid.Column="3" Width="100" Height="29" Content="پشتیبان گیری" Style="{StaticResource FlatButtonStyle}"
                         Command="{Binding BackupCommand}"/>
                 </Grid>

@@ -32,12 +32,12 @@
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="توضیحات:" Margin="5,0,5,0" Grid.Column="2" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="کیفیت:" Margin="5,0,5,0" Grid.Column="2" Grid.Row="0"/>
         <TextBox MaxLength="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Width="90"  Grid.Column="1" Grid.Row="0" Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid},AncestorLevel=2},Path=DataContext.Num,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" 
-                 Style="{StaticResource CustomTextBoxTextStyle}" x:Name="txtNum"/>
+                  x:Name="txtNum"/>
         <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="1"
                   Width="180" Height="20" SelectedValue="{Binding UnitId}" ItemsSource="{Binding Units}" DisplayMemberPath="Name" SelectedValuePath="UnitId"/>
 
         <TextBox MaxLength="13" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2"
-                  Width="150"  Text="{Binding Cost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True,StringFormat={}{0:N0},ConverterCulture=fa}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                  Width="150"  Text="{Binding Cost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True,StringFormat={}{0:N0},ConverterCulture=fa}" />
 
         <Grid Grid.Row="3" Grid.ColumnSpan="2" x:Name="grLabel">
             <Grid.ColumnDefinitions>
@@ -100,7 +100,7 @@
                 <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Grid.Row="3" Width="50" ItemsSource="{Binding Floors}"
                                   HorizontalAlignment="Left" VerticalAlignment="Center" Height="22" Margin="5,0,0,0" SelectedValue="{Binding Floor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}">
                 </ComboBox>
-                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="60"  Grid.Column="3" Grid.Row="4" Text="{Binding OldLabel,Delay=500,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"  Style="{StaticResource CustomTextBoxTextStyle}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="60"  Grid.Column="3" Grid.Row="4" Text="{Binding OldLabel,Delay=500,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"  />
                 <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Width="70"   Grid.Column="4" Grid.Row="4" ItemsSource="{Binding  LastOldLabels}"/>
             </Grid>
             <Button Style="{StaticResource BlueButtonStyle}" Grid.Column="1" Grid.RowSpan="2" Margin="5,0,5,0"

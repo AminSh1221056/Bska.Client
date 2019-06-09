@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:masking="clr-namespace:Bska.Client.UI.API" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
-             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" x:Name="proceedingSendUc" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" x:Name="proceedingSendUc">
     <UserControl.Resources>
         <Conv:IndexConverter x:Key="IndexConverter"/>
         <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
@@ -51,8 +51,8 @@
         <Border Grid.Row="0" Margin="2,2,2,2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  RenderTransformOrigin="0.5,0.5">
             <Grid>
                 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Text="کد شناسایی:"/>
-                <TextBox Width="180" Height="19" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="75,0,5,0" Text="{Binding IdentificationCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" masking:Masking.Mask="^[A-Za-z\d]+$"/>
-                <Button HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyleTit}"
+                <TextBox Width="180" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="75,0,5,0" Text="{Binding IdentificationCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" masking:Masking.Mask="^[A-Za-z\d]+$"/>
+                <Button HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF1FAEFF" Style="{DynamicResource FlatButtonStyle}"
                         Content="تعیین هویت" Width="100" Height="28" Foreground="#FFF" Margin="295,0,5,0" Command="{Binding IdentifyCommand}"/>
                 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="410,0,5,0" Text="{Binding AutheniticationInfo}"/>
             </Grid>
@@ -68,7 +68,7 @@
                              IsChecked="{Binding ChSendData}"/>
                 <RadioButton Style="{StaticResource CompletedRadioButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" x:Name="rbGet" Content="نمایش صورت جلسه ها در سیستم مرکزی"
                              IsChecked="{Binding ChGetData}" Grid.Column="1"/>
-                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Background="#FF1FAEFF" Grid.Column="2" Style="{DynamicResource FlatButtonStyleTit}"
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Background="#FF1FAEFF" Grid.Column="2" Style="{DynamicResource FlatButtonStyle}"
                         Content="جستجو" Width="100" Height="28" Foreground="#FFF" Margin="15,0,5,0" Command="{Binding SearchCommand}"/>
             </Grid>
         </Border>

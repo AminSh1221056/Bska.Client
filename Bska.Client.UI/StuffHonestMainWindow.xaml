@@ -15,23 +15,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="Copy" Executed="OnCopy"></CommandBinding>
     </Window.CommandBindings>
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Orange.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepOrange.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.DeepOrange.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="Foreground" Value="Black"/>
-            </Style>
-
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="Foreground" Value="White"/>
-            </Style>
-        </ResourceDictionary>
-    </Window.Resources>
+   
     <Grid x:Name="RootGrid">
         <materialDesign:DialogHost FlowDirection="RightToLeft" Identifier="RootDialog"
                                    SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">

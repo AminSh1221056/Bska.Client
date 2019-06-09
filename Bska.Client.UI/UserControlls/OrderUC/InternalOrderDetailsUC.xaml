@@ -30,7 +30,7 @@
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="7" Text="قیمت کل:" Margin="0,0,5,0"/>
 
         <TextBox IsEnabled="{Binding NumIsEnable}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                 Width="120" Height="20" Margin="5,0,0,0" Text="{Binding Num,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True,ConverterCulture=Fa}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                                 Width="120" Height="20" Margin="5,0,0,0" Text="{Binding Num,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True,ConverterCulture=Fa}" />
         <ComboBox IsEnabled="False" x:Name="cmbunit" Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="1"
                   Width="180" Height="20" SelectedValue="{Binding UnitId,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Grid},AncestorLevel=2},Path=DataContext.Units}" DisplayMemberPath="Name" SelectedValuePath="UnitId"/>
         <Button x:Name="btnUnit" ToolTip="انتخاب واحد مربوطه" Grid.Row="1" Grid.Column="1" Width="26" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="190,0,0,0"
@@ -39,7 +39,7 @@
         </Button>
         <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
                                  Width="300" Height="20" Margin="5,0,0,0" Text="{Binding UsingLocation}"/>
-        <TextBox MaxLength="14" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+        <TextBox MaxLength="14"  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
                                  Width="130" Height="20" Margin="5,0,0,0" Text="{Binding EstitmatePrice,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True,StringFormat={}{0:N0},ConverterCulture=fa}"/>
         <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Grid.Row="4" Width="120"
                                   HorizontalAlignment="Left" SelectedValuePath="Tag" VerticalAlignment="Center" Height="22" Margin="5,0,0,0" x:Name="cmbRequestDegree" SelectedValue="{Binding ImportantDegree,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}">

@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" x:Name="honestOrderpage" FontFamily="{StaticResource PrimaryFontFamily}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+      mc:Ignorable="d" x:Name="honestOrderpage" FontFamily="{StaticResource PrimaryFontFamily}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
 	  FlowDirection="RightToLeft"  xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
       xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:Helper="clr-namespace:Bska.Client.UI.Helper"
       xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC"

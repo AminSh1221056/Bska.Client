@@ -25,10 +25,10 @@ namespace Bska.Client.UI.UserControlls
         {
             InitializeComponent();
         }
-        
-        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+
+        private void StrategyEditableTreeViewUC_StrategyTreeEditableItemSelect(object sender, RoutedEventArgs e)
         {
-            var item = sender as TreeView;
+            var item = e.OriginalSource as TreeView;
             var buildingDesign = item.SelectedItem as EmployeeDesignTreeViewModel;
             if (buildingDesign != null)
                 ((BuildingListViewModel)this.DataContext).SelectedNode = buildingDesign;

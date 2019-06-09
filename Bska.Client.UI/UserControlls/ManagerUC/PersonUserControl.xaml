@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
-             mc:Ignorable="d" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:masking="clr-namespace:Bska.Client.UI.API"
+             mc:Ignorable="d" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:masking="clr-namespace:Bska.Client.UI.API"
              xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common"
              xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
     <UserControl.Resources>
@@ -36,10 +36,10 @@
         <Border BorderBrush="Silver"  BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Grid.Row="1" Margin="2,2,2,2">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="240"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border x:Name="b1" IsEnabled="{Binding EnableControlls}" Grid.Row="0" BorderBrush="Silver"  BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  Margin="2,2,2,2">
+                <Border x:Name="b1" IsEnabled="{Binding EnableControlls}" Grid.Row="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  Margin="2,2,2,2">
                     <Grid Margin="3.75" x:Name="grid1" DataContext="{Binding PersonDetailsVM ,NotifyOnValidationError=False,ValidatesOnNotifyDataErrors=False}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
@@ -48,52 +48,50 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="نام:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
                         <TextBlock Text="نام خانوادگی:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
                         <TextBlock FontSize="11" Text="شماره پرسنلی:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
                         <TextBlock Text="کد ملی:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
                         <TextBlock Text="شماره همراه:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right"  Margin="5,0,0,0" VerticalAlignment="Center"/>
-                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="0" Text="نام پدر:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="1" Text="کدپستی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="2" Text="نوع قرارداد:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="3" Text="تاریخ استخدام:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
-                        <TextBlock FontSize="13" Grid.Column="2" Grid.Row="4" Text="عکس:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
-                        <TextBlock FontSize="13" Grid.Column="0" Grid.Row="5" Text="تاریخ تولد:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
-                        <TextBlock FontSize="13" Grid.Column="0" Grid.Row="6" Text="آدرس:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBlock  Grid.Column="2" Grid.Row="0" Text="نام پدر:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock  Grid.Column="2" Grid.Row="1" Text="کدپستی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock  Grid.Column="2" Grid.Row="2" Text="نوع قرارداد:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock  Grid.Column="2" Grid.Row="3" Text="تاریخ استخدام:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBlock  Grid.Column="2" Grid.Row="4" Text="عکس:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBlock  Grid.Column="0" Grid.Row="5" Text="تاریخ تولد:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBlock  Grid.Column="0" Grid.Row="6" Text="آدرس:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
 
-                        <TextBox TabIndex="0" masking:Masking.Mask="^[آ-ی ]+$" FontSize="13" Grid.Column="1" Grid.Row="0" Margin="4,5,0,6" x:Name="txtPersonnelName" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"
-                             Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
-                        <TextBox masking:Masking.Mask="^[آ-ی ]+$" FontSize="13" Grid.Column="1" Grid.Row="1" Margin="4,5,0,6" x:Name="txtPersonnelFamily" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"
-                             Text="{Binding LastName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="1"/>
-                        <TextBox masking:Masking.Mask="^\d+$" MaxLength="10" FontSize="13" Grid.Column="1" Grid.Row="2" Margin="4,5,0,6" x:Name="txtPersonnelMeliCode" Width="187" Height="20" VerticalAlignment="Center" TabIndex="2" HorizontalAlignment="Left"
-                             Text="{Binding NationalId,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,TargetNullValue=[خالی]}" Style="{StaticResource CustomTextBoxTextStyle}"/>
-                        <TextBox FontSize="13" Grid.Column="1" Grid.Row="3" Margin="4,5,0,6" x:Name="txtPersonnelCode" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" TabIndex="3"
+                        <TextBox TabIndex="0" masking:Masking.Mask="^[آ-ی ]+$"  Grid.Column="1" Grid.Row="0" Margin="5,0,5,0" x:Name="txtPersonnelName" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"
+                             Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" />
+                        <TextBox masking:Masking.Mask="^[آ-ی ]+$"  Grid.Column="1" Grid.Row="1" Margin="5,0,5,0" x:Name="txtPersonnelFamily" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"
+                             Text="{Binding LastName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}"  TabIndex="1"/>
+                        <TextBox masking:Masking.Mask="^\d+$" MaxLength="10"  Grid.Column="1" Grid.Row="2" Margin="5,0,5,0" x:Name="txtPersonnelMeliCode" Width="187" Height="25" VerticalAlignment="Center" TabIndex="2" HorizontalAlignment="Left"
+                             Text="{Binding NationalId,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,TargetNullValue=[خالی]}" />
+                        <TextBox  Grid.Column="1" Grid.Row="3" Margin="5,0,5,0" x:Name="txtPersonnelCode" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" TabIndex="3"
                              Text="{Binding PersonCode}"/>
-
-                        <TextBox MaxLength="11" FontSize="13" Grid.Column="1" Grid.Row="4" Margin="4,5,0,6" x:Name="txtPersonnelMobileNum" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
-                             Text="{Binding Mobile,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,Mode=TwoWay}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
-
-                        <TextBox MaxLength="20" FontSize="13" Grid.Column="1" Grid.Row="5" Margin="4,5,0,6" Width="130" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
-                             Text="{Binding BirthDate,Converter={StaticResource PersianDateConverter}}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                        <TextBox MaxLength="11"  Grid.Column="1" Grid.Row="4" Margin="5,0,5,0" x:Name="txtPersonnelMobileNum" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding Mobile,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,Mode=TwoWay}"  TabIndex="4"/>
+                        <TextBox MaxLength="20"  Grid.Column="1" Grid.Row="5" Margin="5,0,5,0" Width="130" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding BirthDate,Converter={StaticResource PersianDateConverter}}"  TabIndex="4"/>
                         <CheckBox Style="{StaticResource CompletedCheckBox}" Grid.Row="5" Grid.Column="1" Content="متاهل" IsChecked="{Binding Married}" Margin="150,0,5,0" HorizontalAlignment="Left"
                               VerticalAlignment="Center"/>
-                        <TextBox MaxLength="50" FontSize="13" Grid.Column="3" Grid.Row="0" Margin="4,5,0,6" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
-                             Text="{Binding FatherName}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
-                        <TextBox MaxLength="20" FontSize="13" Grid.Column="3" Grid.Row="1" Margin="4,5,0,6" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
-                             Text="{Binding Postalcode}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
-                        <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="5,0,0,0" x:Name="cmbBondType" ItemsSource="{Binding Source={masking:Enumeration {x:Type local:ContractType}}}" DisplayMemberPath="Description" 
+                        <TextBox MaxLength="50"  Grid.Column="3" Grid.Row="0" Margin="5,0,5,0" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding FatherName}" TabIndex="4"/>
+                        <TextBox MaxLength="20"  Grid.Column="3" Grid.Row="1" Margin="5,0,5,0" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding Postalcode}"  TabIndex="4"/>
+                        <ComboBox Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="5,0,0,0" x:Name="cmbBondType" ItemsSource="{Binding Source={masking:Enumeration {x:Type local:ContractType}}}" DisplayMemberPath="Description" 
                              SelectedValuePath="Value" SelectedValue="{Binding Contract,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" SelectedIndex="0" TabIndex="5"/>
-                        <TextBox MaxLength="20" FontSize="13" Grid.Column="3" Grid.Row="3" Margin="4,5,0,6" Width="130" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
-                             Text="{Binding EmployeeDate,Converter={StaticResource PersianDateConverter}}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                        <TextBox MaxLength="20"  Grid.Column="3" Grid.Row="3" Margin="5,0,5,0" Width="130" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding EmployeeDate,Converter={StaticResource PersianDateConverter}}"  TabIndex="4"/>
                         <Border HorizontalAlignment="Left" Cursor="Hand" VerticalAlignment="Top"  Width="85" Height="55" Grid.Column="3"  Grid.Row="4"  Grid.RowSpan="3" Background="#CCFFFFFF" BorderBrush="#FF975E5E" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10"
                              Margin="5,3,0,2">
                             <Image Grid.Column="0" Margin="4,4,4,4" x:Name="imgstuff1" Width="Auto" Height="Auto" Source="{Binding Photo,Converter={StaticResource ImageConverter}}">
@@ -101,8 +99,8 @@
                         </Border>
                         <Button  Style="{DynamicResource FlatButtonStyle}"   MaxHeight="25" HorizontalAlignment="Left"  Grid.Row="4" Grid.Column="3" Grid.RowSpan="1" Foreground="#FFFFFFFF" Content="...Browser" Width="80"
                  Margin="110,0,0,0" x:Name="ButtonImage" Click="ButtonImage_Click"/>
-                        <TextBox MaxLength="250" FontSize="13" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" Margin="4,5,0,6" Width="387" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  
-                             Text="{Binding AddressLine}" Style="{StaticResource CustomTextBoxTextStyle}" TabIndex="4"/>
+                        <TextBox MaxLength="250"  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" Margin="5,0,5,0" Width="387" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"  
+                             Text="{Binding AddressLine}"  TabIndex="4"/>
                     </Grid>
                 </Border>
                 <Border Grid.Row="1" BorderBrush="Silver"  BorderThickness="1,1,1,1" CornerRadius="5,5,5,5"  Margin="2,2,2,2">

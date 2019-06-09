@@ -20,8 +20,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
     using System.Linq;
     using System.Threading.Tasks;
     using System.Data.Entity;
-    using Bska.Client.Domain.Entity.OrderEntity;
-    using Bska.Client.UI.ViewModels.OrderViewModel;
+
     public sealed class ProceedingViewModel : BaseViewModel
     {
         #region ctor
@@ -32,13 +31,10 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             this. _dialogService = _container.Resolve<IDialogService>();
             this._movableAssetService = _container.Resolve<IMovableAssetService>();
             this._proceedingService = _container.Resolve<IProceedingService>();
-            this._orderService = _container.Resolve<IOrderService>();
             this._unitService = _container.Resolve<IUnitService>();
             this._navigationService = _container.Resolve<INavigationService>();
             this._Proceddings = new ObservableCollection<Proceeding>();
-            this._ordrs = new ObservableCollection<Order>();
             this.ProceedingFilteredView = new CollectionViewSource { Source = Proceedings }.View;
-            this.OrderFilteredView = new CollectionViewSource { Source = Orders }.View;
             _items = new Dictionary<string, object>();
             this.initializObj();
             this.initalizCommand();
@@ -71,8 +67,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
         {
             get { return _Proceddings; }
         }
-
-        public ICollectionView OrderFilteredView { get; set; }
+        
         public MovableAssetModel SelectedAsset
         {
             get { return GetValue(() => SelectedAsset); }
@@ -81,6 +76,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
                 SetValue(() => SelectedAsset, value);
             }
         }
+        
         public Dictionary<string, object> Items
         {
             get
@@ -121,38 +117,6 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             }
         }
 
-        public string OrderTextSearch
-        {
-            get { return GetValue(() => OrderTextSearch); }
-            set
-            {
-                SetValue(() => OrderTextSearch, value);
-                this.searchOrders();
-            }
-        }
-
-        public ObservableCollection<Order> Orders
-        {
-           get { return _ordrs; }
-        }
-
-        public Order OMSelected
-        {
-            get { return GetValue(() => OMSelected); }
-            set
-            {
-                SetValue(() => OMSelected, value);
-                this.getOrderHistory();
-            }
-        }
-        public List<OrderUserHistory> OrderUserHistories
-        {
-            get { return GetValue(() => OrderUserHistories); }
-            set
-            {
-                SetValue(() => OrderUserHistories, value);
-            }
-        }
         #endregion
 
         #region methods
@@ -167,8 +131,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             _items.Remove("کل صورت جلسات");
             SelectedItems = new Dictionary<string, object>();
             SelectedItems.Add("All", "All");
-            _ordrs.Clear();
-            await this.getProceedingAsync().ContinueWith(t=>this.getOrdersAsync());
+            await this.getProceedingAsync();
             Mouse.SetCursor(Cursors.Arrow);
         }
 
@@ -190,25 +153,6 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             return ts;
         }
 
-        private Task getOrdersAsync()
-        {
-            Task ts = new Task(() =>
-              {
-                  var orders= _orderService.Query(x => x.Status == OrderStatus.StuffHonest && x.OrderType == OrderType.Procceding)
-                  .Include(o => o.Person).Include(o=>o.OrderDetails).Include(o => o.MovableAssets)
-                .OrderBy(o => o.OrderByDescending(od => od.OrderDate)).Select().ToList();
-                  orders.ForEach(o =>
-                  {
-                      DispatchService.Invoke(() =>
-                      {
-                          _ordrs.Add(o);
-                      });
-                  });
-              });
-            ts.Start();
-            return ts;
-        }
-        
         private async void showProceedingDetails(object parameter)
         {
             var proc = parameter as Proceeding;
@@ -254,24 +198,6 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             }
         }
 
-        private void searchOrders()
-        {
-            OrderFilteredView.Filter = (obj) =>
-            {
-                var od = obj as Order;
-                return od.OrderId.ToString().StartsWith(OrderTextSearch);
-            };
-        }
-
-        private void getOrderHistory()
-        {
-            if (OMSelected != null)
-            {
-                OrderUserHistories = _orderService.GetUserHistories(OMSelected.OrderDetails.First().OrderDetialsId)
-                     .Where(ou => ou.UserDecision).ToList();
-            }
-        }
-
         private void showProcAssets(object parameter)
         {
             var proc = parameter as Proceeding;
@@ -294,19 +220,6 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
                 kalaUid = x.KalaUid,
             }).ToList();
             var window = _navigationService.ShowMAssetListWindow(viewModel);
-            StoryboardManager.PlayStoryboard("StoryboardFadeIn", this.Window);
-            Mouse.SetCursor(Cursors.Arrow);
-        }
-
-        private void showOrderEdit(object parameter)
-        {
-            var od = parameter as Order;
-            if (od == null) return;
-            Mouse.SetCursor(Cursors.Wait);
-            OMSelected = od;
-            StoryboardManager.PlayStoryboard("StoryboardFadeOut", this.Window);
-            var viewModel = new OrderEditViewModel(_container, od) { EnableEdit=false};
-            _navigationService.ShowOrderEditWindow(viewModel);
             StoryboardManager.PlayStoryboard("StoryboardFadeIn", this.Window);
             Mouse.SetCursor(Cursors.Arrow);
         }
@@ -350,10 +263,8 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
 
         public ICommand ProceedingDetailsCommand { get; private set; }
         public ICommand ProceedingMAssetCommand { get; private set; }
-        public ICommand RecivedOrderCommand { get; private set; }
         public ICommand ReportCommand { get; private set; }
         public ICommand SearchCommand { get; private set; }
-        public ICommand RefreshCommand { get; private set; }
         private void initalizCommand()
         {
             ProceedingDetailsCommand = new MvvmCommand(
@@ -364,12 +275,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
                 (parameter) => { this.showProcAssets(parameter); },
                 (parameter) => { return true; }
                 );
-
-            RecivedOrderCommand = new MvvmCommand(
-                (parameter) => { this.showOrderEdit(parameter); },
-                (parameter) => { return true; }
-                );
-
+           
             ReportCommand = new MvvmCommand(
                 (parameter) => { this.reports(); },
                 (parameter) => { return true; }
@@ -379,14 +285,6 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
                   (parameter) => { this.searchProcs(2); },
                 (parameter) => { return true; }
                 );
-
-            RefreshCommand = new MvvmCommand(
-            async (parameter) =>
-            {
-                await this.getOrdersAsync();
-            },
-            (parameter) => { return true; }
-            );
         }
 
         #endregion
@@ -397,9 +295,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
         private readonly IDialogService _dialogService;
         private readonly INavigationService _navigationService;
         private readonly ObservableCollection<Proceeding> _Proceddings;
-        private readonly ObservableCollection<Order> _ordrs;
         private readonly IProceedingService _proceedingService;
-        private readonly IOrderService _orderService;
         private readonly IMovableAssetService _movableAssetService;
         private readonly IUnitService _unitService;
         private Dictionary<string, object> _items;

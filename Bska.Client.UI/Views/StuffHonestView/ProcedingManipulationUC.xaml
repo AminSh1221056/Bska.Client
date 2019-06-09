@@ -17,5 +17,6 @@
         <Border Tag="{DynamicResource PrimaryHueLightForegroundBrush}" BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 0 1" Grid.Row="1"/>
         <local:ProceedingPage Grid.Row="2" x:Name="procedingPane"/>
         <localConc:AddProceddingUC Grid.Row="2" x:Name="addProcedingPane"/>
+        <localConc:ProcedingOrderPage Grid.Row="2" x:Name="procOrderPanePage"/>
     </Grid>
 </UserControl>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:masking="clr-namespace:Bska.Client.UI.API"
+             xmlns:masking="clr-namespace:Bska.Client.UI.API"
              >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -39,9 +39,9 @@
         <TextBlock Text="پلاک:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Margin="5,0,5,0"/>
         <TextBlock Text="آدرس روی قبض:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="8" Grid.Column="0" Margin="5,0,5,0"/>
 
-        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="1" Width="180"  Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="1" Width="180"  Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" />
         <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="1" Width="120"  MaxLength="25" Text="{Binding SubscriptionNo}"/>
-        <TextBox MaxLength="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="1" Width="120"  Text="{Binding CaseNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox MaxLength="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="1" Width="120"  Text="{Binding CaseNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" />
         <TextBox MaxLength="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="3" Grid.Column="1" Width="120"  Text="{Binding BodyNo}"/>
         <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="4" Grid.Column="1" Width="120" Height="22" SelectedValue="{Binding TariffType,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,Mode=TwoWay}" SelectedValuePath="Tag">
             <ComboBoxItem Name="Household" Tag="1">خانگی</ComboBoxItem>
@@ -82,7 +82,7 @@
             <ComboBoxItem Tag="Z">Z</ComboBoxItem>
         </ComboBox>
         <TextBox MaxLength="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="3" Width="120"  Text="{Binding AddressCode}"/>
-        <TextBox masking:Masking.Mask="^\d+$" MaxLength="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="3" Width="120"  Text="{Binding PostalCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox masking:Masking.Mask="^\d+$" MaxLength="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="3" Width="120"  Text="{Binding PostalCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" />
         <TextBox MaxLength="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="3" Width="80"  Text="{Binding Plake}"/>
         <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" Width="350"  Text="{Binding AddressLine}"/>
     </Grid>

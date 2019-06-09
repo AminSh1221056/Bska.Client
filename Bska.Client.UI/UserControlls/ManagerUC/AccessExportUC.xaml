@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"  xmlns:UCA="clr-namespace:Bska.Client.UI.UserControlls.FileExportUC" xmlns:conv="clr-namespace:Bska.Client.UI.Converters"
+             mc:Ignorable="d" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"  xmlns:UCA="clr-namespace:Bska.Client.UI.UserControlls.FileExportUC" xmlns:conv="clr-namespace:Bska.Client.UI.Converters"
              x:Name="accessExport" xmlns:C="clr-namespace:Bska.Client.UI.Controls" Loaded="accessExport_Loaded">
     <UserControl.Resources>
         <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
@@ -138,7 +138,7 @@
                 <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Grid.Column="1" Text="{Binding LetterNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Margin="5,0,5,0"/>
                 <RadioButton GroupName="rbFolder" Style="{StaticResource CompletedRadioButton}" Content="انتخاب مسیر جدید" Margin="5,0,5,0" Grid.Column="2" IsChecked="{Binding IsNewFolder}"/>
                 <RadioButton GroupName="rbFolder" Style="{StaticResource CompletedRadioButton}" Content="انتخاب فایل موجود" Margin="5,0,5,0" Grid.Column="3"/>
-                <Button Grid.Column="4" Style="{StaticResource FlatButtonStyleTit}" Background="#FF1FAEFF" Content="انتخاب مسیر" Width="80" HorizontalAlignment="Left" VerticalAlignment="Center"
+                <Button Grid.Column="4" Style="{StaticResource FlatButtonStyle}" Background="#FF1FAEFF" Content="انتخاب مسیر" Width="80" HorizontalAlignment="Left" VerticalAlignment="Center"
                                 Margin="5,0,5,0" Height="26" Command="{Binding AccessFilePathCommand}"/>
                 <TextBlock Text="{Binding AccessFilePath}" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </Grid>
@@ -239,7 +239,7 @@
         </Border>
         <Border Grid.Row="3" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" CornerRadius="0"  RenderTransformOrigin="0.5,0.5">
             <Grid>
-                <Button Grid.Row="1" Style="{StaticResource FlatButtonStyleTit}" Background="#FF1FAEFF" Content="تایید" Width="90" HorizontalAlignment="Right" VerticalAlignment="Center"
+                <Button Grid.Row="1" Style="{StaticResource FlatButtonStyle}" Background="#FF1FAEFF" Content="تایید" Width="90" HorizontalAlignment="Right" VerticalAlignment="Center"
                                 Margin="20,0,15,0" Height="26" Command="{Binding ConfirmCommand}"/>
             </Grid>
         </Border>

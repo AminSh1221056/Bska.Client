@@ -62,7 +62,7 @@ namespace Bska.Client.UI.Views
                           this.employeePane.toolbarPane.deletebtn.Visibility = Visibility.Collapsed;
                           this.employeePane.toolbarPane.cancelbtn.Visibility = Visibility.Collapsed;
                           this.employeePane.toolbarPane.newbtn.Visibility = Visibility.Collapsed;
-                          this.employeePane.txtCode.Focus();
+                          //this.employeePane.txtCode.Focus();
                         break;
                       case 2:
                           var viewModel1 = new BuildingListViewModel(_container);

@@ -14,6 +14,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,5,5,0" Text="شرح حادثه:"/>
-        <TextBox  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" TextWrapping="Wrap" Width="450" Height="160" Grid.Column="1" Text="{Binding Desc1,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" TextWrapping="Wrap" Width="450" Height="160" Grid.Column="1" Text="{Binding Desc1,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" />
     </Grid>
 </UserControl>

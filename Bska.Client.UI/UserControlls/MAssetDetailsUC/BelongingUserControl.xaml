@@ -47,7 +47,7 @@
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Grid.Row="3" Margin="5,0,5,0" Text="توضیحات:"/>
 
                 <TextBox MaxLength="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Width="90"  Grid.Column="1" Grid.Row="0" Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid},AncestorLevel=3},Path=DataContext.Num,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" 
-                 Style="{StaticResource CustomTextBoxTextStyle}" x:Name="txtNum"/>
+                  x:Name="txtNum"/>
                 <TextBox MaxLength="13" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Grid.Column="1" Grid.Row="1"
                          Text="{Binding Cost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True,StringFormat={}{0:N0},ConverterCulture=fa}"/>
                 <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2"

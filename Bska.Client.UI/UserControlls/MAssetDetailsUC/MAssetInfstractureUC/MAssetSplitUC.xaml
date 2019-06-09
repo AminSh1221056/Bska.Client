@@ -1,0 +1,243 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.MAssetDetailsUC.MAssetInfstractureUC.MAssetSplitUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+             x:Name="splitUc">
+    <UserControl.Resources>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:LocationStautsConverter x:Key="LocationStautsConverter"/>
+        <Conv:ReverseBooleanToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter"/>
+        <Conv:LocationStatusToStringConverter x:Key="LocationStatusToStringConverter"/>
+        <DataTemplate x:Key="StatusColumnTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="28"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Width="25" Height="25" HorizontalAlignment="Left" ToolTip="{Binding Status,Converter={StaticResource LocationStatusToStringConverter}}"
+                   Source="{Binding Status,Converter={StaticResource LocationStautsConverter}}"  />
+                <TextBlock Text="{Binding Status,Converter={StaticResource LocationStatusToStringConverter}}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ShowDetailsColumnTemplate">
+            <Button Width="25" Style="{DynamicResource CustomTitButton}" FontSize="12" Height="25" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="btnShowDetails" FontFamily="Tahoma" 
+                    Command="{Binding ElementName=splitUc,Path=DataContext.DetailsCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <!--<Storyboard x:Key="ExpandingStoryboard">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:0.2" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="320" KeySpline="0.681,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:0.2" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:0.2" Storyboard.TargetName="LeftPane" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.2" Value="0.1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.4" Value="0.5"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="1" KeySpline="0.705,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>-->
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F7" Command="{Binding ReportCommand}"/>
+    </UserControl.InputBindings>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <!--<BeginStoryboard Storyboard="{StaticResource ExpandingStoryboard}"/>-->
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border FlowDirection="RightToLeft" Grid.Row="0" Background="{DynamicResource PrimaryHueLightBrush}"  BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="260"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="نام مال:" FontSize="12.5"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Text="شماره برچسب:" FontSize="12.5"/>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Text="{Binding CurrentMovableAsset.Name}" Margin="5,0,5,0"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Text="{Binding CurrentMovableAsset.Label,TargetNullValue=[نامشخص]}" Margin="5,0,5,0"/>
+
+                <Button Style="{StaticResource CustomTitButton}" Grid.Column="7" Margin="5,0,5,0"
+                     Width="40" Height="32" Command="{Binding ReportCommand}" ToolTip="چاپ" Foreground="#FFF">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="F7"/>
+                            <ContentControl Style="{StaticResource appbar_report}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <C:SortableListView  Grid.Column="0" x:Name="PropertyGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedItem}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}" FlowDirection="RightToLeft"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                <C:SortableListView.View >
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="80" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Header="وضعیت" CellTemplate="{StaticResource StatusColumnTemplate}" Width="220" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تاریخ ثبت" DisplayMemberBinding="{Binding InsertDate,Converter={StaticResource PersianDateConverter}}" SortProperty="Label" Width="130" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource ShowDetailsColumnTemplate}" Width="60" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                    </GridView>
+                </C:SortableListView.View>
+            </C:SortableListView>
+            <Border FlowDirection="RightToLeft" Grid.Column="1" Background="{DynamicResource PrimaryHueLightBrush}"  BorderThickness="1,0,0,0" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}"
+                   x:Name="LeftPane" Margin="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border FlowDirection="RightToLeft" Grid.Row="0" BorderThickness="0,0,0,1" CornerRadius="0,0,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"
+                                   Text="{Binding LocationName}"/>
+                    </Border>
+                    <Grid Grid.Row="1" Visibility="{Binding BuildingEnabled,Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="0" Text="نام ساختمان:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="1" Text="منطقه سازمانی:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="2" Text="منطقه استراتژیکی:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="3" Text="نام پرسنل:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="4" Text="تاریخ ثبت:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="5" Text="تاریخ درخواست ارجاء:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="6" Text="تاریخ ارجاء:"/>
+
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="0" Text="{Binding BuildingName}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="1" Text="{Binding OrganizationName}" TextWrapping="Wrap"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="2" Text="{Binding StrategyName}" TextWrapping="Wrap"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="3" Text="{Binding PersonName}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="4" Text="{Binding SelectedItem.InsertDate,Converter={StaticResource PersianDateConverter}}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="5" Text="{Binding SelectedItem.MovedRequestDate,Converter={StaticResource PersianDateConverter},TargetNullValue=[نامشخص]}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="6" Text="{Binding SelectedItem.ReturnDate,Converter={StaticResource PersianDateConverter},TargetNullValue=[نامشخص]}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Visibility="{Binding StoreEnabled,Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="0" Text="نام انبار:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="1" Text="آدرس انبار:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="2" Text="تاریخ ثبت:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="3" Text="تاریخ درخواست ارجاء:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="4" Text="تاریخ ارجاء:"/>
+
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="0" Text="{Binding StoreName}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="1" Text="{Binding StoreAddressName}" TextWrapping="Wrap"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="2" Text="{Binding SelectedItem.InsertDate,Converter={StaticResource PersianDateConverter}}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="3" Text="{Binding SelectedItem.MovedRequestDate,Converter={StaticResource PersianDateConverter},TargetNullValue=[نامشخص]}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="4" Text="{Binding SelectedItem.ReturnDate,Converter={StaticResource PersianDateConverter},TargetNullValue=[نامشخص]}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Visibility="{Binding OtherEnabled,Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="0" Text="نوع عملیات:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="1" Text="نوع سند حسابداری:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="2" Text="تاریخ ثبت:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="3" Text="تاریخ درخواست ارجاء:"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="0" Grid.Row="4" Text="تاریخ ارجاء:"/>
+
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="0" Text="{Binding SelectedItem.Status,Converter={StaticResource LocationStatusToStringConverter}}"/>
+
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="2" Text="{Binding SelectedItem.InsertDate,Converter={StaticResource PersianDateConverter}}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="3" Text="{Binding SelectedItem.MovedRequestDate,Converter={StaticResource PersianDateConverter},TargetNullValue=[نامشخص]}"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Grid.Column="1" Grid.Row="4" Text="{Binding SelectedItem.ReturnDate,Converter={StaticResource PersianDateConverter},TargetNullValue=[نامشخص]}"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -117,7 +117,7 @@
 
                 <ComboBox Style="{StaticResource BeskaComboBoxStyle}" Grid.Column="1" Width="120" Height="19" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" 
                           ItemsSource="{Binding Source={masking:Enumeration {x:Type local:TaxCostType}}}" DisplayMemberPath="Description" SelectedValue="{Binding TaxCostType,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"  SelectedValuePath="Value"/>
-                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120" Height="19" Grid.Column="3" Text="{Binding Cost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat={}{0:N0},ConverterCulture=fa,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120" Height="19" Grid.Column="3" Text="{Binding Cost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat={}{0:N0},ConverterCulture=fa,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" />
                 <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="315" Height="19" Grid.Column="5" Text="{Binding Description}"/>
             </Grid>
         </Border>

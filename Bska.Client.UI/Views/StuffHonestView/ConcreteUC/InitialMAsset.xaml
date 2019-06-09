@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" x:Name="page" FontFamily="{StaticResource PrimaryFontFamily}"
-	  FlowDirection="RightToLeft" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
+	  FlowDirection="RightToLeft" xmlns:C="clr-namespace:Bska.Client.UI.Controls" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters"
       xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:UCSD="clr-namespace:Bska.Client.UI.UserControlls.DraftUC"
       DataContextChanged="page_DataContextChanged" xmlns:toolbar="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
     <UserControl.Resources>

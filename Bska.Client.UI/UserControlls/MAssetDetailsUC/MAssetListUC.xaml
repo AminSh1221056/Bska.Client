@@ -19,10 +19,10 @@
 
         <DataTemplate x:Key="EditColumnTemplate">
             <Button ToolTip="جزئیات" Width="32"
-                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="36" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=assetList,Path=DataContext.DetailsCommand}">
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" Height="28" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=assetList,Path=DataContext.DetailsCommand}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
-                        <ContentControl Style="{StaticResource app-details}"/>
+                        <ContentControl Style="{StaticResource app-details}" Height="23" Width="23"/>
                     </StackPanel>
                 </Button.Content>
                 <Button.CommandParameter>

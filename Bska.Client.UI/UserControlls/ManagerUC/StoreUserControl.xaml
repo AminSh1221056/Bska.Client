@@ -16,6 +16,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="60"/>
                             <ColumnDefinition/>
+                            <ColumnDefinition Width="45"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -28,6 +29,8 @@
          Text="نوع انبار:"></TextBlock>
                         <TextBlock Margin="2,2,2,2" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
          Text="{Binding Path=StoreType,Converter={StaticResource StoreConverter}}"></TextBlock>
+
+                        <Image x:Name="imgStg" Grid.Column="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Margin="3,0"  Source="{StaticResource TreeviewIcon}"/>
                     </Grid>
                 </Border>
             </Grid>
@@ -39,6 +42,14 @@
                 <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
                     <Setter TargetName="g1" Property="Background" Value="#FF687802"/>
                     <Setter TargetName="g1" Property="Cursor" Value="Hand"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding HaveStrategy}" Value="True">
+                    <Setter TargetName="imgStg" Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding HaveStrategy}" Value="False">
+                    <Setter TargetName="imgStg" Property="Visibility" Value="Collapsed"/>
                 </DataTrigger>
             </DataTemplate.Triggers>
         </DataTemplate>
@@ -92,7 +103,7 @@
                         <TextBlock Text="نام انبار:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="5,0,5,0"/>
                         <TextBlock Text="نوع انبار:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0"/>
                         <TextBlock Text="توضیحات:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Margin="5,0,5,0"/>
-                        <TextBox Focusable="True" TabIndex="0" x:Name="txtStoreName"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="1" Width="180"  Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+                        <TextBox Focusable="True" TabIndex="0" x:Name="txtStoreName"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="0" Grid.Column="1" Width="180"  Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" />
                         <ComboBox Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="1" Grid.Column="1" Width="120" Height="22"  ItemsSource="{Binding Source={masking:Enumeration {x:Type local:StoreType}}}" DisplayMemberPath="Description" 
                              SelectedValuePath="Value" SelectedValue="{Binding StoreType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
                         <TextBox  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Row="2" Grid.Column="1" Width="390" Text="{Binding Description}"/>

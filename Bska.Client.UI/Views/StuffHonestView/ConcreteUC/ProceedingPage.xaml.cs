@@ -13,10 +13,6 @@ namespace Bska.Client.UI.Views.StuffHonestView
             InitializeComponent();
             this.globalToolPane.gridMainBtn.Visibility = System.Windows.Visibility.Collapsed;
         }
-
-        private void MultiSelectComboBox_SelectionChanged(object sender, System.Windows.RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

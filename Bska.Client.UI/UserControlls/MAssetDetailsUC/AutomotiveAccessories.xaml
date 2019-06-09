@@ -85,13 +85,13 @@
             <TextBlock Grid.Column="0" Grid.Row="2" Text="رنگ اصلی:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
             <TextBlock Grid.Column="2" Grid.Row="2" Text="پلاک-شماره/نوع:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0"/>
 
-            <TextBox Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding MotorNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
-            <TextBox Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding ChassisNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+            <TextBox  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding MotorNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+            <TextBox  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding ChassisNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
             <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding Capacity}"/>
-            <TextBox IsEnabled="{Binding VINEnabled}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding CommissionNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+            <TextBox IsEnabled="{Binding VINEnabled}"  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding CommissionNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
             <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding Color}"/>
            
-            <TextBox Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding Plaque,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
+            <TextBox  Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Width="120"  Text="{Binding Plaque,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"/>
         </Grid>
     </Grid>
 </UserControl>

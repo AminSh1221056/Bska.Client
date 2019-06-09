@@ -1,0 +1,154 @@
+﻿<UserControl x:Class="Bska.Client.UI.UserControlls.TreeViewUC.StrategyEditableTreeViewUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bska.Client.UI.UserControlls.TreeViewUC"
+             mc:Ignorable="d" xmlns:Behaviors="clr-namespace:Bska.Client.UI.Helper"
+             xmlns:conv="clr-namespace:Bska.Client.UI.Converters">
+    <UserControl.Resources>
+        <conv:StrategyTreeIconConverter x:Key="StrategyTreeIconConverter"/>
+        <Behaviors:BindingProxy x:Key="proxy" Data="{Binding}"/>
+    </UserControl.Resources>
+    <Grid>
+        <TreeView x:Name="treeStrategy" ItemsSource="{Binding FirstGeneration}" Behaviors:TreeViewInPlaceEditBehavior.IsEditable="{Binding IsEditable}"
+                                  SelectedItemChanged="TreeStrategy_SelectedItemChanged"  BorderBrush="Transparent" Background="Transparent">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="FontSize" Value="13"/>
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Background="{DynamicResource PrimaryHueLightBrush}" Header="جدید" Command="{Binding Path=Data.NewTreeCommand,Source={StaticResource proxy}}"
+                                                                  CommandParameter="{Binding}"/>
+                                <MenuItem Background="{DynamicResource PrimaryHueLightBrush}" Header="حذف" Command="{Binding Path=Data.DeleteTreeCommand,Source={StaticResource proxy}}"
+                                                                  CommandParameter="{Binding}"/>
+                                <MenuItem Background="{DynamicResource PrimaryHueLightBrush}" Header="جزئیات" Command="{Binding Path=Data.DetailsCommand,Source={StaticResource proxy}}"
+                                                                  CommandParameter="{Binding}"/>
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Margin="3,0"  Source="{Binding Converter={StaticResource StrategyTreeIconConverter}}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}  {1}">
+                                        <Binding Path="Name" />
+                                        <Binding Path="Code"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" x:Name="TextBox" MinWidth="20" Style="{x:Null}">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}" Key="Enter"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                            <TextBox Margin="5,0,5,0" Grid.Column="1" Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" x:Name="TextBox1" MinWidth="20" Style="{x:Null}">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}" Key="Enter"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                        </Grid>
+                    </StackPanel>
+                    <HierarchicalDataTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                <Condition Binding="{Binding IsEditing}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="TextBox" Property="FocusManager.FocusedElement"  Value="{Binding RelativeSource={RelativeSource Self}}"/>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox1" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                <Condition Binding="{Binding Path=(Behaviors:TreeViewInPlaceEditBehavior.IsEditing), RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="TextBox" Property="FocusManager.FocusedElement"  Value="{Binding RelativeSource={RelativeSource Self}}"/>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox1" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox1" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiDataTrigger>
+                    </HierarchicalDataTemplate.Triggers>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</UserControl>

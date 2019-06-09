@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Name="userconfigUc"
-             mc:Ignorable="d"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" xmlns:My="clr-namespace:Bska.Client.UI.Controls" 
+             mc:Ignorable="d"  xmlns:My="clr-namespace:Bska.Client.UI.Controls" 
              xmlns:masking="clr-namespace:Bska.Client.UI.API" xmlns:h="clr-namespace:Bska.Client.UI.Helper" 
             xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:ribboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon">
     <UserControl.Resources>
@@ -12,11 +12,11 @@
         <DataTemplate x:Key="UserPassRefresh">
             <Button ToolTip="بازیابی رمز عبور" Width="40" Grid.Column="1" Margin="5,0,5,0"
                     Style="{DynamicResource CustomTitButton}"
-                    FontSize="12" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                    FontSize="12" Height="30" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
                     Command="{Binding ElementName=userconfigUc,Path=DataContext.RefreshPassWordCommand}" CommandParameter="{Binding}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
-                        <ContentControl Style="{StaticResource user-pass}"/>
+                        <ContentControl Style="{StaticResource user-pass}" Height="18"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
@@ -51,7 +51,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="140"/>
+                        <RowDefinition Height="150"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" x:Name="txbPersonName" Text="انتخاب پرسنل :"  Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Right" />
@@ -67,10 +67,10 @@
                         <Border x:Name="BorderAddEdit" IsEnabled="{Binding EnableGrid}" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,1" CornerRadius="0" >
                             <Grid x:Name="gridEdit" DataContext="{Binding UsersDetailsVM,ValidatesOnNotifyDataErrors=False,NotifyOnValidationError=False}">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="26" />
-                                    <RowDefinition Height="26" />
-                                    <RowDefinition Height="26" />
-                                    <RowDefinition Height="36" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="40" />
                                     <RowDefinition Height="5" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
@@ -81,11 +81,11 @@
                                 <TextBlock Grid.Column="0" Grid.Row="1" Margin="0,0,0,0" x:Name="txbPassword" Text="رمز عبور:"  Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Right" />
                                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,0,0" x:Name="txbConfirmPassword" Text="تاييد رمز عبور:" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Right" />
                                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,0,0" x:Name="txbPermissionUseruse"  Text="نحوه دسترسي:"  Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                                <TextBox TabIndex="1" masking:Masking.Mask="^[آ-یA-Za-z\d@!*]+$" Style="{StaticResource CustomTextBoxTextStyle}" Text="{Binding UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" MaxLength="12" Grid.Column="1" Grid.Row="0" Margin="4,5,0,0" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="12" />
-                                <PasswordBox TabIndex="2" IsEnabled="{Binding EnableControls}" Style="{StaticResource CustomPasswordBoxTextStyle}" h:PasswordHelper.Attach="True" h:PasswordHelper.Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Grid.Column="1" Grid.Row="1" Margin="4,5,0,0" x:Name="pbPassword" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" MaxLength="12" FontSize="12" />
-                                <PasswordBox TabIndex="3" IsEnabled="{Binding EnableControls}" h:PasswordHelper.Attach="True" Style="{StaticResource CustomPasswordBoxTextStyle}" h:PasswordHelper.Password="{Binding PasswordHinit,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Grid.Column="1" Grid.Row="2" Margin="4,2,0,0" x:Name="pbConfirmPassword" Width="187" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" MaxLength="12" FontSize="12" />
-                                <ComboBox TabIndex="4" IsEnabled="{Binding EnableControls}" DisplayMemberPath="Value" SelectedValue="{Binding PermissionType}"  SelectedValuePath="Key" Style="{StaticResource BeskaComboBoxStyle}" 
-                                          Grid.Column="1" Grid.Row="3" Margin="4,3,0,3" x:Name="cmbPermissionUserUse" Height="Auto" Width="187" VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid},AncestorLevel=2},Path=DataContext.AvailablePermissions}"/>
+                                <TextBox TabIndex="1" masking:Masking.Mask="^[آ-یA-Za-z\d@!*]+$"  Text="{Binding UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}" MaxLength="12" Grid.Column="1" Grid.Row="0" Margin="4,5,0,0" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="12" />
+                                <PasswordBox TabIndex="2" IsEnabled="{Binding EnableControls}"  h:PasswordHelper.Attach="True" h:PasswordHelper.Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Grid.Column="1" Grid.Row="1" Margin="4,5,0,0" x:Name="pbPassword" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" MaxLength="12" FontSize="12" />
+                                <PasswordBox TabIndex="3" IsEnabled="{Binding EnableControls}" h:PasswordHelper.Attach="True" h:PasswordHelper.Password="{Binding PasswordHinit,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" Grid.Column="1" Grid.Row="2" Margin="5,0,5,0" x:Name="pbConfirmPassword" Width="187" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" MaxLength="12" FontSize="12" />
+                                <ComboBox TabIndex="4" IsEnabled="{Binding EnableControls}" DisplayMemberPath="Value" SelectedValue="{Binding PermissionType}"  SelectedValuePath="Key"
+                                          Grid.Column="1" Grid.Row="3" Margin="5,0,5,0" x:Name="cmbPermissionUserUse" Height="28" Width="187" VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid},AncestorLevel=2},Path=DataContext.AvailablePermissions}"/>
                             </Grid>
                         </Border>
                     </Grid>

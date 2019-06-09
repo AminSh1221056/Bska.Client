@@ -1,0 +1,42 @@
+﻿<Window x:Class="Bska.Client.UI.Views.StuffConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ucm="clr-namespace:Bska.Client.UI.UserControlls.ManagerUC"
+        mc:Ignorable="d"
+       Style="{StaticResource FlatTitleMoalWindowStyle}" MinWidth="610" WindowStartupLocation="CenterScreen"
+        xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" RenderTransformOrigin="0.5,0.5" x:Name="stuffConfigWin" MouseLeftButtonDown="stuffConfigWin_MouseLeftButtonDown" Height="600" Width="950"
+       Title="تنظیمات اموال">
+    <Window.Resources>
+        <Storyboard x:Key="StoryboardEnterance">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="410" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-30" KeySpline="1,0,0,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform X="0" Y="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardEnterance}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close"
+        Executed="CloseCommand_Executed"/>
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft" Background="{DynamicResource MaterialDesignPaper}">
+        <UC:FolderView Foreground="{DynamicResource PrimaryHueMidBrush}" Tag="{DynamicResource PrimaryHueMidForegroundBrush}" VerticalAlignment="Top" Margin="0,-36,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" x:Name="FoldersShow" ComboColorOrganizChanged="FoldersShow_ComboColorOrganizChanged"/>
+        <ucm:StuffConfirmConfigUC x:Name="stuffConfig"/>
+        <ucm:KalaManageUc x:Name="kalaManage"/>
+    </Grid>
+</Window>

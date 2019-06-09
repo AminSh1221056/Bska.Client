@@ -37,7 +37,7 @@
 
         <TextBox IsEnabled="{Binding NumIsEnabled}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Margin="5,0,5,0" Width="90"  
                  Text="{Binding Num,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"
-                 Style="{StaticResource CustomTextBoxTextStyle}" x:Name="txtNum"/>
+                  x:Name="txtNum"/>
 
 
         <ComboBox x:Name="cmbunit" Style="{StaticResource BeskaComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Height="20"

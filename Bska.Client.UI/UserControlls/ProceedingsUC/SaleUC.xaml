@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="نام خریدار:" Grid.Row="0"/>
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="قیمت کل صورت جلسه:" Grid.Row="0" Grid.Column="2"/>
-        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Width="180" Margin="5,0,5,0" Text="{Binding Desc1,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Style="{StaticResource CustomTextBoxTextStyle}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Width="180" Margin="5,0,5,0" Text="{Binding Desc1,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" />
         <TextBox MaxLength="14" Grid.Column="3" Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid},AncestorLevel=3},Path=DataContext.GlobalPrice,StringFormat={}{0:N0},ConverterCulture=fa}" Width="150" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
                      IsEnabled="{Binding IsEditablePrice}"/>
     </Grid>

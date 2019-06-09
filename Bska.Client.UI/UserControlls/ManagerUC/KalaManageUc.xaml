@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Bska.Client.UI.UserControlls.ManagerUC"
              mc:Ignorable="d" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
       xmlns:C="clr-namespace:Bska.Client.UI.Controls"
-      Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  xmlns:Uc="clr-namespace:Bska.Client.UI.UserControlls">
+       xmlns:Uc="clr-namespace:Bska.Client.UI.UserControlls">
     <UserControl.InputBindings>
         <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>
         <KeyBinding Key="F8" Command="{Binding DeleteCommand}"/>
@@ -30,7 +30,7 @@
                             <ColumnDefinition Width="110"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Foreground="#FFF" HorizontalAlignment="Right" Margin="5,0,5,0" Width="Auto" Text="جستجوی مال:" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Right" Margin="5,0,5,0" Width="Auto" Text="جستجوی مال:" TextWrapping="Wrap" VerticalAlignment="Center"/>
                         <C:AutoFilteredComboBox x:Name="cmbStuffs" IsTextSearchEnabled="True" IsEditable="True"  Style="{StaticResource BeskaStuffComboBoxStyle}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
                       Width="170" ItemsSource="{Binding StuffList}" SelectedItem="{Binding SelectedStuff}" Margin="5,0,5,0">
                             <ComboBox.ItemsPanel>
@@ -116,13 +116,13 @@
                     <TextBlock HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Margin="5,0,5,0"
                                Text="GS1:"/>
 
-                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
-                             Text="{Binding StuffName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="0"/>
-                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
-                             Text="{Binding StuffCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}" Style="{StaticResource CustomTextBoxTextStyle}" Grid.Row="1"/>
-                    <TextBlock HorizontalAlignment="Left" Grid.Column="1" Height="19" Margin="192,0,5,0"
+                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="25" Margin="5,0,5,0"
+                             Text="{Binding StuffName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"  Grid.Row="0"/>
+                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="25" Margin="5,0,5,0"
+                             Text="{Binding StuffCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnDataErrors=True}"  Grid.Row="1"/>
+                    <TextBlock HorizontalAlignment="Left" Grid.Column="1" Height="25" Margin="192,0,5,0"
                              Text="{Binding CurrentRightCode}" Grid.Row="1"/>
-                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="19" Margin="5,0,5,0"
+                    <TextBox HorizontalAlignment="Left" Grid.Column="1" Width="180" Height="25" Margin="5,0,5,0"
                              Text="{Binding GS1}" Grid.Row="2"/>
                 </Grid>
             </Grid>

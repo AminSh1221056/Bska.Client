@@ -39,7 +39,7 @@
       <Value Profile="(Default)">res://*/Model.EFShardModel.csdl|res://*/Model.EFShardModel.ssdl|res://*/Model.EFShardModel.msl</Value>
     </Setting>
     <Setting Name="dataSource" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DC03</Value>
+      <Value Profile="(Default)">DESKTOP-L4SPE0L</Value>
     </Setting>
     <Setting Name="initialCatalog" Type="System.String" Scope="User">
       <Value Profile="(Default)">Bska.Client</Value>

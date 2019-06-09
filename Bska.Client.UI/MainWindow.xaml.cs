@@ -111,6 +111,7 @@ namespace Bska.Client.UI
                 var loginVm = new LoginWindowViewModel(_container);
                 loginVm.excecuteFackeUser();
             });
+
             this.initUserCreditByPrinciple();
 
             this.Cursor = Cursors.Arrow;
@@ -146,7 +147,6 @@ namespace Bska.Client.UI
             this.accountMenu.Visibility = Visibility.Collapsed;
             //this.exitAPPMenuItem.Visibility = Visibility.Collapsed;
             this.gridMainArea.Visibility = Visibility.Collapsed;
-            this.personMassetList.Visibility = Visibility.Collapsed;
             this.loginMenuItem.IsEnabled = true;
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.SetPrincipalPolicy(PrincipalPolicy.UnauthenticatedPrincipal);
@@ -174,14 +174,18 @@ namespace Bska.Client.UI
             if (Thread.CurrentPrincipal != null)
             {
                // this.exitAPPMenuItem.Visibility = Visibility.Visible;
-                this.gridMainArea.Visibility = Visibility.Visible;
-                this.personMassetList.Visibility = Visibility.Visible;
-                this.loginMenuItem.IsEnabled = false;
-                ((Storyboard)this.Resources["StoryboardTimeLineIn"]).Begin(this);
+                
+                if(Thread.CurrentPrincipal.Identity.IsAuthenticated)
+                {
+                    this.gridMainArea.Visibility = Visibility.Visible;
+                    this.loginMenuItem.IsEnabled = false;
+                    ((Storyboard)this.Resources["StoryboardTimeLineIn"]).Begin(this);
 
-                this.orderList.txtUserName.Text = Thread.CurrentPrincipal.Identity.Name;
-                this.UserConfigPasswordItem.Visibility = Visibility.Visible;
-                this.UserEventItem.Visibility = Visibility.Visible;
+                    this.orderList.txtUserName.Text = Thread.CurrentPrincipal.Identity.Name;
+                    this.UserConfigPasswordItem.Visibility = Visibility.Visible;
+                    this.UserEventItem.Visibility = Visibility.Visible;
+                }
+
                 if (Thread.CurrentPrincipal.IsInRole("Manager"))
                 {
                     this.ConfigMenuItem.Visibility = Visibility.Visible;
@@ -437,7 +441,16 @@ namespace Bska.Client.UI
                     this.serviceMenu.Visibility = Visibility.Collapsed;
                     this.accountMenu.Visibility = Visibility.Collapsed;
                 }
-                this.orderList.FilterTextBox.Focus();
+            }
+            else
+            {
+                this.ConfigMenuItem.Visibility = Visibility.Collapsed;
+                this.honestMenu.Visibility = Visibility.Collapsed;
+                this.managerMenu.Visibility = Visibility.Collapsed;
+                this.storeMenu.Visibility = Visibility.Collapsed;
+                this.munitionMenu.Visibility = Visibility.Collapsed;
+                this.serviceMenu.Visibility = Visibility.Collapsed;
+                this.accountMenu.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -501,15 +514,14 @@ namespace Bska.Client.UI
 
         private void SystemLabelMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            this.Cursor = Cursors.Wait;
             var mItem = sender as MenuItem;
-            int tag =Convert.ToInt32(mItem.Tag);
+            string tag =mItem.Name;
 
             var window = _container.Resolve<StuffHonestMainWindow>(new ParameterOverrides { { "isQuciLunch", true }, { "quickNo", tag } });
-             //menu.Menu["stuffHonest"].ForEach(mu=>
-             //{
-             //    window.LbxMenu.Items.Add(mu);
-             //});
+          
             window.ShowDialog();
+            this.Cursor = Cursors.Arrow;
         }
 
         private void ENTREPOTmAnageMenuItem_Click(object sender, RoutedEventArgs e)
@@ -552,12 +564,9 @@ namespace Bska.Client.UI
         private void EmissionOrderMenuItem_Click(object sender, RoutedEventArgs e)
         {
             var mItem = sender as MenuItem;
-            int tag = Convert.ToInt32(mItem.Tag);
+            string tag =mItem.Name;
             var window = _container.Resolve<GeneralManagerWindow>(new ParameterOverrides { { "isQuciLunch", true }, { "quickNo", tag } });
-            menu.Menu["gManager"].ForEach(mu =>
-            {
-                window.LbxMenu.Items.Add(mu);
-            });
+           
             window.ShowDialog();
         }
 
@@ -616,21 +625,15 @@ namespace Bska.Client.UI
         
         private void btnmanagerOrder_Click(object sender, RoutedEventArgs e)
         {
-            var window = _container.Resolve<GeneralManagerWindow>(new ParameterOverrides { { "isQuciLunch", true }, { "quickNo",1002 } });
-            menu.Menu["gManager"].ForEach(mu =>
-            {
-                window.LbxMenu.Items.Add(mu);
-            });
+            var window = _container.Resolve<GeneralManagerWindow>(new ParameterOverrides { { "isQuciLunch", true }, { "quickNo","A1" } });
+            
             window.ShowDialog();
         }
 
         private void ManagerproceedingOrder_Click(object sender, RoutedEventArgs e)
         {
-            var window = _container.Resolve<GeneralManagerWindow>(new ParameterOverrides { { "isQuciLunch", true }, { "quickNo", 1001 } });
-            menu.Menu["gManager"].ForEach(mu =>
-            {
-                window.LbxMenu.Items.Add(mu);
-            });
+            var window = _container.Resolve<GeneralManagerWindow>(new ParameterOverrides { { "isQuciLunch", true }, { "quickNo", "A1" } });
+          
             window.ShowDialog();
         }
 

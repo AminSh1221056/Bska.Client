@@ -8,7 +8,7 @@
       xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
       mc:Ignorable="d" 
       FontFamily="{StaticResource PrimaryFontFamily}"
-	  FlowDirection="RightToLeft" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+	  FlowDirection="RightToLeft">
     <UserControl.InputBindings>
         <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
         <KeyBinding Key="F3" Command="{Binding SaveCommand}"/>

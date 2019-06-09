@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bska.Client.UI.Views.StuffHonestView"
-      mc:Ignorable="d" FontFamily="{StaticResource PrimaryFontFamily}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+      mc:Ignorable="d" FontFamily="{StaticResource PrimaryFontFamily}"
     FlowDirection="RightToLeft" xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC">
     <UserControl.Resources>
         <Conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>

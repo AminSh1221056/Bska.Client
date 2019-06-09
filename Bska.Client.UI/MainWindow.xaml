@@ -5,9 +5,13 @@
         WindowStartupLocation="CenterScreen" x:Name="window"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  mc:Ignorable="d" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FlowDirection="RightToLeft"
-        Loaded="Window_Loaded" xmlns:StoryboardManager="clr-namespace:Bska.Client.UI.API" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
-        xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" FontFamily="{StaticResource PrimaryFontFamily}" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC">
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" FlowDirection="RightToLeft"
+        Loaded="Window_Loaded" xmlns:StoryboardManager="clr-namespace:Bska.Client.UI.API"
+        xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+        xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" FontFamily="{StaticResource PrimaryFontFamily}"
+         xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC"
+                      xmlns:dashbord="clr-namespace:Bska.Client.UI.UserControlls.GlobalToolsUC.DashbordUC">
     <Window.Resources>
         <Conv:BoolToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter"/>
         <Conv:ReverseBooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -139,7 +143,7 @@
         <Border Height="50" DockPanel.Dock="Top" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" x:Name="HeaderBorder" Padding="10,0,10,0" >
             <DockPanel x:Name="Header">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock xml:space="preserve" Opacity="1" FontFamily="Segoe" FontSize="24" FontStretch="Normal" FontWeight="Light" TextWrapping="Wrap" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" VerticalAlignment="Bottom" Margin="0,0,0,5" Width="auto"><Run Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="{Binding OrganizationName}"/></TextBlock>
+                    <TextBlock xml:space="preserve" Opacity="1" FontFamily="Segoe" FontSize="24" FontStretch="Normal" FontWeight="Light" TextWrapping="Wrap"  VerticalAlignment="Bottom" Margin="0,0,0,5" Width="auto" Style="{DynamicResource MaterialDesignHeadlineTextBlock}"><Run Text="{Binding OrganizationName}"/></TextBlock>
                     <Grid>
                         <Ellipse Margin="10,2,0,0" Width="44" Height="44" Stroke="{x:Null}"  Opacity="1" x:Name="yellowcircle">
                             <Ellipse.Fill>
@@ -202,35 +206,35 @@
         <!-- Menu Area -->
         <Border x:Name="MenuBorder" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,5,0,5">
             <Grid>
-                <TextBlock x:Name="txtDateTime" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,0"/>
+                <TextBlock FontSize="12" Style="{StaticResource MaterialDesignHeadlineTextBlock}" x:Name="txtDateTime" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,0"/>
                 <Menu VerticalAlignment="Bottom" Margin="5,0,170,0" Style="{DynamicResource MenuStyle}" FontFamily="Tahoma">
-                    <MenuItem ToolTip="F2" Header="_سامانه" x:Name="LoginMenu" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                    <MenuItem ToolTip="F2" Header="_سامانه" x:Name="LoginMenu" Style="{DynamicResource MenuItemStyle}" >
                         <MenuItem Header="_ورود" x:Name="loginMenuItem"/>
                         <!--<MenuItem Header="خروج از سامانه" x:Name="exitAPPMenuItem" Visibility="Collapsed"/>-->
                         <MenuItem Header="_خروج" x:Name="exitMenuItem" Click="ExitMenuItem_Click"/>
                     </MenuItem>
-                    <MenuItem ToolTip="F3" Header="_تنظیمات" x:Name="ConfigMenuItem" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Visibility="Collapsed">
-                      
+                    <MenuItem ToolTip="F3" Header="_تنظیمات" x:Name="ConfigMenuItem" Style="{DynamicResource MenuItemStyle}" >
+
                     </MenuItem>
-                    <MenuItem ToolTip="F4" Header="_امین اموال" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="honestMenu" Visibility="Collapsed">
-                      
+                    <MenuItem ToolTip="F4" Header="_امین اموال" Style="{DynamicResource MenuItemStyle}"  x:Name="honestMenu">
+
                     </MenuItem>
-                    <MenuItem ToolTip="F5" Header="_مدیریت" x:Name="managerMenu" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Visibility="Collapsed">
-                       
+                    <MenuItem ToolTip="F5" Header="_مدیریت" x:Name="managerMenu" Style="{DynamicResource MenuItemStyle}" >
+
                     </MenuItem>
-                    <MenuItem  ToolTip="F6" Header="_حسابداری" x:Name="accountMenu" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Visibility="Collapsed">
-                      
+                    <MenuItem  ToolTip="F6" Header="_حسابداری" x:Name="accountMenu" Style="{DynamicResource MenuItemStyle}" >
+
                     </MenuItem>
-                    <MenuItem  ToolTip="F7" Header="_انبار" x:Name="storeMenu" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Visibility="Collapsed">
-                      
+                    <MenuItem  ToolTip="F7" Header="_انبار" x:Name="storeMenu" Style="{DynamicResource MenuItemStyle}">
+
                     </MenuItem>
-                    <MenuItem ToolTip="F8"  Header="_تدارکات" x:Name="munitionMenu" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Visibility="Collapsed">
-                     
+                    <MenuItem ToolTip="F8"  Header="_تدارکات" x:Name="munitionMenu" Style="{DynamicResource MenuItemStyle}">
+
                     </MenuItem>
-                    <MenuItem ToolTip="F9" Header="_درخواست و اموال"  Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" x:Name="serviceMenu" Visibility="Collapsed">
-                      
+                    <MenuItem ToolTip="F9" Header="_درخواست و اموال"  Style="{DynamicResource MenuItemStyle}" x:Name="serviceMenu">
+
                     </MenuItem>
-                    <MenuItem ToolTip="F1" Header="خدمات" x:Name="HelpMenu" Style="{DynamicResource MenuItemStyle}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                    <MenuItem  ToolTip="F1" Header="خدمات" x:Name="HelpMenu" Style="{DynamicResource MenuItemStyle}">
                         <MenuItem Header="راهنما" x:Name="HelpMenuItem" Command="{Binding HelpCommand}"/>
                         <MenuItem  Header="_تنظیمات" x:Name="UserConfigPasswordItem" Click="UserConfigPasswordItem_Click"/>
                         <MenuItem  Header="_رخدادها" x:Name="UserEventItem" Click="UserEventItem_Click"/>
@@ -241,7 +245,7 @@
         <Grid x:Name="MainGrid" DockPanel.Dock="Top" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -260,16 +264,29 @@
                     </Grid>
                 </Border>
             </Grid>
-            <Grid Grid.Column="1">
+            <!--<Grid Grid.Column="1">
                 <Button Click="btnExpand_Click"  FontSize="14" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="10" Height="50" FlowDirection="LeftToRight" x:Name="btnExpand" Content="&lt;"/>
                 <Button Click="btnContract_Click" FontSize="14" Content="&gt;" FlowDirection="LeftToRight" x:Name="btnContract" VerticalAlignment="Center" HorizontalAlignment="Center" Width="10" Height="50" Visibility="Hidden" />
-            </Grid>
-            
+            </Grid>-->
+
             <!-- Main Area -->
             <Grid  x:Name="MainPane" Grid.Column="2" Margin="0,0,10,0">
                 <Border  x:Name="MainBorder"  Style="{DynamicResource BorderStyle}">
                     <Grid x:Name="gridMainArea">
-                        <UCO:OrderListUC x:Name="orderList"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <UCO:OrderListUC x:Name="orderList" Grid.ColumnSpan="2"/>
+                        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"
+                      HorizontalAlignment="Center">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <dashbord:DashbordPersonMAssetUC/>
+                                    <UCO:DashbordOrderListUC />
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
                     </Grid>
                 </Border>
             </Grid>
@@ -353,7 +370,7 @@
                                     </Button.Content>
                                 </Button>
                             </Grid>
-                            
+
                             <Grid Grid.Row="1" Grid.Column="3" Visibility="{Binding IsGeneralManager,Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
@@ -417,7 +434,7 @@
                                     </Button.Content>
                                 </Button>
                             </Grid>
-                            
+
                             <Grid Grid.Row="1" Grid.Column="4" Visibility="{Binding IsMunition,Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
