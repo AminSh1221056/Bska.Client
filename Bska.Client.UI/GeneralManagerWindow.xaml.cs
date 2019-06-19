@@ -88,9 +88,13 @@ namespace Bska.Client.UI
             {
                 if (model.Key.Equals("A1", StringComparison.Ordinal))
                 {
+                    var page = new OrderManipulationUC(_container);
+                    model.Content = page;
                 }
                 else if (model.Key.Equals("A2", StringComparison.Ordinal))
                 {
+                    var page = new RequestManipulationUC(_container);
+                    model.Content = page;
                 }
             }
         }

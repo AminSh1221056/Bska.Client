@@ -89,10 +89,10 @@ namespace Bska.Client.UI
                     }
                     else if (index.Id == "A2")
                     {
-                        page = new RecivedOrderPage();
-                        var viewModel = new RecivedOrderViewModel(_container);
-                        viewModel.Window = this;
-                        page.DataContext = viewModel;
+                        //page = new RecivedOrderPage();
+                        //var viewModel = new RecivedOrderViewModel(_container);
+                        //viewModel.Window = this;
+                        //page.DataContext = viewModel;
                     }
                     else if (index.Id == "A3")
                     {

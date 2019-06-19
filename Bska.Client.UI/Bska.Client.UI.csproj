@@ -1012,10 +1012,16 @@
     <Compile Include="ViewModels\ManagerViewModels\UserManageViewModel.cs" />
     <Compile Include="ViewModels\ManagerViewModels\UserRoleViewModel.cs" />
     <Compile Include="ViewModels\ManagerViewModels\UsersViewModel.cs" />
-    <Compile Include="Views\AccountingView\AccountCodingPage.xaml.cs">
+    <Compile Include="Views\AccountingView\AccountInitializationUC.xaml.cs">
+      <DependentUpon>AccountInitializationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountingView\AccountManipulationUC.xaml.cs">
+      <DependentUpon>AccountManipulationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountingView\ConcreteUC\AccountCodingPage.xaml.cs">
       <DependentUpon>AccountCodingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountingView\AccountDocumentHistoryPage.xaml.cs">
+    <Compile Include="Views\AccountingView\ConcreteUC\AccountDocumentHistoryPage.xaml.cs">
       <DependentUpon>AccountDocumentHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\MAssetDetailsUC\MAssetInfstractureUC\AssetMainDetailsUC.xaml.cs">
@@ -1027,14 +1033,20 @@
     <Compile Include="Views\AssetDetailsView\StoreBillMAssetEdtiWindow.xaml.cs">
       <DependentUpon>StoreBillMAssetEdtiWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GeneralManagerView\IndentReturnRequestPage.xaml.cs">
+    <Compile Include="Views\GeneralManagerView\ConcreteUC\IndentReturnRequestPage.xaml.cs">
       <DependentUpon>IndentReturnRequestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GeneralManagerView\RelaseStuffRecivedRequestPage.xaml.cs">
+    <Compile Include="Views\GeneralManagerView\ConcreteUC\RelaseStuffRecivedRequestPage.xaml.cs">
       <DependentUpon>RelaseStuffRecivedRequestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GeneralManagerView\StoreBillEditRequestRecivedPage.xaml.cs">
+    <Compile Include="Views\GeneralManagerView\ConcreteUC\StoreBillEditRequestRecivedPage.xaml.cs">
       <DependentUpon>StoreBillEditRequestRecivedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralManagerView\OrderManipulationUC.xaml.cs">
+      <DependentUpon>OrderManipulationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralManagerView\RequestManipulationUC.xaml.cs">
+      <DependentUpon>RequestManipulationUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
@@ -1063,10 +1075,10 @@
     <Compile Include="Views\EventLogWindow.xaml.cs">
       <DependentUpon>EventLogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GeneralManagerView\RecivedProceedingPage.xaml.cs">
+    <Compile Include="Views\GeneralManagerView\ConcreteUC\RecivedProceedingPage.xaml.cs">
       <DependentUpon>RecivedProceedingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GeneralManagerView\StoreOrderRecivedPage.xaml.cs">
+    <Compile Include="Views\GeneralManagerView\ConcreteUC\StoreOrderRecivedPage.xaml.cs">
       <DependentUpon>StoreOrderRecivedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ManagementView\InitializWindow.xaml.cs">
@@ -2145,11 +2157,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountingView\AccountCodingPage.xaml">
+    <Page Include="Views\AccountingView\AccountInitializationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountingView\AccountDocumentHistoryPage.xaml">
+    <Page Include="Views\AccountingView\AccountManipulationUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountingView\ConcreteUC\AccountCodingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountingView\ConcreteUC\AccountDocumentHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2165,15 +2185,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GeneralManagerView\IndentReturnRequestPage.xaml">
+    <Page Include="Views\GeneralManagerView\ConcreteUC\IndentReturnRequestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GeneralManagerView\RelaseStuffRecivedRequestPage.xaml">
+    <Page Include="Views\GeneralManagerView\ConcreteUC\RelaseStuffRecivedRequestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GeneralManagerView\StoreBillEditRequestRecivedPage.xaml">
+    <Page Include="Views\GeneralManagerView\ConcreteUC\StoreBillEditRequestRecivedPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneralManagerView\OrderManipulationUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneralManagerView\RequestManipulationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2213,11 +2241,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GeneralManagerView\RecivedProceedingPage.xaml">
+    <Page Include="Views\GeneralManagerView\ConcreteUC\RecivedProceedingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GeneralManagerView\StoreOrderRecivedPage.xaml">
+    <Page Include="Views\GeneralManagerView\ConcreteUC\StoreOrderRecivedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2774,7 +2802,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\AccountingView\Window\" />
+    <Folder Include="Views\GeneralManagerView\Windows\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

@@ -126,10 +126,10 @@ namespace Bska.Client.UI
                     }
                     else if (index.Id == "A5")
                     {
-                        page = new Views.OrderView.RecivedOrderPage();
-                        var viewModel = new InternalOrderRecivedViewModel(_container, "MunitionManager");
-                        viewModel.Window = this;
-                        page.DataContext = viewModel;
+                        //page = new Views.OrderView.RecivedOrderPage();
+                        //var viewModel = new InternalOrderRecivedViewModel(_container, "MunitionManager");
+                        //viewModel.Window = this;
+                        //page.DataContext = viewModel;
                     }
                     else if (index.Id == "A6")
                     {

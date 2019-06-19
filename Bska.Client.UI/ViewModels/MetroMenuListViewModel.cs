@@ -244,14 +244,12 @@ namespace Bska.Client.UI.ViewModels
 
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute1)
                 {
-                    lstAccountingMetroMenu.Add(new MetroMenuItem("کدینگ اسناد", MetroMenuResources.Logo.DocumentCoding, "A1"));
-                    lstAccounting.Add(new MenuItem { Header = "کدینگ اسناد", Tag = 1001, Name = "accountManageMenuItem1" });
+                    lstAccounting.Add(new MenuItem { Header = "کدینگ اسناد", Tag = 1001, Name = "A1" });
                 }
 
                 if (UserLog.UniqueInstance.LogedUser.UserAttribute.Atttribute2)
                 {
-                    lstAccountingMetroMenu.Add(new MetroMenuItem("گزارش گردش حسابداری", MetroMenuResources.Logo.AssetCost, "A2"));
-                    lstAccounting.Add(new MenuItem { Header = "گزارش گردش حسابداری", Tag = 1002, Name = "accountManageMenuItem2" });
+                    lstAccounting.Add(new MenuItem { Header = "اسناد", Tag = 1002, Name = "A2" });
                 }
 
                 _menuItems.Add("accounting", lstAccounting);
@@ -374,11 +372,11 @@ namespace Bska.Client.UI.ViewModels
 
                 var lstAccountingMetroMenu = new List<MetroMenuItem>();
                 lstAccountingMetroMenu.Add(new MetroMenuItem("کدینگ اسناد", MetroMenuResources.Logo.DocumentCoding, "A1"));
-                lstAccountingMetroMenu.Add(new MetroMenuItem("گزارش گردش حسابداری", MetroMenuResources.Logo.AssetCost, "A2"));
+                lstAccountingMetroMenu.Add(new MetroMenuItem("اسناد", MetroMenuResources.Logo.AssetCost, "A2"));
 
                 var lstAccounting = new List<MenuItem>();
-                lstAccounting.Add(new MenuItem { Header = "کدینگ اسناد", Tag = 1001, Name = "accountManageMenuItem1" });
-                lstAccounting.Add(new MenuItem { Header = "گزارش گردش حسابداری", Tag = 1002, Name = "accountManageMenuItem2" });
+                lstAccounting.Add(new MenuItem { Header = "کدینگ اسناد", Tag = 1001, Name = "A1" });
+                lstAccounting.Add(new MenuItem { Header = "اسناد", Tag = 1002, Name = "A2" });
 
                 _menuItems.Add("accounting", lstAccounting);
                 _menu.Add("accounting", lstAccountingMetroMenu);

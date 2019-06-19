@@ -1,26 +1,26 @@
-﻿<Page x:Class="Bska.Client.UI.Views.OrderView.RecivedOrderPage"
+﻿<UserControl x:Class="Bska.Client.UI.Views.OrderView.RecivedOrderPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" FlowDirection="RightToLeft" FontFamily="{StaticResource PrimaryFontFamily}" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC"
-	Title="درخواست های ارسال شده" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+      mc:Ignorable="d"  FlowDirection="RightToLeft" FontFamily="{StaticResource PrimaryFontFamily}" xmlns:UCO="clr-namespace:Bska.Client.UI.UserControlls.OrderUC"
+      xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
       xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" x:Name="recivedOrderPage" xmlns:riboon="clr-namespace:Bska.Client.UI.UserControlls.Ribon"
       Loaded="recivedOrderPage_Loaded">
-    <Page.Resources>
+    <UserControl.Resources>
         <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
         <Conv:IndexConverter x:Key="IndexConverter"/>
         <Conv:OrderTypeConverter x:Key="OrderTypeConverter"/>
         <Conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <Conv:ReverseBooleanToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter"/>
-    </Page.Resources>
-    <Page.InputBindings>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
         <KeyBinding Key="F1" Command="{Binding HelpCommand}"/>
         <KeyBinding Key="F5" Command="{Binding PersonDetailsCommand}"/>
         <KeyBinding Key="F2" Command="{Binding StoreDetailsCommand}"/>
         <KeyBinding Key="F8" Command="{Binding RejectCommand}"/>
         <KeyBinding Key="F3" Command="{Binding ConfirmCommand}"/>
-    </Page.InputBindings>
+    </UserControl.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260"/>
@@ -33,7 +33,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0" Background="{DynamicResource PrimaryHueMidBrush}">
+                <Border Grid.Row="0" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55"/>
@@ -58,7 +58,7 @@
                                     <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Text="جستجو:"/>
-                                <UC:FilterTextUserControl  Grid.Column="1" Width="155" Height="22" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <UC:FilterTextUserControl  Grid.Column="1" Width="150" Height="22" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                 <Button Content="{Binding RecivedOrdersCount}" HorizontalAlignment="Right" Grid.Column="4" Margin="0,0,4,0" 
                             x:Name="btnRefresh" Style="{DynamicResource RefreshButtonStyle}" ToolTip="Refresh" Width="26" 
                             VerticalAlignment="Center" Height="26" Command="{Binding RefreshCommand}"/>
@@ -75,7 +75,7 @@
                 <RowDefinition Height="45"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0" Background="{DynamicResource PrimaryHueMidBrush}">
+            <Border Grid.Row="0" Margin="0" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -99,4 +99,4 @@
             </Grid>
         </Border>
     </Grid>
-</Page>
+</UserControl>

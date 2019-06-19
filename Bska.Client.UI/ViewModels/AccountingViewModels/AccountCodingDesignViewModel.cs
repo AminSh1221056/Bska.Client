@@ -28,8 +28,9 @@ namespace Bska.Client.UI.ViewModels.AccountingViewModels
             this._firstGeneration = new ObservableCollection<AccountCodingTreeViewModel>();
             this.initializObj();
             this.initalizCommand();
-            IsEditable = true;
+            IsEditable = false;
         }
+
         #endregion
 
         #region properties

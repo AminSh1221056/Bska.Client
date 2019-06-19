@@ -20,7 +20,7 @@ namespace Bska.Client.UI.Views.OrderView
     /// <summary>
     /// Interaction logic for RecivedOrderPage.xaml
     /// </summary>
-    public partial class RecivedOrderPage : Page
+    public partial class RecivedOrderPage : UserControl
     {
         public RecivedOrderPage()
         {

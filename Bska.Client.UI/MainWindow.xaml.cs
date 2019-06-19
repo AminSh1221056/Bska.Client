@@ -573,13 +573,10 @@ namespace Bska.Client.UI
         private void accountManageMenuItem_Click(object sender, RoutedEventArgs e)
         {
             var mItem = sender as MenuItem;
-            int tag = Convert.ToInt32(mItem.Tag);
 
+            string tag = mItem.Name;
             var window = _container.Resolve<AccountingMainWindow>(new ParameterOverrides { { "isQuciLunch", true }, { "quickNo", tag } });
-            menu.Menu["accounting"].ForEach(mu =>
-            {
-                window.LbxMenu.Items.Add(mu);
-            });
+          
             window.ShowDialog();
         }
 

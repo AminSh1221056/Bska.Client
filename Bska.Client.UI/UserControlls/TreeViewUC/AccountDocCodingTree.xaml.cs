@@ -39,7 +39,7 @@ namespace Bska.Client.UI.UserControlls.AccountDocView
                 var historyDesign = item.SelectedItem as AccountCodingHistoryTreeViewModel;
                 if (historyDesign != null)
                 {
-                    //((AccountDocumentHistoryViewModel)this.DataContext).SelectedNode = historyDesign;
+                    ((AccountDocumentHistoryViewModel)this.DataContext).SelectedNode = historyDesign;
                 }
             }
         }

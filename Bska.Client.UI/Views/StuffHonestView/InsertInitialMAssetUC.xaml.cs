@@ -38,7 +38,7 @@ namespace Bska.Client.UI.Views.StuffHonestView
 
         private void FoldersShow_ComboColorOrganizChanged(object sender, RoutedEventArgs e)
         {
-             ListBox item = e.OriginalSource as ListBox;
+            ListBox item = e.OriginalSource as ListBox;
             if (item != null)
             {
                 this.initMassetView.Visibility = Visibility.Visible;

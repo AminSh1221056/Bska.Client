@@ -1,0 +1,246 @@
+﻿<UserControl x:Class="Bska.Client.UI.Views.GeneralManagerView.RecivedProceedingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" FontFamily="{StaticResource PrimaryFontFamily}" xmlns:C="clr-namespace:Bska.Client.UI.Controls"
+      xmlns:Conv="clr-namespace:Bska.Client.UI.Converters" xmlns:UC="clr-namespace:Bska.Client.UI.UserControlls"
+	   FlowDirection="RightToLeft" xmlns:masking="clr-namespace:Bska.Client.UI.API" xmlns:h="clr-namespace:Bska.Client.UI.Helper"
+      xmlns:local="clr-namespace:Bska.Client.Common;assembly=Bska.Client.Common"  x:Name="recivedProceesingPage">
+    <UserControl.Resources>
+        <Conv:IndexConverter x:Key="IndexConverter"/>
+        <Conv:PersianDateConverter x:Key="PersianDateConverter"/>
+        <Conv:MovableAssetTypeConverter x:Key="MovableAssetTypeConverter"/>
+        <Conv:ProceedingTypeConverter x:Key="ProceedingTypeConverter"/>
+
+        <Style TargetType="CheckBox" BasedOn="{StaticResource CompletedCheckBox}" x:Key="mAssetCheckBoxProceess">
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="ToolTip" Value="حذف این مال از صورت جلسه"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="ToolTip" Value="اضافه کردن این مال به صورت جلسه"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="EditColumnTemplate">
+            <Button ToolTip="اموال" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=recivedProceesingPage,Path=DataContext.ProceedingMAssetCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-list}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ProcDetailsColumnTemplate">
+            <Button ToolTip="جزئیات" Width="32"
+                    Style="{DynamicResource CustomTitButton}"  FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=recivedProceesingPage,Path=DataContext.ProceedingDetailsCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="ConfirmColumnTemplate">
+            <Button ToolTip="تایید صورت جلسه" Width="32"
+                    Style="{DynamicResource CustomTitButton}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=recivedProceesingPage,Path=DataContext.ConfirmCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-check}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="None">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="ManagerConfirm">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Confirmed">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="CompletedConfirm">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="CompletedReject">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Rejected">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="StoreConfirm">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="RejectColumnTemplate">
+            <Button ToolTip="رد صورت جلسه" Width="32"
+                    Style="{DynamicResource CustomTitButton}" FontSize="12" FontFamily="Arial" Height="32" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Command="{Binding ElementName=recivedProceesingPage,Path=DataContext.RejectCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-close}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="None">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="ManagerConfirm">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Confirmed">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="CompletedConfirm">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="CompletedReject">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Rejected">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="StoreConfirm">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ShowDetailsColumnTemplate">
+            <Button Width="80" Style="{DynamicResource CustomTitButton}" Height="28"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  Command="{Binding ElementName=recivedProceesingPage,Path=DataContext.AssetDetailsCommand}" CommandParameter="{Binding}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Style="{StaticResource app-details}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UnitColumnTemplate">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
+                         Style="{StaticResource BeskaComboBoxStyle}" 
+                        Width="120" Height="22" SelectedValue="{Binding UnitId}" IsEnabled="False" SelectedValuePath="UnitId" ItemsSource="{Binding ElementName=recivedProceesingPage,Path=DataContext.Units}" DisplayMemberPath="Name">
+            </ComboBox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CheckBoxColumnTemplate">
+            <Grid>
+                <CheckBox x:Name="ch" IsChecked="{Binding IsSelected}" Style="{StaticResource mAssetCheckBoxProceess}" Tag="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"  Command="{Binding ElementName=recivedProceesingPage,Path=DataContext.SelectCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}">
+                </CheckBox>
+                <Image x:Name="img" Source="{StaticResource DeleteIcon}" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Proceeding.State}" Value="ManagerConfirm">
+                    <Setter Property="IsEnabled" Value="True" TargetName="ch"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Proceeding.State}" Value="None">
+                    <Setter Property="IsEnabled" Value="False" TargetName="ch"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Confirmed">
+                    <Setter Property="IsEnabled" Value="False" TargetName="ch"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Rejected">
+                    <Setter Property="IsEnabled" Value="False" TargetName="ch"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Proceeding.State}" Value="CompletedConfirm">
+                    <Setter Property="IsEnabled" Value="False" TargetName="ch"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Proceeding.State}" Value="CompletedReject">
+                    <Setter Property="IsEnabled" Value="False" TargetName="ch"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Proceeding.State}" Value="StoreConfirm">
+                    <Setter Property="IsEnabled" Value="False" TargetName="ch"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsRowEnabled}" Value="True">
+                    <Setter Property="Visibility" Value="Visible" TargetName="ch"/>
+                    <Setter Property="Visibility" Value="Collapsed" TargetName="img"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsRowEnabled}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed" TargetName="ch"/>
+                    <Setter Property="Visibility" Value="Visible" TargetName="img"/>
+                    <Setter Property="ToolTip" Value="این مال هم اکنون دارای صورت جلسه ای دیگر در حال جریان می باشد" TargetName="img"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="190"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Right" Margin="5,0,5,0"  Text="جستجو:" VerticalAlignment="Center" Grid.Column="0"/>
+        <UC:FilterTextUserControl HorizontalAlignment="Left" Margin="5,0,0,0" Width="180"  x:Name="FilterTextBox"  VerticalAlignment="Center" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,5,0" Grid.Column="2" Text="وضعیت صورت جلسه:"/>
+        <ComboBox Style="{StaticResource BeskaComboBoxStyle}" VerticalAlignment="Center" Margin="5,0,0,5" HorizontalAlignment="Left" Width="180"
+                          Height="24" Grid.Column="3" DisplayMemberPath="Description" SelectedValue="{Binding ProceedingState}"  SelectedValuePath="Value"
+                          ItemsSource="{Binding Source={masking:Enumeration {x:Type local:ProceedingState}}}"/>
+
+        <Border Style="{StaticResource BorderStyle}" Margin="0" BorderThickness="0,1,0,1" CornerRadius="0" Grid.Row="1" Grid.ColumnSpan="5">
+            <C:SortableListView x:Name="ProceedingsGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True"
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ProceddingsItems}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}" SelectedItem="{Binding Selected}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                <C:SortableListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="شماره" DisplayMemberBinding="{Binding Path=ProceedingId}" SortProperty="ProceedingId" Width="125" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نوع" DisplayMemberBinding="{Binding Path=Type,Converter={StaticResource ProceedingTypeConverter}}" SortProperty="Type" Width="135" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تعداد مال" DisplayMemberBinding="{Binding Path=AssetProceedings.Count}" SortProperty="AssetProceedings.Count" Width="135" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تاریخ ثبت" DisplayMemberBinding="{Binding ProceedingDate,Converter={StaticResource PersianDateConverter}}" SortProperty="ProceedingDate" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تاریخ تایید" DisplayMemberBinding="{Binding ExecutionTime,Converter={StaticResource PersianDateConverter},TargetNullValue=[خالی]}" SortProperty="ExecutionTime" Width="110" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource ProcDetailsColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource EditColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource ConfirmColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource RejectColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                    </GridView>
+                </C:SortableListView.View>
+            </C:SortableListView>
+        </Border>
+        <Grid Grid.Row="2" Grid.ColumnSpan="5">
+            <C:SortableListView  Grid.ColumnSpan="2" Grid.Row="1" x:Name="PropertyGridView" Margin="2" Height="Auto"
+                                   BorderBrush="{x:Null}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.IsVirtualizing="True" ScrollViewer.CanContentScroll="True" 
+            SelectionMode="Single" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding MovableAssetCollection}" SelectedItem="{Binding SelectedAsset}"
+                           ItemContainerStyle="{DynamicResource BeskaListViewItemStyleSmall}"
+                           Style="{DynamicResource BeskaEditListViewStyle}" IsEnabled="True" FontSize="11">
+                <C:SortableListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource FirstColumnGridViewColumnHeader}" />
+                        <GridViewColumn CellTemplate="{StaticResource CheckBoxColumnTemplate}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Header="ردیف"  DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}},Converter={StaticResource IndexConverter}}" Width="50" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نام مال" DisplayMemberBinding="{Binding Path=Name}" SortProperty="Name" Width="170" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="نوع مال" DisplayMemberBinding="{Binding Converter={StaticResource MovableAssetTypeConverter}}" SortProperty="MAssetType" Width="120" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="برچسب" DisplayMemberBinding="{Binding Label,TargetNullValue=[خالی]}" SortProperty="Label" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تعداد" DisplayMemberBinding="{Binding Num}" SortProperty="Num" Width="70" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="واحد" CellTemplate="{StaticResource UnitColumnTemplate}" SortProperty="UnitId" Width="135" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <C:SortListViewColumn Header="تاریخ ثبت" DisplayMemberBinding="{Binding InsertDate,Converter={StaticResource PersianDateConverter}}" SortProperty="InsertDate" Width="105" SortStyle="BeskaDataGridViewColumnHeader" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn CellTemplate="{StaticResource ShowDetailsColumnTemplate}" Header="" Width="100" HeaderContainerStyle="{DynamicResource BeskaDataGridViewColumnHeader}"/>
+                        <GridViewColumn Width="4" HeaderContainerStyle="{DynamicResource LastColumnGridViewColumnHeader}" CellTemplate="{StaticResource EmptyColumnTemplate}"/>
+                    </GridView>
+                </C:SortableListView.View>
+            </C:SortableListView>
+        </Grid>
+     </Grid>
+</UserControl>
