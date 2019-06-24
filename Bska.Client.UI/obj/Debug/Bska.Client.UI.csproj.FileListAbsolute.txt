@@ -10524,7 +10524,6 @@ D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Des
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\GeneralManagerView\ConcreteUC\StoreOrderRecivedPage.g.cs
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\ManagementView\InitializWindow.g.cs
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\InsuranceManageWindow.g.cs
-D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\MainAccounDocWindow.g.cs
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\MAssetCostWindow.g.cs
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\MAssetListWindow.g.cs
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\MovableAssetDetailsWindow.g.cs
@@ -10919,7 +10918,6 @@ D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Des
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\GeneralManagerView\ConcreteUC\StoreOrderRecivedPage.baml
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\ManagementView\InitializWindow.baml
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\InsuranceManageWindow.baml
-D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\MainAccounDocWindow.baml
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\MAssetCostWindow.baml
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\MAssetListWindow.baml
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AssetDetailsView\MovableAssetDetailsWindow.baml
@@ -11006,3 +11004,5 @@ D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Des
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AccountingView\AccountInitializationUC.baml
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AccountingView\AccountManipulationUC.g.cs
 D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AccountingView\AccountManipulationUC.baml
+D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AccountingView\Window\MainAccounDocWindow.g.cs
+D:\projects\myProjects\selfs\Beska solution\Bska On the time\global New\Bska.Desktop.Client\Bska.Client\Bska.Client.UI\obj\Debug\Views\AccountingView\Window\MainAccounDocWindow.baml

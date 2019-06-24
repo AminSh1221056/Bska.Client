@@ -17,12 +17,13 @@
         <Conv:LocationViewVisibilityConverter x:Key="LocationViewVisibilityConverter"/>
         <Conv:ReverseBooleanConverter x:Key="ReverseBooleanConverter"/>
         <Conv:StoreBillTypeConverter x:Key="StoreBillTypeConverter"/>
-        
+
         <DataTemplate x:Key="ShowDetailsColumnTemplate">
-            <Button Width="32" Style="{DynamicResource CustomTitButton}" Height="23" IsEnabled="{Binding ElementName=chgroping,Path=IsChecked,Converter={StaticResource ReverseBooleanConverter}}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  Command="{Binding ElementName=mAssetViewpage,Path=DataContext.EditCommand}" CommandParameter="{Binding}">
+            <Button x:Name="btn" Height="28" Width="30" Margin="-5"  Style="{DynamicResource CustomTitButton}"
+                    Command="{Binding ElementName=mAssetViewpage,Path=DataContext.EditCommand}" CommandParameter="{Binding}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
-                        <ContentControl Style="{StaticResource app-details}"/>
+                        <ContentControl Style="{StaticResource app-details}" Height="18"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
@@ -59,10 +60,14 @@
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="240"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="90"/>
                     </Grid.ColumnDefinitions>
                     <toolbar:GlobalToolbar x:Name="globalToolPane"/>
-                    <toolbar:HelpToolbar Grid.Column="1" HorizontalAlignment="Left" x:Name="helpToolPane"/>
+                    <CheckBox Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="chgroping" IsChecked="{Binding ChGroupView}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,0,5,0" Content="نمایش گروهی بر اساس نام و واحد مال" Style="{StaticResource CompletedCheckBox}" />
+                    <TextBlock Grid.Column="2" Margin="5,0,15,0" Text="{Binding ElementName=myGrid1,Path=Items.Count,StringFormat={}تعداد: {0}}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <toolbar:HelpToolbar Grid.Column="3" HorizontalAlignment="Left" x:Name="helpToolPane"/>
                 </Grid>
             </Grid>
         </Border>
@@ -75,13 +80,6 @@
                 <UC:BuildingMAssetViewUC Foreground="#000" OrganizTreeClick="BuildingMAssetViewUC_OrganizTreeClick" StrategyTreeClick="BuildingMAssetViewUC_StrategyTreeClick"/>
             </Border>
             <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <CheckBox Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="chgroping" IsChecked="{Binding ChGroupView}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,5,0" Content="نمایش گروهی بر اساس نام و واحد مال" Style="{StaticResource CompletedCheckBox}" />
-                <TextBlock Margin="5,0,15,0" Text="{Binding ElementName=myGrid1,Path=Items.Count,StringFormat={}تعداد: {0}}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-
                 <Border Grid.Row="1" Style="{StaticResource BorderStyle}" CornerRadius="0" Margin="0" BorderThickness="0,1,0,0">
                     <Grid Grid.Column="1">
                         <DataGrid Grid.Row="1" AlternationCount="2"
@@ -104,8 +102,7 @@
                                 <DataGridTextColumn Header="تاریخ ثبت" Binding="{Binding PersianInsertDate}"
                                             treeFilter:DataGridColumnExtensions.IsBetweenFilterControl="True"/>
                                 <DataGridTextColumn
-                                    Header="نوع مال" Binding="{Binding Path=MAssetType}" Width="130" 
-                                    treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+                                    Header="نوع مال" Binding="{Binding Path=MAssetType}" Width="130" />
                                 <DataGridComboBoxColumn
                             ItemsSource="{Binding Source={masking:Enumeration {x:Type local:StateOwnership}}}" DisplayMemberPath="Description" 
                              SelectedValuePath="Value"
@@ -123,19 +120,19 @@
                                 <DataGridTemplateColumn Width="50" CellTemplate="{StaticResource ShowDetailsColumnTemplate}" 
                                                 treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>
                             </DataGrid.Columns>
-                            <!--<DataGrid.RowStyle>
-                                <Style TargetType="{x:Type DataGridRow}">
-                                    <Style.Triggers>
-                                        <Trigger Property="AlternationIndex" Value="0">
-                                            <Setter Property="Background" Value="White" />
-                                        </Trigger>
-                                        <Trigger Property="AlternationIndex" Value="1">
-                                            <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" />
-                                            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
-                                        </Trigger>
-                                    </Style.Triggers>
+                            <DataGrid.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                                <Grid Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
                                 </Style>
-                            </DataGrid.RowStyle>-->
+                            </DataGrid.CellStyle>
                             <DataGrid.InputBindings>
                                 <MouseBinding MouseAction="LeftDoubleClick"
                                       Command="{Binding Path=DoubleClickListViewItemCommand}"

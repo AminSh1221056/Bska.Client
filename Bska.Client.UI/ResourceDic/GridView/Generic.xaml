@@ -504,7 +504,7 @@
                                      IsHovered="{TemplateBinding IsMouseOver}"
                                      IsPressed="{TemplateBinding IsPressed}"
                                      IsClickable="{TemplateBinding CanUserSort}"
-                                     Background="{TemplateBinding Background}" Height="30"
+                                     Background="{DynamicResource PrimaryHueLightBrush}" Height="30"
                                      BorderBrush="{TemplateBinding BorderBrush}"
                                      BorderThickness="{TemplateBinding BorderThickness}"
                                      Padding ="{TemplateBinding Padding}"
@@ -514,7 +514,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="1"  Text="{TemplateBinding  Content}" 
                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  HorizontalAlignment="Center"
                                        TextWrapping="Wrap"></TextBlock>
 
                         </theme:DataGridHeaderBorder>

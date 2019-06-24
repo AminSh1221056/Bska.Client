@@ -120,12 +120,13 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
 
         #region methods
 
-        private void initalizObj()
+        private  void initalizObj()
         {
              Enum.GetValues(typeof(MAssetCurState)).Cast<MAssetCurState>().ForEach(s=>
              {
                  _items.Add(new Tuple<MAssetCurState, string>(s,s.GetDescription()));
              });
+
             SelectedStates = new List<Tuple<MAssetCurState, string>>();
             this.Units = _unitService.Queryable().ToList();
             StuffTypes = new Dictionary<string, object> {{ StuffType.UnConsumption.GetDescription(),(int) StuffType.UnConsumption }
@@ -134,6 +135,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             SelectedStuffType = new Dictionary<string, object> {{ StuffType.UnConsumption.GetDescription(), (int)StuffType.UnConsumption }
             ,{ StuffType.OrderConsumption.GetDescription(),(int)StuffType.OrderConsumption},{ StuffType.Installable.GetDescription(),(int)StuffType.Installable},{ StuffType.Belonging.GetDescription(),(int)StuffType.Belonging}};
 
+            getMAssetsAsync();
         }
         
         private async void getMAssetsAsync()
@@ -142,8 +144,8 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
                 (new List<MovableAssetModel> { new MovableAssetModel() });
             _collection.Clear();
             if (SelectedStates == null) return;
-            
 
+            await Task.Delay(100);
             var ts = new Task(() =>
             {
                 var query= _movableAssetService.Queryable().Include(ma => ma.StoreBill)

@@ -322,6 +322,7 @@ namespace Bska.Client.UI.ViewModels.StuffHonestViewModel
             
             Units = _unitService.Queryable().ToList();
             await this.GetParentNodeAsync();
+            getMAssets();
             Mouse.SetCursor(Cursors.Arrow);
         }
 

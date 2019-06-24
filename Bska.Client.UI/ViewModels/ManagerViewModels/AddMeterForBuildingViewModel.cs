@@ -207,6 +207,7 @@ namespace Bska.Client.UI.ViewModels
             {
                 _metersCollection.Add(mr);
             });
+            this.MeterType = "A";
         }
 
         private void SearchMeters()

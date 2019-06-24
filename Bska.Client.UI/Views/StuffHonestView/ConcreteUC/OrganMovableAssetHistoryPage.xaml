@@ -25,7 +25,7 @@
         <Conv:CompietionStateConverter x:Key="CompietionStateConverter"/>
 
         <DataTemplate x:Key="ShowDetailsColumnTemplate">
-            <Button x:Name="btn" Height="26" Background="{DynamicResource PrimaryHueMidBrush}"
+            <Button x:Name="btn" Height="28" Width="30" Margin="-5"  Style="{DynamicResource CustomTitButton}"
                     Command="{Binding ElementName=historyPage,Path=DataContext.MAssetDetailsCommand}" CommandParameter="{Binding}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
@@ -93,10 +93,11 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="80"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="90"/>
                     </Grid.ColumnDefinitions>
                     <toolbar:GlobalToolbar x:Name="globalToolPane"/>
-                 
-                    <toolbar:HelpToolbar Grid.Column="2" HorizontalAlignment="Right" x:Name="helpToolPane"/>
+                    <TextBlock Grid.Column="2" Margin="5,0,5,0" Text="{Binding ElementName=myGrid1,Path=Items.Count,StringFormat={}تعداد در لیست: {0}}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <toolbar:HelpToolbar Grid.Column="3" HorizontalAlignment="Right" x:Name="helpToolPane"/>
                 </Grid>
             </Grid>
         </Border>
@@ -129,11 +130,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Margin="5,0,5,0" Text="{Binding ElementName=myGrid1,Path=Items.Count,StringFormat={}تعداد: {0}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+               
                 <DataGrid Grid.Row="1" AlternationCount="2"
                        treeFilter:DataGridExtensions.DataGridFilterQueryController="{Binding QueryControllerItem,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      treeFilter:DataGridExtensions.UseBackgroundWorkerForFiltering="True"
@@ -143,59 +140,58 @@
                     ColumnHeaderStyle="{StaticResource DataGridHeaderFilterControlStyle}" AutoGenerateColumns="False"
                         ItemsSource="{Binding Path=Collection}" SelectedItem="{Binding Selected}" 
                         Name="myGrid1">
+                 
                     <DataGrid.Columns>
                         <!--<DataGridTextColumn Header="ردیف" Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}},Converter={StaticResource IndexConverter}}"
                                             treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>-->
                         <DataGridTextColumn
                                     Header="کد کالا" Binding="{Binding Path=KalaNo}" Width="110"/>
+                        <DataGridComboBoxColumn  ItemsSource="{Binding Source={masking:Enumeration {x:Type local:CompietionState}}}" DisplayMemberPath="Description" 
+                             SelectedValuePath="Value" Width="120" Header="گزارش به دارایی" SelectedValueBinding="{Binding IsCompietion}"/>
+
                         <DataGridTextColumn
                                     Header="نام مال" Binding="{Binding Path=Name}" Width="180"
                             treeFilter:DataGridColumnExtensions.IsBetweenStringFilterControl="True"/>
 
                         <DataGridTextColumn Header="تاریخ ثبت" Binding="{Binding PersianInsertDate}"
-                                            treeFilter:DataGridColumnExtensions.IsBetweenFilterControl="True"/>
-                        <DataGridTextColumn
-                                    Header="نوع مال" Binding="{Binding Path=MAssetType}" Width="130" treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"
-                            />
+                                            treeFilter:DataGridColumnExtensions.IsBetweenFilterControl="True" Width="130"/>
+                        <DataGridTextColumn Header="نوع مال"  Binding="{Binding Path=MAssetType}" Width="130" />
+                        
                         <DataGridComboBoxColumn
                             ItemsSource="{Binding Source={masking:Enumeration {x:Type local:StateOwnership}}}" DisplayMemberPath="Description" 
                              SelectedValuePath="Value"
                                     Header="نوع قبض انبار" SelectedValueBinding="{Binding AcqType}" Width="130" />
                         
-                        <DataGridTextColumn Binding="{Binding Path=CurState,Converter={StaticResource MovableAssetStateConverter}}" 
-                                            treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"
-                                    Header="وضعیت جاری" Width="130" />
                         
                         <DataGridTextColumn Binding="{Binding Path=Label,TargetNullValue=[خالی]}"
                                     Header="برچسب" Width="80" />
                         
                         <DataGridTextColumn
                                     Header="تعداد" Binding="{Binding Path=Num}" Width="80" />
-                        
-                        <DataGridTemplateColumn CellTemplate="{StaticResource UnitColumnTemplate}"
-                                                Header="واحد" Width="120" treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>
 
-                        
-                        <DataGridComboBoxColumn  ItemsSource="{Binding Source={masking:Enumeration {x:Type local:CompietionState}}}" DisplayMemberPath="Description" 
-                             SelectedValuePath="Value" Width="100" Header="گزارش به دارایی" 
-                                            SelectedValueBinding="{Binding IsCompietion}"/>
-                        
+                        <DataGridTemplateColumn CellTemplate="{StaticResource UnitColumnTemplate}"
+                                                Header="واحد" Width="120"  treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>
+
+                        <DataGridTextColumn Binding="{Binding Path=CurState,Converter={StaticResource MovableAssetStateConverter}}" 
+                                            treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"
+                                    Header="وضعیت جاری" Width="200" />
+
                         <DataGridTemplateColumn Width="50" CellTemplate="{StaticResource ShowDetailsColumnTemplate}" 
                                                 treeFilter:DataGridColumnExtensions.DoNotGenerateFilterControl="True"/>
                     </DataGrid.Columns>
-                    <!--<DataGrid.RowStyle>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Style.Triggers>
-                                <Trigger Property="AlternationIndex" Value="0">
-                                    <Setter Property="Background" Value="White" />
-                                </Trigger>
-                                <Trigger Property="AlternationIndex" Value="1">
-                                    <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" />
-                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}" />
-                                </Trigger>
-                            </Style.Triggers>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
                         </Style>
-                    </DataGrid.RowStyle>-->
+                    </DataGrid.CellStyle>
                     <DataGrid.InputBindings>
                         <MouseBinding MouseAction="LeftDoubleClick"
                                       Command="{Binding Path=DoubleClickListViewItemCommand}"

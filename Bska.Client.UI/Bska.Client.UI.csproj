@@ -1087,7 +1087,7 @@
     <Compile Include="Views\AssetDetailsView\InsuranceManageWindow.xaml.cs">
       <DependentUpon>InsuranceManageWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainAccounDocWindow.xaml.cs">
+    <Compile Include="Views\AccountingView\Window\MainAccounDocWindow.xaml.cs">
       <DependentUpon>MainAccounDocWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AssetDetailsView\MAssetCostWindow.xaml.cs">
@@ -2257,7 +2257,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainAccounDocWindow.xaml">
+    <Page Include="Views\AccountingView\Window\MainAccounDocWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2803,7 +2803,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\AccountingView\Window\" />
     <Folder Include="Views\GeneralManagerView\Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
